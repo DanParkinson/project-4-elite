@@ -50,3 +50,26 @@ A lot of people also refer a passsive booking system where no human interaction 
 A business with a well developed website tends to do better than its peers. Customers can gain a better insight of its ethos, facilities and services on offer. In theory this fosters confidence and leads to greater engagement.
 
 With the above in mind, let's create the website!
+
+## UX 
+
+### User Stories
+
+Following an Agile paradigm, user stories will target customer needs and reduce embellishments on the part of the developer. These non technical statements will aid with the incremental changes needed to build the application.
+
+Site user needs can broadly be split into 4 categories or epics:
+
+- Navigation 
+- Account Management
+- Reservation management
+- Other 
+
+#### NAVIGATION
+
+- **As a** user, **I can** follow a link **so that** I can create/logon/logout my account
+
+- **As an** unregistered user, **I can** navigate to a page **so that** I can view the services offered by the business
+
+- **As an** unregistered user, **I can** follow a link **so that** I can view the social medias of Elite Cuisine
+
+- **As an** unregistered user, **I can** use a navigation bar **so that** I can navigate the site on all views
