@@ -21,3 +21,13 @@ This is where my deployment process will be documented.
 - Using the command *django-admin startproject elite .* creates our django project at the top level.
 
 ![Django Project Directory](docs/local_deployment/02-django-project.png)
+
+## running the server and allowing hosts
+
+Using the command *python3 manage.py runserver* opens the server in port 8000. The server needs allowed hosts in elite-cuisine/settings.py to be added.
+
+![Disallowed host](docs/local_deployment/03-disallowed-host.png)
+
+![Successful project](docs/local_deployment/04-install-succesful.png)
+
+</details>
