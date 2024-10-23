@@ -6,6 +6,11 @@
     background-color: #001F3F;
 }
 
+/*footer*/
+.footer {
+    background-color: #001F3F;
+}
+
 /* ------------------------ text*/
 
 /*navbar links*/
@@ -16,6 +21,11 @@
 /*navbar text*/
 .navbar.navbar-dark .navbar-text {
     color: #ffffff
+}
+
+/*footer*/
+.footer {
+    color: #EAD8B1 ;
 }
 
 /* ------------------------ hovers*/
@@ -31,4 +41,10 @@
 /* -------------------- navbar */
 .navbar {
     border-bottom: none;
+}
+
+/* -------------------- footer */
+.footer {
+    text-align: center;
+    padding: 10px;
 }

@@ -8,15 +8,15 @@
     {% include 'includes/navbar.html' %}
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     {% include 'includes/messages.html' %}
-    <main>
+    <main class ="flex-fill">
         <!-- Block content-->
         {% block content %}
         
         {% endblock %}
     </main>
-    <footer>
+    <footer class="footer fixed-bottom">
         <!-- footer-->
         {% include 'includes/footer.html' %}
     </footer>
