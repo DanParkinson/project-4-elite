@@ -11,7 +11,20 @@
     background-color: #001F3F;
 }
 
+/*main*/
+main {
+    background-color: #3A6D8C;
+}
+
 /* ------------------------ text*/
+
+h1 {
+    color:#EAD8B1;
+}
+
+p {
+    color:#EAD8B1;
+}
 
 /*navbar links*/
 .navbar.navbar-dark .navbar-nav .nav-link {
@@ -28,6 +41,19 @@
     color: #EAD8B1 ;
 }
 
+/* footer social media */
+.social-icon {
+    color: #EAD8B1;
+}
+
+/* ------------------------ buttons*/
+
+/* main menu buttons */
+.custom-button {
+    background-color: #EAD8B1;
+    color: #001F3F;
+}
+
 /* ------------------------ hovers*/
 
 /* navbar items change color on hover*/
@@ -35,6 +61,16 @@
     color:#ffffff;
 }
 
+/*social icons change color on hover*/
+.social-icon:hover {
+    color: #ffffff; 
+}
+
+/* button change color on hover*/
+.custom-button:hover {
+    background-color:#001F3F;
+    color: white;
+}
 
 /* ----------------------------------------- Design choices */
 
@@ -47,4 +83,34 @@
 .footer {
     text-align: center;
     padding: 10px;
+}
+
+/*social icons*/
+.social-icon {
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+/* -------------------- index.html */
+h1 {
+    font-size: 5rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+}
+
+/* main buttons*/
+.custom-button {
+    padding: 10px 20px;
+    margin: 10px;
+    width: 200px;
+    border-radius: 5px;
+    font-weight: bold;
+    flex: 1 1 200px;
 }
