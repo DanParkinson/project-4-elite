@@ -136,3 +136,14 @@ As per assessment criteria, this project must utilise CRUD functionality.  This 
 | **Overall Score**                           | **36**     | **40**      |
 
 The above exercise indicates that overall importance/feasibility scores were similar.  Therefore the project should be deliverable.
+
+### Colour Schema 
+
+I have gone for 
+
+[Colour Schema](docs/readme/colour-schema.png)
+
+#001F3F - navbar
+#3A6D8C - main background
+#6A9AB0
+#EAD8B1 - text colour
