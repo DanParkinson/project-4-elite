@@ -19,7 +19,11 @@ This is where I will document my agile approach. It will be set into phases to h
 - Add user stories to readme.
 - Add wireframes to readme.
 - Mock up initial database design and document in readme.
-- List and link technologies used in readme.
+- List and link technologies used in readme. ------------------------------
 - Use GitHub projects. Create user stories.
 
 </details>
+
+## Phase 2
+
+With everything set up I am going to style the homepage a litte with bootstrap to allow me to navigate around the website as needed.
