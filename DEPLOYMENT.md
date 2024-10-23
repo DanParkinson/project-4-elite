@@ -114,3 +114,21 @@ Use dj-databse-url to connect.
 ![ConfigVar](docs/heroku_deployment/13-heroku-postgresql.png)
 
 </details>
+
+## Secret Key 
+
+<details>
+<summary>Click me</summary>
+
+Generate a secret key using letters, numbers and symbols that is hard to guess. This is used to keep information private. Add it to the env.py file with the following code.
+
+![env secret key](docs/heroku_deployment/14-secret-key.png)
+
+Update the settings.py file.
+
+![Settings secret key](docs/heroku_deployment/15-secret-key-settings.png)
+
+Add secret key as a config-var to Heroku. The name should be SECRET_KEY. The value should be your secret key value.
+If done correctly, both local and Heroku deployment should work.
+
+</details>
