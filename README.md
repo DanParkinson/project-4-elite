@@ -89,3 +89,18 @@ Site user needs can broadly be split into 4 categories or epics:
 - **As a** logged in user, **I can** click a button **so that** I can delete my account.
 
 - **As a** logged in user, **I can** request an email **so that** I can reset my account password.
+
+#### Reservation management
+
+- **As a** logged in user, **I can** provide reservation details **so that** I can set up a reservation.
+
+- **As a** logged in user, **I can** update details **so that** I can reschedule my reservation.
+
+- **As a** logged in user, **I can** cancel an reservation **so that** I can cancel a reservation.
+
+- **As a** logged in user, **I can** view a page **so that** I can see my reservations in time order.
+
+- **As an** employee, **I can** view a page **so that** I can see my reservations in order.
+
+Potentially:
+- **As a** logged in user, **I can** recieve an email **so that** I can keep track of my reservations.
