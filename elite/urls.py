@@ -20,5 +20,5 @@ from home import views as index_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    path('', include('home.urls')), # Includes home app urls
 ]
