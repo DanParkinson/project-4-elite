@@ -54,3 +54,17 @@ Create a Procfile to allow Heroku to deploy using Gunicorn.
 Add Heroku to allowed hosts in elite_cuisine/settings.py.
 
 ![Heroku host](docs/heroku_deployment/05-heroku-host.png)
+
+Connect Heroku to your Github account.
+
+![Connect Github](docs/heroku_deployment/06-connect-github.png)
+
+Click deploy branch and wait for completion.
+
+![deploy](docs/heroku_deployment/07-deploy.png)
+
+Add Eco Dynos.
+
+![Eco Dynos](docs/heroku_deployment/08-eco-dynos.png)
+
+</details>
