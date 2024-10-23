@@ -4,19 +4,24 @@
 <html lang="en">
 
 <head>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% include 'includes/head.html' %}
+    {% include 'includes/navbar.html' %}
 </head>
 
 <body>
+    {% include 'includes/messages.html' %}
     <main>
         <!-- Block content-->
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+        {% endblock %}
     </main>
-    <!-- Custom JS -->
-    <script src="{% static 'js/script.js' %}"></script>
+    <footer>
+        <!-- footer-->
+        {% include 'includes/footer.html' %}
+    </footer>
+    <!-- scripts-->
+    {% include 'includes/scripts.html' %}
 </body>
-
-
 
 </html>
