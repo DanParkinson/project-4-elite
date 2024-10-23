@@ -45,3 +45,28 @@ Once the templates partials are populated. The server looks like this
 ![Templates](docs/testing/2templates04.png)
 
 </details>
+
+## Connecting CSS and JS
+
+<details>
+<summary>Click me</summary>
+
+Connect the static directory to *elite/settings.py*.
+
+![static](docs/testing/3static01.png)
+
+Create you style.css as shown at the top level.
+
+![static](docs/testing/3static02.png)
+
+Edit base.html to load sytle sheet.
+
+![static](docs/testing/3static04.png)
+
+Connect script.js to base.html.
+
+![static](docs/testing/3static03.png)
+
+Server with backgorund colour and console message from javascrpit.
+
+![static](docs/testing/3static05.png)
