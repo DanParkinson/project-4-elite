@@ -132,3 +132,42 @@ Add secret key as a config-var to Heroku. The name should be SECRET_KEY. The val
 If done correctly, both local and Heroku deployment should work.
 
 </details>
+
+## Deploy Static Files
+
+<details>
+<summary>Click me</summary>
+
+Add white noise to middleware. Make sure it is the same location as the photo.
+
+![Whitenoise](docs/heroku_deployment/16-whitenoise.png)
+
+add a static root to elite/settings.py
+
+![Static root](docs/heroku_deployment/17-staticpath.png)
+
+collect static in the terminal.
+
+![Collect static](docs/heroku_deployment/18-collectstatic.png)
+
+create a runtime.txt file with your version of python IDE. you can get this through the terminal command *python -v*
+
+![runtime.txt](docs/heroku_deployment/19-runtime.png)
+
+set debug to False.
+
+![Debug](docs/heroku_deployment/20-debug.png)
+
+remove the configvar in Heroku of DISABLE_COLLECTSTATIC.
+
+![ConfigVar](docs/heroku_deployment/21-disablecollectstatic.png)
+
+Deploy the site and static files should now load.
+
+![deploy Heroku](docs/heroku_deployment/22-deployedsite.png)
+
+set debug back to True.
+
+![Debug True](docs/heroku_deployment/23-debugtrue.png)
+
+</details>
