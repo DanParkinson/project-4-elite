@@ -12,19 +12,19 @@
     <div class = "Collapasble navbar-collapse" id="navbarNav">
         <ul class ="navbar-nav mr-auto">
             <!-- User navigation top left-->
-            <li class ="navitem mr-2">
-                <a class = "nav-link" href="">Home</a>
+            <li class ="nav-item mr-2 {% if request.path == '/' %}active{% endif %}">
+                <a class = "nav-link" href="{% url 'home' %}">Home</a>
             </li>
-            <li class ="navitem mr-2">
-                <a class = "nav-link" href="">About Us</a>
+            <li class ="nav-item mr-2 {% if request.path == '/about-us/' %}active{% endif %}">
+                <a class = "nav-link" href="{% url 'about_us' %}">About Us</a>
             </li>
-            <li class ="navitem mr-2">
+            <li class ="nav-item mr-2">
                 <a class = "nav-link" href="">Menu</a>
             </li>
-            <li class ="navitem mr-2">
+            <li class ="nav-item mr-2">
                 <a class = "nav-link" href="">My Reservations</a>
             </li>
-            <li class ="navitem mr-2">
+            <li class ="nav-item mr-2">
                 <a class = "nav-link" href="">My Account</a>
             </li>
         </ul>
