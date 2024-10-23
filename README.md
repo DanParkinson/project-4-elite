@@ -114,3 +114,25 @@ Potentially:
 - **As a** registered user, **I can** leave a review **so that** I can give feedback.
 
 - **As an** admin, **I can** approve reviews **so that** reviews are relevant.
+
+## Design Thinking
+
+[Agile](AGILE.md) use has been documented in a separate file.
+
+Applying a *Design Thinking* approach, what *features* would users find most useful on the developed site?  How feasible is it for an inexperienced student developer to deliver prioritised features given the time constraints of a hard deadline?
+As per assessment criteria, this project must utilise CRUD functionality.  This provides a broad outline of what is needed.  A brief though shower offered the following:
+
+| Feature                                     | Importance | Feasibility |
+|:--------------------------------------------|:----------:|:-----------:|
+| View available services                     | 4          | 5           |
+| Create personal account                     | 5          | 5           |
+| Update account information                  | 5          | 5           |
+| Able to cancel account                      | 5          | 5           |
+| Make a reservation                          | 5          | 5           |
+| Review latest reservation date/time         | 3          | 4           |
+| Able to change/cancel a reservation         | 3          | 4           |
+| Send client reservation detail via email    | 2          | 4           |
+| Owner has calendar view of reservations     | 4          | 3           |
+| **Overall Score**                           | **36**     | **40**      |
+
+The above exercise indicates that overall importance/feasibility scores were similar.  Therefore the project should be deliverable.
