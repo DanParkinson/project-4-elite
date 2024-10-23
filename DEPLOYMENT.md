@@ -91,3 +91,26 @@ Use dj-databse-url to connect.
 ![dj_database](docs/heroku_deployment/12-database.png)
 
 </details>
+
+## Create super user
+
+<details>
+<summary>Click me</summary>
+
+- Using the terminal command *python3 manage.py migrate*, create a database.
+- Create a superuser using djangos built in admin and auth apps using temrinal command python3 manage.py createsuperuser.
+
+</details>
+
+## Connect Heroku to the postgreSQL
+
+<details>
+<summary>Click me</summary>
+
+- Deploy a new branch in Heroku.
+
+- Create a new convig-var using the name DATABASE-URL and a value of your postgreSQL. This connects Heroku to the postgreSQL.
+
+![ConfigVar](docs/heroku_deployment/13-heroku-postgresql.png)
+
+</details>
