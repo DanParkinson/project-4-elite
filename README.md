@@ -197,3 +197,14 @@ Refer to [TESTING.md](TESTING.md) for details on manual and automated testing.
 - automated testing.
 - Lighthouse site performance checks.
 - linter checks on HTML, CSS, JavaScript and Python code.
+
+## Deployment
+This process has been documented separately in [DEPLOYMENT.md](DEPLOYMENT.md)
+
+## Credits
+### Content
+- balsamiq for wireframes 
+- DrawSQL for database design 
+### People
+
+## Acknowledgements
