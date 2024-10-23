@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-danparkinso-project4eli-t3aevo71tlq.ws.codeinstitute-ide.net',
                 'herokuapp.com',
-                'elite-reservations.herokuapp.com',]
+                'elite-reservations-cd461c878952.herokuapp.com',]
 
 
 # Application definition
