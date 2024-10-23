@@ -24,3 +24,24 @@ Admin login now functions correctly.
 ![Admin Page](docs/testing/1superuser03.png)
 
 </details>
+
+## Creating Templates 
+
+<details>
+<summary>Click me</summary>
+
+Create a top level directory to include your templates 
+
+![Templates](docs/testing/2templates01.png)
+
+connect the templates directory to *elite/settings.py*
+
+![Templates](docs/testing/2templates02.png)
+
+![Templates](docs/testing/2templates03.png)
+
+Once the templates partials are populated. The server looks like this
+
+![Templates](docs/testing/2templates04.png)
+
+</details>
