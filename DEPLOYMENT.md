@@ -68,3 +68,26 @@ Add Eco Dynos.
 ![Eco Dynos](docs/heroku_deployment/08-eco-dynos.png)
 
 </details>
+
+# PostgreSQL database 
+
+<details>
+<summary>Click me</summary>
+
+Create and env.py file in the top directory and use this code. The postgreSQL code was generated from Code Institute. It has been redacted from the image.
+
+![env.py](docs/heroku_deployment/09-env.png)
+
+Use the following code to connect the env.py in the elite_cuisine/settings.py.
+
+![connecting settings.py to env.py](docs/heroku_deployment/10-settings-env.png)
+
+In the elite_cuisine/settings.py file, disconnect the splite database by commenting out the code.
+
+![disable sqlite](docs/heroku_deployment/11-sqlite.png)
+
+Use dj-databse-url to connect.
+
+![dj_database](docs/heroku_deployment/12-database.png)
+
+</details>
