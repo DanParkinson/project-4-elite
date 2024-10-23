@@ -90,7 +90,7 @@ Site user needs can broadly be split into 4 categories or epics:
 
 - **As a** logged in user, **I can** request an email **so that** I can reset my account password.
 
-#### Reservation management
+#### Reservation MANAGEMENT
 
 - **As a** logged in user, **I can** provide reservation details **so that** I can set up a reservation.
 
@@ -104,3 +104,13 @@ Site user needs can broadly be split into 4 categories or epics:
 
 Potentially:
 - **As a** logged in user, **I can** recieve an email **so that** I can keep track of my reservations.
+
+#### OTHER
+
+- **As a** user, **I can** view the site on a small screen **so that** I can use it when traveling with a mobile device.
+
+- **As an** unregistered user, **I can** view the landing page **so that** I understand the site's purpose.
+
+- **As a** registered user, **I can** leave a review **so that** I can give feedback.
+
+- **As an** admin, **I can** approve reviews **so that** reviews are relevant.
