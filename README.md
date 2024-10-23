@@ -143,7 +143,39 @@ I have gone for
 
 [Colour Schema](docs/readme/colour-schema.png)
 
-#001F3F - navbar
-#3A6D8C - main background
-#6A9AB0
-#EAD8B1 - text colour
+ - #001F3F - navbar
+ - #3A6D8C - main background
+ - #6A9AB0
+ - #EAD8B1 - text colour
+
+### Database Design 
+Entity Relationship Diagrams help to visualise database architecture before creating models in Django.  Understanding the relationships between different tables can save time recoding later in the project.
+
+<details>
+<summary>Entity Relationship Diagram</summary>
+
+![Database Plan](docs/readme/basesql-database.png)
+
+</details>
+
+#### Skeleton
+Wireframes were made to showcase the appearance of the site pages while keeping a positive user experience in mind. The wireframes were created using a desktop version of [Balsamiq](https://balsamiq.com/).
+
+<details>
+<summary>Balsamiq Wireframes</summary>
+
+![Site Wireframes](docs/readme/wireframes/wireframe-index-page.png)
+
+![Site Wireframes](docs/readme/wireframes/wireframe-sign-up-page.png)
+
+![Site Wireframes](docs/readme/wireframes/wireframe-account-page.png)
+
+![Site Wireframes](docs/readme/wireframes/wireframe-create-reservation-page.png)
+
+![Site Wireframes](docs/readme/wireframes/wireframe-user-reservations-page.png)
+
+![Site Wireframes](docs/readme/wireframes/wireframe-admin-bookings-page.png)
+
+![Site Wireframes](docs/readme/wireframes/Wireframe-menu-page.png)
+
+</details>
