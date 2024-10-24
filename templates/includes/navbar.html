@@ -9,34 +9,51 @@
     </button>
 
     <!-- Collapasble navabr-->
-    <div class = "Collapasble navbar-collapse" id="navbarNav">
-        <ul class ="navbar-nav mr-auto">
+    <div class="Collapasble navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
             <!-- User navigation top left-->
-            <li class ="nav-item mr-2 {% if request.path == '/' %}active{% endif %}">
-                <a class = "nav-link" href="{% url 'home' %}">Home</a>
+            <li class="nav-item mr-2 {% if request.path == '/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
-            <li class ="nav-item mr-2 {% if request.path == '/about-us/' %}active{% endif %}">
-                <a class = "nav-link" href="{% url 'about_us' %}">About Us</a>
+            <li class="nav-item mr-2 {% if request.path == '/about-us/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
             </li>
-            <li class ="nav-item mr-2">
-                <a class = "nav-link" href="">Menu</a>
+            <li class="nav-item mr-2">
+                <a class="nav-link" href="">Menu</a>
             </li>
-            <li class ="nav-item mr-2">
-                <a class = "nav-link" href="">My Reservations</a>
+            {% if user.is_authenticated %}
+            <li class="nav-item mr-2">
+                <a class="nav-link" href="">My Reservations</a>
             </li>
-            <li class ="nav-item mr-2">
-                <a class = "nav-link" href="">My Account</a>
+            <li class="nav-item mr-2">
+                <a class="nav-link" href="">My Account</a>
             </li>
+            {% endif %}
         </ul>
 
         <!-- User welcome message and account options in top right-->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-none d-lg-block">
-                <p class="navbar-text my-auto">Welcome!</p>
+                <span class="navbar-text my-auto">Welcome, {{ user.username}}!</span>
             </li>
-            <li class="nav-item"> 
-                <a class="nav-link" href="">Log In</a>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                    href="{% url 'account_logout' %}">Logout</a>
             </li>
+            {% else %}
+            <li class="nav-item d-none d-lg-block">
+                <p class="navbar-text my-auto mr-2 text-white d-none d-lg-block">Join us to taste Elite cuisine </p>
+            </li>
+            <li class="nav-item mr-2">
+                <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                    href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item mr-2">
+                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                    href="{% url 'account_login' %}">Login</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 

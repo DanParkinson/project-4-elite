@@ -27,3 +27,22 @@ This is where I will document my agile approach. It will be set into phases to h
 ## Phase 2
 
 With everything set up I am going to style the homepage a litte with bootstrap to allow me to navigate around the website as needed.
+
+With basic stylings in place i can now navigate around the website. I can make any adjustments as nessercary when i am working on other parts.
+
+## Phase 3 
+
+Before creating my reservation model I need users to create accounts. I am going to use Django AllAuth for this.
+
+Users need to be able to:
+- create accounts 
+- login/ log out
+- view account details
+- edit account details
+- delete account
+
+- navigation bar and homepage buttons should change if user is authenticated.
+
+User Stories:
+
+1, 5
