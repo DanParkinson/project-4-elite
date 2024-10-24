@@ -25,8 +25,8 @@
             <li class="nav-item mr-2">
                 <a class="nav-link" href="">My Reservations</a>
             </li>
-            <li class="nav-item mr-2">
-                <a class="nav-link" href="">My Account</a>
+            <li class="nav-item mr-2 {% if request.path == '/my-account/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'my_account' %}">My Account</a>
             </li>
             {% endif %}
         </ul>

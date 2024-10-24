@@ -45,4 +45,10 @@ Users need to be able to:
 
 User Stories:
 
-1, 5
+1, 3, 5, 6, 7
+
+- Now I need users to be able to view their account details, be able to edit them, and delete their account.
+
+User Stories:
+
+8, 9, 10
