@@ -33,10 +33,10 @@
 
         <!-- User welcome message and account options in top right-->
         <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item d-none d-lg-block">
                 <span class="navbar-text my-auto">Welcome, {{ user.username}}!</span>
             </li>
-            {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                     href="{% url 'account_logout' %}">Logout</a>

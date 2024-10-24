@@ -111,4 +111,8 @@ Server with backgorund colour and console message from javascrpit.
 
 ![AllAuth](docs/testing/4allauth08.png)
 
+- Set debug to False and redlopy on Heroku. Styles now show on AllAuth templates.
+
+![AllAuth](docs/testing/4allauth09.png)
+
 </details>
