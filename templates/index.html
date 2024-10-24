@@ -7,7 +7,7 @@
     <p>The Finest Indian Artisinal Cuisine </p>
     <div class="d-flex mb-3 flex-wrap">
         {% if user.is_authenticated %}
-        <a class="btn custom-button flex-fill mx-1" href="">Account</a>
+        <a class="btn custom-button flex-fill mx-1" href="{% url 'my_account' %}">Account</a>
         {% else %}
         <a class="btn custom-button flex-fill mx-1" href="{% url 'account_signup' %}">Sign up</a>
         {% endif %}

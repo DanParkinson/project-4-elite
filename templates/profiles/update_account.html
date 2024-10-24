@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container container-custom">
+<div class="container pt-5">
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <div class="col-md-8 col-12 mt-3 offset-md-2">
-                    <h3>Update Account Details</h3>
+                <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                    <h3>Update Account</h3>
+                </div>
+                <div class="col-md-8 mt-3 offset-md-2">
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn custom-button">Save Changes</button>
+                        <div class="d-flex mb-3 flex-wrap">
+                            <button type="submit" class="btn custom-button">Save Changes</button>
+                            <a class="btn custom-button" href="{% url 'my_account' %}">Back to Account</a>
+                        </div>
                     </form>
                 </div>
             </div>
