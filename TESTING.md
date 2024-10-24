@@ -116,3 +116,26 @@ Server with backgorund colour and console message from javascrpit.
 ![AllAuth](docs/testing/4allauth09.png)
 
 </details>
+
+## Authentication 
+
+<details>
+<summary>Click me</summary>
+
+- Users can create accounts using django allauth and views change.
+
+![Authentication](docs/testing/5authentication01.png)
+
+- Users can log out and views change
+
+![Authentication](docs/testing/5authentication02.png)
+
+- The database stores the user correctly. 
+
+![Authentication](docs/testing/5authentication03.png)
+
+
+
+
+
+</details>
