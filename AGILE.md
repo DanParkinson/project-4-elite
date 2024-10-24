@@ -54,9 +54,11 @@ User Stories:
 8, 9, 10
 
 
-# fixes
 
+
+
+
+# fixes
 - change password button gap
 - navbar drop
-- edit details alignment
 

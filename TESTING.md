@@ -134,8 +134,16 @@ Server with backgorund colour and console message from javascrpit.
 
 ![Authentication](docs/testing/5authentication03.png)
 
+</details>
 
+## Account editing
 
+<details>
+<summary>Click me</summary>
 
+Tests were performed to check that:
+- User name and email are updated in the database
+- User password change was used to relogin 
+- Deleting accounts removes the user from the database
 
 </details>
