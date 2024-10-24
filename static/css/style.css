@@ -86,7 +86,7 @@ h3 {
     font-size: 3rem;
 }
 
-.container {
+.container-custom {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,10 +96,9 @@ h3 {
 }
 
 .card {
-    max-width: 600px; 
+    max-width: 1000px; 
     width: 100%; 
-    margin: 0 auto; 
-    padding: 20px; 
+    margin: 0 auto;  
 }
 
 main {
