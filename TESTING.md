@@ -70,3 +70,45 @@ Connect script.js to base.html.
 Server with backgorund colour and console message from javascrpit.
 
 ![static](docs/testing/3static05.png)
+
+</details>
+
+## AllAuth
+
+<details>
+<summary>Click me</summary>
+
+- Install allauth using *pip3 install django-allauth~=0.57.0*
+- Then add to requiremnts using *pip3 freeze --local > requirements.txt*
+
+![AllAuth](docs/testing/4allauth01.png)
+
+- Add AllAuth to installed apps.
+
+![AllAuth](docs/testing/4allauth02.png)
+
+- Add email confirmation set to none so no errors are thrown.
+
+![AllAuth](docs/testing/4allauth03.png)
+
+- Add AllAuth to middleware
+
+![AllAuth](docs/testing/4allauth04.png)
+
+- Add site handling.
+
+![AllAuth](docs/testing/4allauth05.png)
+
+- Use terminal command shown below to find allauth template files
+
+![AllAuth](docs/testing/4allauth06.png)
+
+- Use this command to add them to the directory.
+
+![AllAuth](docs/testing/4allauth07.png)
+
+- Templates in directory
+
+![AllAuth](docs/testing/4allauth08.png)
+
+</details>
