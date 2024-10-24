@@ -26,17 +26,10 @@ def update_account(request):
         
     return render(request, 'profiles/update_account.html', {'form': form})
 
-
-def update_password(request):
+def delete_account(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.POST, data=request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, form.user)  # Important to keep the user logged in
-            return redirect('my_account')
-        else:
-            messages.error(request, 'Please correct the errors below.')
-    else:
-        form = PasswordChangeForm(user=request.user)
-
-    return render(request,  'profiles/update_password.html', {'form': form})
+        user = request.User
+        user.delete()
+        messages.success(request, 'Your account has been deleted successfully.')
+        return redirect('home')
+    return render(request, 'profiles/delete_account.html')
