@@ -75,4 +75,5 @@ Now that users can login. Users need to be able to make reservations.
 - navbar drop
 - password request change
 - error messages need to be styled on make reservations
+- next reservation margin bottom on narrow screens
 

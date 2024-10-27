@@ -2,28 +2,39 @@
 
 
 {% block content %}
-<div class="container container-custom flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
-                <h1>Elite</h1>
-                <p>The Finest Indian Artisinal Cuisine </p>
-                <div class="d-flex mb-3 flex-wrap">
-                    {% if user.is_authenticated %}
-                    <a class="btn custom-button flex-fill mx-1" href="{% url 'my_account' %}">Account</a>
-                    {% else %}
-                    <a class="btn custom-button flex-fill mx-1" href="{% url 'account_signup' %}">Sign up</a>
-                    {% endif %}
 
-                    <a class="btn custom-button flex-fill mx-1" href="{% url 'make_reservation' %}">Make a Reservation</a>
-                    <a class="btn custom-button flex-fill mx-1" href="">Menu</a>
-                </div>
-                <div>
-                    {% if user.is_authenticated %}
-                    {% else %}
-                    <p>Sign up to make a reservation!</p>
-                    {% endif %}
-                </div>
+<div class="container container-custom flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+    <h1 class = "mt-3">Elite</h1>
+    <p>The Finest Indian Artisinal Cuisine </p>
+    <div class="row">
+        <div class="d-flex mb-3 flex-wrap">
+            {% if user.is_authenticated %}
+            <a class="btn custom-button flex-fill mx-1" href="{% url 'my_account' %}">Account</a>
+            {% else %}
+            <a class="btn custom-button flex-fill mx-1" href="{% url 'account_signup' %}">Sign up</a>
+            {% endif %}
+            <a class="btn custom-button flex-fill mx-1" href="{% url 'make_reservation' %}">Make a Reservation</a>
+            <a class="btn custom-button flex-fill mx-1" href="">Menu</a>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    {% if next_reservation %}
+    <div class="card card-next-reservation">
+        <div class="card-body">
+            <h4>Your Next Reservation</h4>
+            <div>
+                <p>{{ next_reservation.reservation_date }}</p>
+                <p>{{ next_reservation.reservation_time }}</p>
+                <p>Guests: {{ next_reservation.number_of_guests }}</p>
+                {% if next_reservation.special_occasion %}
+                <p>Special Occasion: {{ next_reservation.special_occasion }}</p>
+                {% endif %}
+                {% else %}
+                <p>You have no upcomings reservations</p>
+                {% endif %}
+                {% else %}
+                <p>Sign up to make a reservation!</p>
+                {% endif %}
             </div>
         </div>
     </div>

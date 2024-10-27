@@ -21,7 +21,7 @@ main {
 
 /* ------------------------ text*/
 
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
     color:#EAD8B1;
 }
 
@@ -155,6 +155,12 @@ main {
 .social-icon {
     margin: 0 10px;
     font-size: 24px;
+}
+
+/* -------------------- index.html */
+
+.card-next-reservation {
+    max-width: 400px;
 }
 
 /* -------------------- about_us.html */
