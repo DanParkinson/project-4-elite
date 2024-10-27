@@ -175,4 +175,8 @@ Multiple checks were made for making reservations
 
 ![make reservations checks ](docs/testing/6make_reservations01.png)
 
+- Users recieve error message when a datetime is selected that is in the past 
+
+![make reservations checks ](docs/testing/6make_reservations06.png)
+
 </details>

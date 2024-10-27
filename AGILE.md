@@ -74,4 +74,5 @@ Now that users can login. Users need to be able to make reservations.
 - change password button gap
 - navbar drop
 - password request change
+- error messages need to be styled on make reservations
 
