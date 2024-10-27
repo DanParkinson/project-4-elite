@@ -53,7 +53,19 @@ User Stories:
 
 8, 9, 10
 
+## Phase 4 
 
+Now that users can login. Users need to be able to make reservations. 
+
+- User can access a form to submit a reservation
+- Reservation is linked to user
+- User can view their neared reservation on the homepage
+- User can view all of the reservations in my reservations
+- User can edit their reservation
+- User can delete their reservation 
+
+- User cannot double book a reservation. 
+- Reservation form shows availabel reservations. 
 
 
 
@@ -61,4 +73,5 @@ User Stories:
 # fixes
 - change password button gap
 - navbar drop
+- password request change
 
