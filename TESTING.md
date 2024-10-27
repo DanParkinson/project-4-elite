@@ -180,3 +180,9 @@ Multiple checks were made for making reservations
 ![make reservations checks ](docs/testing/6make_reservations06.png)
 
 </details>
+
+## homepage next reservation 
+
+- The home page now shows the next reservation 
+
+![hompage next reservation ](docs/testing/7next_reservation01.png)
