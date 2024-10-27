@@ -27,5 +27,6 @@ def index(request):
 
     return render(request, 'index.html', {'next_reservation' : next_reservation}) # loads index.html on request
 
+
 def about_us(request):
     return render(request, 'about_us.html') # loads about_us.html on request

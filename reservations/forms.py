@@ -64,7 +64,7 @@ class ReservationForm(forms.ModelForm):
                 )
             )
 
-            # If selected time is in the past throw an error
+            # If selected datetime is in the past throw an error
             if reservation_datetime < timezone.now():
                 raise ValidationError("That time is in the past")
     
