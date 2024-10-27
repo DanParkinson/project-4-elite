@@ -1,6 +1,9 @@
 from django import forms
 from .models import Reservation
 from django.utils import timezone
+from datetime import datetime
+from django.core.exceptions import ValidationError
+
 
 class ReservationForm(forms.ModelForm):
     class Meta:
@@ -44,6 +47,30 @@ class ReservationForm(forms.ModelForm):
         required=False,
         label='Special Occasion'
     )
+
+    # combing date and time into one variable to stop users choosing a time in the past 
+    # if their reservation is today
+    def clean(self):
+        cleaned_data = super().clean()
+        reservation_date = cleaned_data.get('reservation_date')
+        reservation_time = cleaned_data.get('reservation_time')
+    
+        if reservation_date and reservation_time:
+            # combine date and time into datetime
+            reservation_datetime = timezone.make_aware(
+                datetime.combine(
+                reservation_date,
+                datetime.strptime(reservation_time, "%H:%M").time()
+                )
+            )
+
+            # If selected time is in the past throw an error
+            if reservation_datetime < timezone.now():
+                raise ValidationError("That time is in the past")
+    
+        return cleaned_data
+        
+
 
 
         

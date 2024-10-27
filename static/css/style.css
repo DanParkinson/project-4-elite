@@ -128,6 +128,12 @@ main {
     display: inline-block;
     margin-top: 10px;
 }
+/* -------------------- forms */
+.make-reservation-form {
+    max-width: 400px;
+}
+
+
 
 /* -------------------- navbar */
 .navbar {
