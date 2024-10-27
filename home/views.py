@@ -7,18 +7,23 @@ from datetime import datetime
 def index(request):
     next_reservation = None # for users without a reservation
     if request.user.is_authenticated: # check if logged in
-        now = timezone.now() # current date and time for removing reservations today that time has expired
-        future_reservations = Reservation.objects.filter(user = request.user) # get users reservations
+        now = timezone.now() # current date and time
 
-        # filter out past reservations
-        for reservation in future_reservations:
-            reservation_datetime = timezone.make_aware(
-                datetime.combine(reservation.reservation_date, reservation.reservation_time)
-            )
-            # 
-            if reservation_datetime >= now:
-                next_reservation = reservation
-                break # get the first valid future reservation
+        # future reservations are filitered by two queries
+        # first is for dates in the future
+        # second is todays date with time in the future
+        future_reservations = Reservation.objects.filter(
+            user = request.user
+        ).filter(
+            reservation_date__gt = now.date() # future date reservations
+        ) | Reservation.objects.filter(
+            user = request.user,
+            reservation_date = now.date(),
+            reservation_time__gt = now.time(), # todays date with a future time
+        )
+        # next reservation is the next reservation as past
+        # reservations have been filtered out
+        next_reservation = future_reservations.order_by('reservation_date', 'reservation_time').first()
 
     return render(request, 'index.html', {'next_reservation' : next_reservation}) # loads index.html on request
 
