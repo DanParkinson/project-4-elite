@@ -11,22 +11,22 @@ class ReservationForm(forms.ModelForm):
     
     phone_number = forms.IntegerField(
         min_value=0, #cant be negative
-        label = 'phone_number',
+        label = 'Phone Number',
     )
     
     number_of_guests = forms.IntegerField(
         min_value=1,
         max_value=8,
-        label = 'number_of_guests',
+        label = 'Number Of Guests',
     )
 
     today = timezone.now().date()
     reservation_date = forms.DateField(
-        widgets=forms.DateInput(attrs={
+        widget=forms.DateInput(attrs={
             'type':'date',
             'min': today, #sets the minimum value to today
         }),
-        label = 'reservation_date'
+        label = 'Date'
     )
 
     TIME_CHOICES = [
@@ -36,8 +36,14 @@ class ReservationForm(forms.ModelForm):
     ]
     reservation_time = forms.ChoiceField(
         choices= TIME_CHOICES, # limits users to select open hours 
-        label = 'reservation_time',
+        label = 'Time',
     )
-    
+
+    special_occasion = forms.CharField(
+        max_length=200,
+        required=False,
+        label='Special Occasion'
+    )
+
 
         
