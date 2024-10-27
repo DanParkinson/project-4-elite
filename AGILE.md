@@ -57,15 +57,15 @@ User Stories:
 
 Now that users can login. Users need to be able to make reservations. 
 
-- User can access a form to submit a reservation
-- Reservation is linked to user
-- User can view their neared reservation on the homepage
+- User can access a form to submit a reservation --
+- Reservation is linked to user --
+- User can view their nearest reservation on the homepage
 - User can view all of the reservations in my reservations
 - User can edit their reservation
 - User can delete their reservation 
 
 - User cannot double book a reservation. 
-- Reservation form shows availabel reservations. 
+- Reservation form shows available reservations. 
 
 
 

@@ -147,3 +147,32 @@ Tests were performed to check that:
 - Deleting accounts removes the user from the database
 
 </details>
+
+## Making reservations
+
+<details>
+<summary>Click me</summary>
+
+Multiple checks were made for making reservations
+
+- phone number has to be positive number
+
+![make reservations checks ](docs/testing/6make_reservations02.png)
+
+- number of guests has to be between 1 and 9 
+
+![make reservations checks ](docs/testing/6make_reservations03.png)
+
+- reservation date has to be today onwards
+
+![make reservations checks ](docs/testing/6make_reservations04.png)
+
+- time fields are 15 minute intervals
+
+![make reservations checks ](docs/testing/6make_reservations05.png)
+
+- reservations are saved to the databse
+
+![make reservations checks ](docs/testing/6make_reservations01.png)
+
+</details>
