@@ -26,24 +26,22 @@ def make_reservation(request):
             # the reservation ends after two hours
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
 
-            # checks for overlapping reservations for the new reseervation
+            # checks for overlapping reservations for the new reservation
             # generates a list of all of the times the restaraunt is open
             # gets all reservations for the chosen date
             # add all times to available times that arent linked to an existing reservation
-            if check_overlapping_reservations():
-                all_times = generate_all_times()
-                available_times = filter_available_times()
-
-            # Error message to tell user that the time is unavailable
-            form.add_error(None, "This reservation is unavaiable")
-
-        # if form is valid else
-        else:
-            # new reservation is okay and is saved
-            reservation = form.save(commit=False)
-            reservation.user = request.user
-            reservation.save()
-            return redirect('home')
+            if check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
+                all_times = generate_all_times(reservation_datetime)
+                available_times = filter_available_times(all_times, reservation_date)
+                # Error message to tell user that the time is unavailable
+                form.add_error(None, "This reservation is unavaiable")
+            # if form is valid else
+            else:
+                # new reservation is okay and is saved
+                reservation = form.save(commit=False)
+                reservation.user = request.user
+                reservation.save()
+                return redirect('home')
 
     # if request method else
     else:
@@ -62,7 +60,7 @@ def check_overlapping_reservations(reservation_date, reservation_datetime, end_t
         )
     ).exists()
 
-def generate_all_times():
+def generate_all_times(reservation_datetime):
     # Generate a list of times for the avaialble day
     return [
         reservation_datetime.replace(hour = h, minute = m)
@@ -70,5 +68,24 @@ def generate_all_times():
             for m in range(0, 60, 15)
         ]
 
-def filter_available_times():
-    
+def filter_available_times(all_times, reservation_date):
+    available_times = []
+    # Get all exisiting reservations on the day chosen
+    chosen_day_reservations = Reservation.objects.filter(
+        reservation_date = reservation_date
+        )
+    # remove all times that are with 1:45 of each reservation
+    for time in all_times:
+        # this checks the reservations buffer zone of 2 hours.
+        # IF NOT means that if a time IS available. append it to available_times
+        if not chosen_day_reservations.filter(
+            # for each reservation time add a buffer of 1hour 45 mins
+            reservation_time__range = (
+                time - timedelta(hours=1, minutes=45),
+                time + timedelta(hours=1, minutes=45),
+            )
+            # if they exist append them to available times
+        ).exists():
+            available_times.append(time.strftime("%H:%M"))
+    # returns list that contains all times taht arent taken
+    return available_times
