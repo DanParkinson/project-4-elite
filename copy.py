@@ -30,15 +30,13 @@ def make_reservation(request):
             # the reservation ends after two hours
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
 
-
-
-
-
-
-
-
-
-
+            # checks for overlapping reservations for the new reseervation
+            # generates a list of all of the times the restaraunt is open
+            # gets all reservations for the chosen date
+            # add all times to available times that arent linked to an existing reservation
+            if check_overlapping_reservations():
+                all_times = generate_all_times()
+                available_times = filter_available_times()
 
              # Error message to tell user that the time is unavailable
             form.add_error(None, "This reservation is unavaiable")
