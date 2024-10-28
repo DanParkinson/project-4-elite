@@ -186,3 +186,21 @@ Multiple checks were made for making reservations
 - The home page now shows the next reservation 
 
 ![hompage next reservation ](docs/testing/7next_reservation01.png)
+
+## Double Booking 
+
+### With 1 table 
+
+Users can no longer book reservations that are two hours behind or ahead of an already existing reservation
+
+- booked reservation
+![Double booking](docs/testing/8double_booking01.png)
+
+- Attempt to book after 
+![Double booking](docs/testing/8double_booking02.png)
+
+- attempt to book before
+![Double booking](docs/testing/8double_booking03.png)
+
+- attempt to book on another day but same time
+![Double booking](docs/testing/8double_booking04.png)
