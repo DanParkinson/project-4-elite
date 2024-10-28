@@ -68,6 +68,8 @@ Now that users can login. Users need to be able to make reservations.
 
 Now that users can book a reservation. I want users to not be able to double book. I will start with 1 table in my restaraunt and each table needs to be held for one hour. So the reservation needs to check for reservations before and after their chosen booking time to see if it is available. I will use timedelta for this. 
 
+Now that this works. I need users to be able to see the available booking times for that day so that booking is easier.
+
 
 
 

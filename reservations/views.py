@@ -8,6 +8,10 @@ from .forms import ReservationForm
 # Create your views here.
 @login_required
 def make_reservation(request):
+
+    # empty list to store available times if reservation time is already booked
+    available_times = []
+
     if request.method == 'POST': # If submitting a form
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -41,7 +45,14 @@ def make_reservation(request):
             # check is the overlapping reservation exists
             # new reservation is not saved and error is thrown
             if overlapping_reservation.exists():
+                # Generate all the times on the given day in the opening hours window
+                # Get all exisiting reservations on the day chosen
+                # remove all times that are with 1:45 of each reservation
+
+
+                # Error message to tell user that the time is unavailable
                 form.add_error(None, "This reservation is unavaiable")
+
             else:
                 # new reservation is okay and is saved
                 reservation = form.save(commit=False)
