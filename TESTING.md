@@ -194,13 +194,24 @@ Multiple checks were made for making reservations
 Users can no longer book reservations that are two hours behind or ahead of an already existing reservation
 
 - booked reservation
+
 ![Double booking](docs/testing/8double_booking01.png)
 
-- Attempt to book after 
+- Attempt to book 1 hour 45 mins after 
+
 ![Double booking](docs/testing/8double_booking02.png)
 
-- attempt to book before
+- attempt to book 1 hour 45 minutes before
+
 ![Double booking](docs/testing/8double_booking03.png)
 
+- attempt to book 2 hours either side succesful
+
+![Double booking](docs/testing/8double_booking05.png)
+
 - attempt to book on another day but same time
+
 ![Double booking](docs/testing/8double_booking04.png)
+
+## Users can see availble times on the day that they book if table in unavailable at their chosen time
+

@@ -24,7 +24,7 @@ def make_reservation(request):
                 ))
                 
             # the reservation ends after two hours
-            end_time = reservation_datetime + timedelta(hours = 2)
+            end_time = reservation_datetime + timedelta(hours=1, minutes=45)
 
             # checking if the new reservation overlaps with any reservations that already exist
             # If it exists then create overlapping_reservation variable
@@ -33,7 +33,7 @@ def make_reservation(request):
                 reservation_date = reservation_date,
                 # check there is no reservation 2 hours away
                 reservation_time__range=(
-                    reservation_datetime - timedelta(hours=2),  # 2 hours before
+                    reservation_datetime - timedelta(hours=1, minutes=45),  # 2 hours before
                     end_time  # 2 hours after
                 )
             )
