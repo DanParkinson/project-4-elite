@@ -75,6 +75,13 @@ So many issuses with this. It is the end of my session but a lot of problems nee
 - users can now see available time options if reservation is already taken
 - i got caught up in creating the logic that i forgot to make new functions for each part. These need rewriting to improve readability as i was getting VERY confused when trying to get the logic to work. I now have one massive function which is not acceptable.
 - if the reservation is for today the available times need to remove expired times that have already passed.
+
+
+next step:
+- style available times
+- fix avaiable times for todays date
+- style error messages
+- if no available times the user needs to be told
 - 
 
 
