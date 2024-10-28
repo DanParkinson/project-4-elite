@@ -5,39 +5,40 @@ from datetime import datetime, timedelta
 from .models import Reservation
 from .forms import ReservationForm
 
-# Create your views here.
 @login_required
 def make_reservation(request):
     # empty list to store available times if reservation time is already booked
     available_times = []
-    # If submitting a form
+
+    # Process the form submission
     if request.method == 'POST': 
         form = ReservationForm(request.POST)
         if form.is_valid():
-            # get the cleaned new reservation date and time 
+
+            # Extract and clean the reservation date and time from the form
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
-            # combine the date and time into datetime
+            # Combine date and time into a timezone-aware datetime object
             reservation_datetime = timezone.make_aware(
                 datetime.combine(
                 reservation_date,
                 datetime.strptime(reservation_time, "%H:%M").time()
                 ))
-            # the reservation ends after two hours
+            # Set the reservation end time to enforce a 1 hour 45 minute buffer
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
 
-            # checks for overlapping reservations for the new reservation
-            # generates a list of all of the times the restaraunt is open
-            # gets all reservations for the chosen date
-            # add all times to available times that arent linked to an existing reservation
+            # Check for overlapping reservations within the buffer period
             if check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
+                # Generate all possible times for the restaurant's open hours on the selected day
                 all_times = generate_all_times(reservation_datetime)
+                # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, reservation_date)
-                # Error message to tell user that the time is unavailable
+
+                # Add an error message indicating that the selected time is unavailable
                 form.add_error(None, "This reservation is unavaiable")
-            # if form is valid else
+
             else:
-                # new reservation is okay and is saved
+                # If no overlaps are found, save the reservation and associate it with the current user
                 reservation = form.save(commit=False)
                 reservation.user = request.user
                 reservation.save()
@@ -45,15 +46,16 @@ def make_reservation(request):
 
     # if request method else
     else:
-        form = ReservationForm() # If loading the page, load the form
+        form = ReservationForm()
+    # Render the reservation form template with the form and available times (if any)
     return render(request, 'reservations/make_reservation.html', {'form': form, 'available_times': available_times})
 
 def check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
-    # checks for overlapping reservations for the new reseervation
+    # Helper function to check for any overlapping reservations on the selected date.
+    # Returns True if an overlapping reservation is found, otherwise False.
     return Reservation.objects.filter(
-        # get the new reservations date
         reservation_date = reservation_date,
-        # check there is no reservation 2 hours away
+         # Look for existing reservations within the 1 hour 45 minute buffer range
         reservation_time__range=(
             reservation_datetime - timedelta(hours = 1, minutes = 45), # 2 hours before
             end_time, # 2 hours after
@@ -61,7 +63,8 @@ def check_overlapping_reservations(reservation_date, reservation_datetime, end_t
     ).exists()
 
 def generate_all_times(reservation_datetime):
-    # Generate a list of times for the avaialble day
+    # Helper function to generate a list of all potential reservation times
+    # within the restaurant's open hours, starting every 15 minutes.
     return [
         reservation_datetime.replace(hour = h, minute = m)
             for h in range(10, 21)
@@ -69,23 +72,23 @@ def generate_all_times(reservation_datetime):
         ]
 
 def filter_available_times(all_times, reservation_date):
+    # Helper function to filter out times that overlap with existing reservations on the selected date.
+    # Returns a list of available times that respect the 1 hour 45 minute buffer.
     available_times = []
-    # Get all exisiting reservations on the day chosen
+    # get all reservations on the chosen date
     chosen_day_reservations = Reservation.objects.filter(
         reservation_date = reservation_date
         )
-    # remove all times that are with 1:45 of each reservation
+    
+    # Check each potential reservation time for conflicts
     for time in all_times:
-        # this checks the reservations buffer zone of 2 hours.
-        # IF NOT means that if a time IS available. append it to available_times
+        # If no overlapping reservation exists within the buffer, add time to available_times
         if not chosen_day_reservations.filter(
-            # for each reservation time add a buffer of 1hour 45 mins
             reservation_time__range = (
                 time - timedelta(hours=1, minutes=45),
                 time + timedelta(hours=1, minutes=45),
             )
-            # if they exist append them to available times
         ).exists():
             available_times.append(time.strftime("%H:%M"))
-    # returns list that contains all times taht arent taken
+    # returns list that contains all times that arent taken
     return available_times
