@@ -70,6 +70,13 @@ Now that users can book a reservation. I want users to not be able to double boo
 
 Now that this works. I need users to be able to see the available booking times for that day so that booking is easier.
 
+So many issuses with this. It is the end of my session but a lot of problems need to be addressed:
+
+- users can now see available time options if reservation is already taken
+- i got caught up in creating the logic that i forgot to make new functions for each part. These need rewriting to improve readability as i was getting VERY confused when trying to get the logic to work. I now have one massive function which is not acceptable.
+- if the reservation is for today the available times need to remove expired times that have already passed.
+- 
+
 
 
 
