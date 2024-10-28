@@ -53,3 +53,17 @@ def make_reservation(request):
     else:
         form = ReservationForm() # If loading the page, load the form
     return render(request, 'reservations/make_reservation.html', {'form': form, 'available_times': available_times})
+
+def check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
+    # checks for overlapping reservations for the new reseervation
+    return Reservation.objects.filter(
+        # get the new reservations date
+        reservation_date = reservation_date,
+        # check there is no reservation 2 hours away
+        reservation_time__range=(
+            reservation_datetime - timedelta(hours = 1, minutes = 45), # 2 hours before
+            end_time, # 2 hours after
+        )
+    ).exists()
+
+def generate_all_times()
