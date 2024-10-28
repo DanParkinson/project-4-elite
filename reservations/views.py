@@ -11,12 +11,18 @@ def make_reservation(request):
     if request.method == 'POST': # If submitting a form
         form = ReservationForm(request.POST)
         if form.is_valid():
+
             # get the cleaned new reservation date and time 
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
+
             # combine the date and time into datetime
             reservation_datetime = timezone.make_aware(
-                datetime.combine(reservation_date, reservation_time))
+                datetime.combine(
+                reservation_date,
+                datetime.strptime(reservation_time, "%H:%M").time()
+                ))
+                
             # the reservation ends after two hours
             end_time = reservation_datetime + timedelta(hours = 2)
 
