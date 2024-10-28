@@ -8,25 +8,21 @@ from .forms import ReservationForm
 # Create your views here.
 @login_required
 def make_reservation(request):
-
     # empty list to store available times if reservation time is already booked
     available_times = []
-
-    if request.method == 'POST': # If submitting a form
+    # If submitting a form
+    if request.method == 'POST': 
         form = ReservationForm(request.POST)
         if form.is_valid():
-
             # get the cleaned new reservation date and time 
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
-
             # combine the date and time into datetime
             reservation_datetime = timezone.make_aware(
                 datetime.combine(
                 reservation_date,
                 datetime.strptime(reservation_time, "%H:%M").time()
                 ))
-        
             # the reservation ends after two hours
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
 
@@ -38,7 +34,7 @@ def make_reservation(request):
                 all_times = generate_all_times()
                 available_times = filter_available_times()
 
-             # Error message to tell user that the time is unavailable
+            # Error message to tell user that the time is unavailable
             form.add_error(None, "This reservation is unavaiable")
 
         # if form is valid else
@@ -66,4 +62,13 @@ def check_overlapping_reservations(reservation_date, reservation_datetime, end_t
         )
     ).exists()
 
-def generate_all_times()
+def generate_all_times():
+    # Generate a list of times for the avaialble day
+    return [
+        reservation_datetime.replace(hour = h, minute = m)
+            for h in range(10, 21)
+            for m in range(0, 60, 15)
+        ]
+
+def filter_available_times():
+    
