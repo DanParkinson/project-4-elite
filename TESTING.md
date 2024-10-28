@@ -215,3 +215,7 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 ## Users can see availble times on the day that they book if table in unavailable at their chosen time
 
+- users can now see available times when inputting a reservation that is taken
+
+![Double booking](docs/testing/8double_booking06.png)
+

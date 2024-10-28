@@ -53,10 +53,9 @@ def make_reservation(request):
                 ]
                 
                 # Get all exisiting reservations on the day chosen
-                chosen_day_reservations = Reservation.object.filter(
+                chosen_day_reservations = Reservation.objects.filter(
                     reservation_date = reservation_date
                 )
-
                 # remove all times that are with 1:45 of each reservation
                 for time in all_times:
                     # this checks the reservations buffer zone of 2 hours.
@@ -85,4 +84,4 @@ def make_reservation(request):
     # if request method else
     else:
         form = ReservationForm() # If loading the page, load the form
-    return render(request, 'reservations/make_reservation.html', {'form': form})
+    return render(request, 'reservations/make_reservation.html', {'form': form, 'available_times': available_times})

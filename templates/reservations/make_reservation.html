@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if available_times %}
+    <h3>Available times:</h3>
+    <ul>
+        {% for time in available_times %}
+            <li>{{ time }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 <div class="container pb-5 pt-4">
   <div class="row">
     <div class="card">
