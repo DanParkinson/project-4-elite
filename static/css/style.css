@@ -21,7 +21,7 @@ main {
 
 /* ------------------------ text*/
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, h5, p {
     color:#EAD8B1;
 }
 
@@ -180,4 +180,10 @@ main {
     text-align: center;
     padding: 20px;
     margin-bottom: 40px;
+}
+
+/* ----------------- my_reservations.html*/
+.available-times-list {
+    color:#EAD8B1;
+    list-style-type: none
 }

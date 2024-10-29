@@ -219,3 +219,7 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 ![Double booking](docs/testing/8double_booking06.png)
 
+- Users are now told that there are no available times if fully booked 
+
+![Double booking](docs/testing/8double_booking07.png)
+

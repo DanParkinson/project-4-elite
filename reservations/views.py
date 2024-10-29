@@ -34,8 +34,12 @@ def make_reservation(request):
                 # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, reservation_date)
 
-                # Add an error message indicating that the selected time is unavailable
-                form.add_error(None, "This reservation is unavaiable")
+                # If no available times, add an error message for the user
+                if not available_times:
+                    form.add_error(None, "There are no available times for this date")
+                else:
+                    # Inform the user that their chosen time is unavailable
+                    form.add_error(None, "The chosen time is unavailable. Please see the available times below:")
 
             else:
                 # If no overlaps are found, save the reservation and associate it with the current user

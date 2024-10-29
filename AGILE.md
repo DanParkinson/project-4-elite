@@ -78,7 +78,6 @@ So many issuses with this. It is the end of my session but a lot of problems nee
 
 
 next step:
-- style available times
 - fix avaiable times for todays date
 - style error messages
 - if no available times the user needs to be told
@@ -93,4 +92,6 @@ next step:
 - password request change
 - error messages need to be styled on make reservations
 - next reservation margin bottom on narrow screens
+- make reservations availbale times neater
+- success message need to be added to home, account pages to let users know they were succesful
 
