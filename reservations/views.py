@@ -84,8 +84,12 @@ def filter_available_times(all_times, reservation_date):
         reservation_date = reservation_date
         )
     
+    
     # Check each potential reservation time for conflicts
     for time in all_times:
+        # ignores times in the past if todays date
+        if reservation_date ==  timezone.now().date() and time < timezone.now():
+            continue
         # If no overlapping reservation exists within the buffer, add time to available_times
         if not chosen_day_reservations.filter(
             reservation_time__range = (
