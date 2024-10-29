@@ -223,3 +223,6 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 ![Double booking](docs/testing/8double_booking07.png)
 
+- Users booking a reservation today no longer see expired times in available times. current time of picture is 10:27
+
+![Double booking](docs/testing/8double_booking08.png)
