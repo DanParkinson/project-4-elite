@@ -84,7 +84,15 @@ If users have multiple reservations it would be good to be able to see all of th
 - my_reservations shows all of the users reservations
 - needs to filter out expired reservations 
 - styled
-- 
+
+### Editing reservations 
+
+A new view needs to be created that allows users to edit their reservation. This should:
+- pull the users reservations from the database
+- prepopulate the form with the information
+- check that the new reservation is available
+- users should only be able to edite their own reservations
+- CRUD needs to be used because most of the logic is similar to make_reservations.
 
 
 
