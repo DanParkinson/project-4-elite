@@ -102,13 +102,11 @@ Users need to be able to delete a reservation if needed
 
 Now that users can fully control their own reservations. Admins need to be able to view all reservations on any given day. 
 
-
-
-
-
-
-
-
+The site is functional but there is currently only 1 table in the restaraunt. To change this:
+- multiple tables need to be created. Each with unique id number attached to it. Amount of people they can seat will be considred later.
+- Each reservation needs to be associated to the unique id 
+- the double booking system needs to check that the table is free. 
+- reservation overview then needs to say which table the reservation is for.
 
 # fixes
 - change password button gap
