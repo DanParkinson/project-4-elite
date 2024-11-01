@@ -127,5 +127,6 @@ Now that users can fully control their own reservations. Admins need to be able 
 - time field not prepopulating when editing a reservation. reservations/views.py line 171
 - my_reservations needs formatting for smaller screens
 - fonts
+- staff member only views
 
 

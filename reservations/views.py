@@ -208,7 +208,10 @@ def view_reservations_by_date(request):
 
         if selected_date:
             #filter all of the selected dates reservations
-            reservations = Reservation.objects.filter(reservation_date = selected_date)
+            reservations = Reservation.objects.filter(
+                reservation_date = selected_date
+            ).order_by(
+                'reservation_date', 'reservation_time')
         
     return render(request, 'reservations/view_reservations_by_date.html', {
         'reservations' : reservations,
