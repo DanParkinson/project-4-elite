@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from datetime import datetime, timedelta
@@ -121,4 +121,59 @@ def my_reservations(request):
     
     # Pass reservations to the template
     return render(request, 'reservations/my_reservations.html', {'reservations': my_reservations})
+
+@login_required
+def edit_reservation(request, reservation_id):
+    # get the reservation information or return 404 if not found
+    reservation = get_object_or_404(
+        Reservation,
+        id = reservation_id,
+        user = request.user,
+    )
+
+    # empty list to store available times if reservation time is already booked
+    available_times = []
+
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            # Extract new reservation details from form
+            new_date= form.cleaned_data['reservation_date']
+            new_time= form.cleaned_data['reservation_time']
+            new_guests= form.cleaned_data['number_of_guests']
+        
+            # create new datetime object
+            new_datetime = timezone.make_aware(
+                datetime.combine(
+                new_date,
+                datetime.strptime(new_time, "%H:%M").time()
+                )
+            )
+            # Set the reservation end time to enforce a 1 hour 45 minute buffer
+            end_time = new_datetime + timedelta(hours=1, minutes=45)
+
+                    # Check for overlapping reservations within the buffer period
+            if check_overlapping_reservations(new_date, new_datetime, end_time):
+                # Generate all possible times for the restaurant's open hours on the selected day
+                all_times = generate_all_times(new_datetime)
+                # Filter available times by removing those that overlap with existing reservations
+                available_times = filter_available_times(all_times, new_date)
+
+                if not available_times:
+                    form.add_error(None, "No available times for this date")
+                else:
+                    form.add_error(None, "Selected time is unavailable. See available times below.")
+            else:
+                form.save()
+                return redirect('my_reservations')
     
+    else:
+        # prepopulate the forms information if not post
+        form = ReservationForm(instance = reservation)
+    
+    return render(request, 'reservations/edit_reservation.html',{
+        'form' : form,
+        'available_times' : available_times,
+        'reservation' : reservation,
+    })
+
