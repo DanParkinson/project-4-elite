@@ -100,3 +100,15 @@ def filter_available_times(all_times, reservation_date):
             available_times.append(time.strftime("%H:%M"))
     # returns list that contains all times that arent taken
     return available_times
+
+# End of make reservations
+
+@login_required
+def my_reservations(request):
+    # filter reservations to collect the logged in users reservations
+    my_reservations = Reservation.objects.filter(
+        user=request.user).order_by('reservation_date', 'reservation_time')
+    
+    # Pass reservations to the template
+    return render(request, 'reservations/my_reservation.html', {'reservations': my_reservations})
+    
