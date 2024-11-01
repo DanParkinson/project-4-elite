@@ -91,7 +91,7 @@ A new view needs to be created that allows users to edit their reservation. This
 - pull the users reservations from the database
 - prepopulate the form with the information
 - check that the new reservation is available
-- users should only be able to edite their own reservations
+- users should only be able to edit their own reservations
 - CRUD needs to be used because most of the logic is similar to make_reservations.
 
 ### Deleting a reservation 

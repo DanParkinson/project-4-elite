@@ -183,11 +183,19 @@ Multiple checks were made for making reservations
 
 ## homepage next reservation 
 
+<details>
+<summary>Click me</summary>
+
 - The home page now shows the next reservation 
 
 ![hompage next reservation ](docs/testing/7next_reservation01.png)
 
+</details>
+
 ## Double Booking 
+
+<details>
+<summary>Click me</summary>
 
 ### With 1 table 
 
@@ -226,3 +234,38 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 - Users booking a reservation today no longer see expired times in available times. current time of picture is 10:27
 
 ![Double booking](docs/testing/8double_booking08.png)
+
+</details>
+
+## my reservations page 
+
+<details>
+<summary>Click me</summary>
+
+- users can see all of their reservations that are in the future
+
+![my reservations](docs/testing/9my_reservations01.png)
+
+- Users can now edit their reservations 
+- form prepopulates reservation details when editing except for time
+
+![my reservations](docs/testing/9my_reservations02.png)
+
+- reservation details can be chnaged
+- my reservations updated
+
+![my reservations](docs/testing/9my_reservations03.png)
+
+- users can now delete reservations 
+
+![my reservations](docs/testing/9my_reservations04.png)
+
+- my reserations updated
+
+![my reservations](docs/testing/9my_reservations05.png)
+
+- database deletes and changes the reservations
+
+![my reservations](docs/testing/9my_reservations06.png)
+
+</details>
