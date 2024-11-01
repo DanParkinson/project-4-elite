@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from datetime import datetime, timedelta
@@ -195,4 +196,22 @@ def delete_reservation(request, reservation_id):
     
     return render(request, 'reservations/delete_reservation.html', {'reservation' : reservation})
 
+@staff_member_required
+# function for admins to see a selected dates reservations
+def view_reservations_by_date(request):
+    # pre load a reservations list. Date et to None as default 
+    reservations = []
+    selected_date = None
+
+    if request.method == 'POST':
+        selected_date = request.POST.get('reservation_date')
+
+        if selected_date:
+            #filter all of the selected dates reservations
+            reservations = Reservation.objects.filter(reservation_date = selected_date)
+        
+    return render(request, 'reservations/view_reservations_by_date.html', {
+        'reservations' : reservations,
+        'selected_date' : selected_date,
+    })
 

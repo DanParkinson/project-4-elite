@@ -98,12 +98,24 @@ A new view needs to be created that allows users to edit their reservation. This
 
 Users need to be able to delete a reservation if needed
 
+## Phase 5
+
+Now that users can fully control their own reservations. Admins need to be able to view all reservations on any given day. 
+
+
+
+
+
+
+
+
 
 # fixes
 - change password button gap
 - navbar drop
 - password request change
-- error messages need to be styled on make reservations
+- error messages
+- success messages need to be added to everything
 - next reservation margin bottom on narrow screens
 - make reservations availbale times neater
 - success message need to be added to home, account pages to let users know they were succesful
@@ -114,5 +126,6 @@ Users need to be able to delete a reservation if needed
 - location
 - time field not prepopulating when editing a reservation. reservations/views.py line 171
 - my_reservations needs formatting for smaller screens
+- fonts
 
 
