@@ -197,8 +197,9 @@ def delete_reservation(request, reservation_id):
     return render(request, 'reservations/delete_reservation.html', {'reservation' : reservation})
 
 @staff_member_required
-# function for admins to see a selected dates reservations
 def view_reservations_by_date(request):
+    # function for admins to see a selected dates reservations
+    
     # pre load a reservations list. Date et to None as default 
     reservations = []
     selected_date = None

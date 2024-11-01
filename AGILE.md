@@ -103,10 +103,16 @@ Users need to be able to delete a reservation if needed
 Now that users can fully control their own reservations. Admins need to be able to view all reservations on any given day. 
 
 The site is functional but there is currently only 1 table in the restaraunt. To change this:
-- multiple tables need to be created. Each with unique id number attached to it. Amount of people they can seat will be considred later.
+- multiple tables need to be created. Each with unique id number attached to it. Amount of people they can seat will be considered later.
 - Each reservation needs to be associated to the unique id 
 - the double booking system needs to check that the table is free. 
 - reservation overview then needs to say which table the reservation is for.
+
+- For this I will need to update my reservation model to have a table ID
+- create a list of table IDs
+- check_overlapping_reservations function needs to include a table ID
+- make get_avaialbe_table function that uses check_overlapping_reservations function 
+- make_reservation fucntion updated to check for tables. 
 
 # fixes
 - change password button gap
