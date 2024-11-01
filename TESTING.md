@@ -269,3 +269,16 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 ![my reservations](docs/testing/9my_reservations06.png)
 
 </details>
+
+## staff reservation overview
+
+<details>
+<summary>Click me</summary>
+
+- Only staff can see all reservations for a selected day
+
+![reservation overview](docs/testing/10reservation_overview01.png)
+
+![reservation overview](docs/testing/10reservation_overview02.png)
+
+</details>
