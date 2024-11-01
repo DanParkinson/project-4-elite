@@ -110,5 +110,5 @@ def my_reservations(request):
         user=request.user).order_by('reservation_date', 'reservation_time')
     
     # Pass reservations to the template
-    return render(request, 'reservations/my_reservation.html', {'reservations': my_reservations})
+    return render(request, 'reservations/my_reservations.html', {'reservations': my_reservations})
     
