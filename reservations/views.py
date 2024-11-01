@@ -170,6 +170,10 @@ def edit_reservation(request, reservation_id):
     else:
         # prepopulate the forms information if not post
         form = ReservationForm(instance = reservation)
+        # time field is not prepopulating in the form when requested
+        # Reservation found: test - 2024-11-12 12:45:00 is the data format 
+        # the time in the form is a choice field which requires a string? 
+        # figure out how to fix that
     
     return render(request, 'reservations/edit_reservation.html',{
         'form' : form,
