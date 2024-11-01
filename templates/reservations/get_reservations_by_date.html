@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>View Reservations</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="reservation_date">Select Date:</label>
+        <input type="date" id="reservation_date" name="reservation_date" required>
+        <button type="submit">View Reservations</button>
+    </form>
+
+    {% if selected_date%}
+    <h3>reservations for {{selected_date}}</h3>
+    {% if reservations %}
+    <ul>
+        {% for reservation in reservations%}
+        <li>
+            {{ reservation.name }} - {{ reservation.reservation_time }} ({{ reservation.number_of_guests }} guests)
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no reservations currently for {{selected_date}}</p>
+    {% endif%}
+    {% endif%}
+    {% endblock %}
+</div>
