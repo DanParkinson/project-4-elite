@@ -55,16 +55,18 @@ User Stories:
 
 ## Phase 4 
 
+### make_reservations
+
 Now that users can login. Users need to be able to make reservations. 
 
 - User can access a form to submit a reservation --
 - Reservation is linked to user --
 - User can view their nearest reservation on the homepage --
-- User can view all of the reservations in my reservations in order
+- User can view all of the reservations in my reservations in order --
 - User can edit their reservation
 - User can delete their reservation 
-- User cannot double book a reservation. 
-- Reservation form shows available reservations. 
+- User cannot double book a reservation. --
+- Reservation form shows available reservations. -- 
 
 Now that users can book a reservation. I want users to not be able to double book. I will start with 1 table in my restaraunt and each table needs to be held for one hour. So the reservation needs to check for reservations before and after their chosen booking time to see if it is available. I will use timedelta for this. 
 
@@ -75,7 +77,14 @@ So many issuses with this. It is the end of my session but a lot of problems nee
 - users can now see available time options if reservation is already taken
 - i got caught up in creating the logic that i forgot to make new functions for each part. These need rewriting to improve readability as i was getting VERY confused when trying to get the logic to work. I now have one massive function which is not acceptable.
 
+### my_reservations
+
 If users have multiple reservations it would be good to be able to see all of the reservations. Once users can see their reservations they need to be able to edit and delete these reservations. 
+
+- my_reservations shows all of the users reservations
+- needs to filter out expired reservations
+- styled
+- 
 
 
 
