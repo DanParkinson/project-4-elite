@@ -189,5 +189,13 @@ main {
     list-style-type: none
 }
 
-/* ------------------ my_reservations.html */
+/* ------------------ view_reservations_by_date.html */
+.reservation-overview {
+    justify-content: center;
+}
 
+.reservation-overview-item {
+    width: 300px;
+    height: 150px;
+    margin-bottom: 10px;
+}

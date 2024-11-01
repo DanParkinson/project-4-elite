@@ -13,19 +13,22 @@
     {% if selected_date%}
     <h4 class="mt-4 mb-4">reservations for {{selected_date}}</h4>
     {% if reservations %}
-    <div class=" row mb-5">
+    <div class=" row mb-5 reservation-overview">
         {% for reservation in reservations%}
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class='list-group-item d-flex justify-content-between align-items-center mb-2'>
-                <div>
-                    <strong>Name: </strong>{{ reservation.name }}
-                    <br>
-                    <strong>Time: </strong>{{ reservation.reservation_time }}
-                    <strong>Guests: </strong>{{ reservation.number_of_guests }}
-                    <br>
-                    <strong>Phone: </strong>{{ reservation.phone_number}}
-                    <br>
-                    <strong>Occasion: </strong>{{reservation.special_occasion}}
+        <div class="reservation-overview-item">
+            <div class="col">
+                <div class='list-group-item d-flex justify-content-between align-items-center mb-2'>
+                    <div>
+                        <strong>Name: </strong>{{ reservation.name }}
+                        <br>
+                        <strong>Time: </strong>{{ reservation.reservation_time }}
+                        <br>
+                        <strong>Guests: </strong>{{ reservation.number_of_guests }}
+                        <br>
+                        <strong>Phone: </strong>{{ reservation.phone_number}}
+                        <br>
+                        <strong>Occasion: </strong>{{reservation.special_occasion}}
+                    </div>
                 </div>
             </div>
         </div>
