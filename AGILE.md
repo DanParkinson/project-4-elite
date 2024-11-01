@@ -75,8 +75,7 @@ So many issuses with this. It is the end of my session but a lot of problems nee
 - users can now see available time options if reservation is already taken
 - i got caught up in creating the logic that i forgot to make new functions for each part. These need rewriting to improve readability as i was getting VERY confused when trying to get the logic to work. I now have one massive function which is not acceptable.
 
-
-next step:
+If users have multiple reservations it would be good to be able to see all of the reservations. Once users can see their reservations they need to be able to edit and delete these reservations. 
 
 
 
