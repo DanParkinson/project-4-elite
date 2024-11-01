@@ -14,7 +14,7 @@
                     <strong>Time:</strong> {{ reservation.reservation_time }}
                 </div>
                 <div>
-                    <a class = "ml-3 btn narrow-button flex-fill mx-1">Edit</a>
+                    <a class = "ml-3 btn narrow-button flex-fill mx-1" href ="{% url 'edit_reservation' reservation.id %}">Edit</a>
                     <a class = "btn narrow-button flex-fill mx-1">Cancel</a>
                 </div>
             </li>

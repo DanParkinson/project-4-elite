@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container pb-5 pt-4">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+          <h3>Edit Reservation</h3>
+          <div class="col-md-8 mt-3 offset-md-2">
+            <form class="make-reservation-form" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="d-flex mb-3 flex-wrap">
+                  {% if available_times %}
+                  <h5>Available times:</h5>
+                  <ul class = "available-times-list">
+                    {% for time in available_times %}
+                    <li>{{ time }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                <button class="btn custom-button" type="submit" name="action">Make changes</button>
+                <a class="btn custom-button" href="{% url 'my_reservations' %}">Back to your reservations</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
