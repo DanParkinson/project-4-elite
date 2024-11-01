@@ -31,6 +31,11 @@
             <li class="nav-item mr-2 {% if request.path == '/my-account/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'my_account' %}">My Account</a>
             </li>
+            {% if user.is_staff %}
+            <li class="nav-item mr-2 {% if request.path == '/view-reservations/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'view_reservations_by_date' %}">Reservation Overview</a>
+            </li>
+            {% endif %}
             {% endif %}
         </ul>
 
