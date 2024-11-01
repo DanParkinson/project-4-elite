@@ -105,9 +105,19 @@ def filter_available_times(all_times, reservation_date):
 
 @login_required
 def my_reservations(request):
+    # get the current time
+    now = timezone.now()
+
     # filter reservations to collect the logged in users reservations
     my_reservations = Reservation.objects.filter(
-        user=request.user).order_by('reservation_date', 'reservation_time')
+        user=request.user, 
+        reservation_date__gte = now.date() # filter out previous days
+        ).exclude(
+            # excludes reservations on todays date that time is in the past
+            reservation_date = now.date(),
+            reservation_time__lt = now.time(),
+        ).order_by(
+            'reservation_date', 'reservation_time')
     
     # Pass reservations to the template
     return render(request, 'reservations/my_reservations.html', {'reservations': my_reservations})
