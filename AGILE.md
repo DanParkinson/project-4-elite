@@ -94,7 +94,9 @@ A new view needs to be created that allows users to edit their reservation. This
 - users should only be able to edite their own reservations
 - CRUD needs to be used because most of the logic is similar to make_reservations.
 
+### Deleting a reservation 
 
+Users need to be able to delete a reservation if needed
 
 
 # fixes
@@ -110,5 +112,7 @@ A new view needs to be created that allows users to edit their reservation. This
 - favicon
 - title
 - location
+- time field not prepopulating when editing a reservation. reservations/views.py line 171
+- my_reservations needs formatting for smaller screens
 
 

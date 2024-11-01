@@ -181,3 +181,18 @@ def edit_reservation(request, reservation_id):
         'reservation' : reservation,
     })
 
+def delete_reservation(request, reservation_id):
+    # get the reservation information or return 404 if not found
+    reservation = get_object_or_404(
+        Reservation,
+        id = reservation_id,
+        user = request.user,
+    )
+
+    if request.method == 'POST':
+        reservation.delete()
+        return redirect('my_reservations')
+    
+    return render(request, 'reservations/delete_reservation.html', {'reservation' : reservation})
+
+
