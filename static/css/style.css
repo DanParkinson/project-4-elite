@@ -127,6 +127,7 @@ main {
     text-align: center; 
     display: inline-block;
     margin-top: 10px;
+    font-weight: bold;
 }
 /* -------------------- forms */
 .make-reservation-form {
@@ -182,8 +183,11 @@ main {
     margin-bottom: 40px;
 }
 
-/* ----------------- my_reservations.html*/
+/* ----------------- make_reservations.html*/
 .available-times-list {
     color:#EAD8B1;
     list-style-type: none
 }
+
+/* ------------------ my_reservations.html */
+

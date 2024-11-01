@@ -82,7 +82,7 @@ So many issuses with this. It is the end of my session but a lot of problems nee
 If users have multiple reservations it would be good to be able to see all of the reservations. Once users can see their reservations they need to be able to edit and delete these reservations. 
 
 - my_reservations shows all of the users reservations
-- needs to filter out expired reservations
+- needs to filter out expired reservations 
 - styled
 - 
 
@@ -98,4 +98,9 @@ If users have multiple reservations it would be good to be able to see all of th
 - make reservations availbale times neater
 - success message need to be added to home, account pages to let users know they were succesful
 - style available times correctly if long list
+- navbar underlines
+- favicon
+- title
+- location
+
 
