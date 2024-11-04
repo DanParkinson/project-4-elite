@@ -100,8 +100,33 @@ Users need to be able to delete a reservation if needed
 
 ## Phase 5
 
-Now that users can fully control their own reservations. Admins need to be able to view all reservations on any given day. 
+Now that users can fully control their own reservations. Admins need to be able to view all reservations on any given day.
+After a mentor meeting they have directed me to follow some specific bugs that are:
 
+MAJORS 
+- sign up forms formatted
+- phone number 
+- admin django 
+- 404 error
+- heroku
+- time field not prepopulating when editing a reservation. reservations/views.py line 171
+
+MINORS
+- success message need to be added to home, account pages to let users know they were succesful
+- change password button gap
+- navbar drop
+- error messages
+- success messages need to be added to everything
+- next reservation margin bottom on narrow screens
+- make reservations availbale times neater
+- style available times correctly if long list
+- navbar underlines
+- favicon
+- title
+- fonts
+
+
+## Phase 6 not started yet
 The site is functional but there is currently only 1 table in the restaraunt. To change this:
 - multiple tables need to be created. Each with unique id number attached to it. Amount of people they can seat will be considered later.
 - Each reservation needs to be associated to the unique id 
@@ -113,24 +138,12 @@ The site is functional but there is currently only 1 table in the restaraunt. To
 - check_overlapping_reservations function needs to include a table ID
 - make get_avaialbe_table function that uses check_overlapping_reservations function 
 - make_reservation fucntion updated to check for tables. 
+- my_reservations needs formatting for smaller screens
 
 # fixes
-- change password button gap
-- navbar drop
 - password request change
-- error messages
-- success messages need to be added to everything
-- next reservation margin bottom on narrow screens
-- make reservations availbale times neater
-- success message need to be added to home, account pages to let users know they were succesful
-- style available times correctly if long list
-- navbar underlines
-- favicon
-- title
 - location
-- time field not prepopulating when editing a reservation. reservations/views.py line 171
-- my_reservations needs formatting for smaller screens
-- fonts
-- staff member only views
+
+
 
 

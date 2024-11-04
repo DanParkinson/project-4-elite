@@ -10,12 +10,10 @@ from .forms import ReservationForm
 def make_reservation(request):
     # empty list to store available times if reservation time is already booked
     available_times = []
-
     # Process the form submission
     if request.method == 'POST': 
         form = ReservationForm(request.POST)
         if form.is_valid():
-
             # Extract and clean the reservation date and time from the form
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
@@ -27,28 +25,24 @@ def make_reservation(request):
                 ))
             # Set the reservation end time to enforce a 1 hour 45 minute buffer
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
-
             # Check for overlapping reservations within the buffer period
             if check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
                 # Generate all possible times for the restaurant's open hours on the selected day
                 all_times = generate_all_times(reservation_datetime)
                 # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, reservation_date)
-
                 # If no available times, add an error message for the user
                 if not available_times:
                     form.add_error(None, "There are no available times for this date")
                 else:
                     # Inform the user that their chosen time is unavailable
                     form.add_error(None, "The chosen time is unavailable. Please see the available times below:")
-
             else:
                 # If no overlaps are found, save the reservation and associate it with the current user
                 reservation = form.save(commit=False)
                 reservation.user = request.user
                 reservation.save()
                 return redirect('home')
-
     # if request method else
     else:
         form = ReservationForm()
@@ -84,8 +78,6 @@ def filter_available_times(all_times, reservation_date):
     chosen_day_reservations = Reservation.objects.filter(
         reservation_date = reservation_date
         )
-    
-    
     # Check each potential reservation time for conflicts
     for time in all_times:
         # ignores times in the past if todays date
@@ -108,7 +100,6 @@ def filter_available_times(all_times, reservation_date):
 def my_reservations(request):
     # get the current time
     now = timezone.now()
-
     # filter reservations to collect the logged in users reservations
     my_reservations = Reservation.objects.filter(
         user=request.user, 
@@ -119,7 +110,6 @@ def my_reservations(request):
             reservation_time__lt = now.time(),
         ).order_by(
             'reservation_date', 'reservation_time')
-    
     # Pass reservations to the template
     return render(request, 'reservations/my_reservations.html', {'reservations': my_reservations})
 
@@ -131,10 +121,8 @@ def edit_reservation(request, reservation_id):
         id = reservation_id,
         user = request.user,
     )
-
     # empty list to store available times if reservation time is already booked
     available_times = []
-
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
@@ -142,7 +130,6 @@ def edit_reservation(request, reservation_id):
             new_date= form.cleaned_data['reservation_date']
             new_time= form.cleaned_data['reservation_time']
             new_guests= form.cleaned_data['number_of_guests']
-        
             # create new datetime object
             new_datetime = timezone.make_aware(
                 datetime.combine(
@@ -152,14 +139,12 @@ def edit_reservation(request, reservation_id):
             )
             # Set the reservation end time to enforce a 1 hour 45 minute buffer
             end_time = new_datetime + timedelta(hours=1, minutes=45)
-
                     # Check for overlapping reservations within the buffer period
             if check_overlapping_reservations(new_date, new_datetime, end_time):
                 # Generate all possible times for the restaurant's open hours on the selected day
                 all_times = generate_all_times(new_datetime)
                 # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, new_date)
-
                 if not available_times:
                     form.add_error(None, "No available times for this date")
                 else:
@@ -167,7 +152,6 @@ def edit_reservation(request, reservation_id):
             else:
                 form.save()
                 return redirect('my_reservations')
-    
     else:
         # prepopulate the forms information if not post
         form = ReservationForm(instance = reservation)
@@ -175,13 +159,13 @@ def edit_reservation(request, reservation_id):
         # Reservation found: test - 2024-11-12 12:45:00 is the data format 
         # the time in the form is a choice field which requires a string? 
         # figure out how to fix that
-    
     return render(request, 'reservations/edit_reservation.html',{
         'form' : form,
         'available_times' : available_times,
         'reservation' : reservation,
     })
 
+@login_required
 def delete_reservation(request, reservation_id):
     # get the reservation information or return 404 if not found
     reservation = get_object_or_404(
@@ -189,31 +173,25 @@ def delete_reservation(request, reservation_id):
         id = reservation_id,
         user = request.user,
     )
-
     if request.method == 'POST':
         reservation.delete()
         return redirect('my_reservations')
-    
     return render(request, 'reservations/delete_reservation.html', {'reservation' : reservation})
 
 @staff_member_required
 def view_reservations_by_date(request):
     # function for admins to see a selected dates reservations
-    
     # pre load a reservations list. Date et to None as default 
     reservations = []
     selected_date = None
-
     if request.method == 'POST':
         selected_date = request.POST.get('reservation_date')
-
         if selected_date:
             #filter all of the selected dates reservations
             reservations = Reservation.objects.filter(
                 reservation_date = selected_date
             ).order_by(
                 'reservation_date', 'reservation_time')
-        
     return render(request, 'reservations/view_reservations_by_date.html', {
         'reservations' : reservations,
         'selected_date' : selected_date,
