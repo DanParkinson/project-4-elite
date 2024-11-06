@@ -113,8 +113,10 @@ sign up --
 sign out --
 login 
 my reservations --
-edit reservation 
-delete reservation 
+edit reservation --
+delete reservation --
+
+accounts pages
 
 
 
