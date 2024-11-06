@@ -1,26 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container pt-5">
-    <div class="row">
-        <div class="card">
+<!-- container -->
+<div class="container pb-5 pt-4">
+    <!-- row -->
+    <div class="row justify-content-center">
+        <!-- card -->
+        <div class="card col-12 col-md-8 col-lg-10 mx-auto">
+            <!-- cardbody -->
             <div class="card-body">
-                <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-                    <h3>Delete Reservation</h3>
-
-                    <p>Are you sure you want to delete your reservation? This action cannot be undone.</p>
-                    <p>{{ reservation.reservation_date }} at {{ reservation.reservation_time }}</p>
-
-                    <form method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Yes, delete my reservation</button>
-                        <a href="{% url 'my_reservations' %}" class="btn btn-secondary">Cancel</a>
-                    </form>
-                </div>
+                <!-- Heading -->
+                <h3 class='text-center'>Delete Reservation</h3>
+                <p class='text-center'>Are you sure you want to delete your reservation? This action cannot be undone.
+                </p>
+                <p class='text-center'>{{ reservation.reservation_date }} at {{ reservation.reservation_time }}</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <!-- buttons-->
+                    <div class="row justify-content-center mt-4">
+                        <div class="mr-3">
+                            <button type="submit" class="btn btn-danger">Yes, delete my reservation</button>
+                        </div>
+                        <div class="">
+                            <a href="{% url 'my_reservations' %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                        <!-- buttons end-->
+                    </div>
+                    <!-- Form Field End-->
+                </form>
+                <!-- cardbody End-->
             </div>
+            <!-- card End-->
         </div>
+        <!-- row End -->
     </div>
+    <!-- container End-->
 </div>
-
-
 {% endblock %}
