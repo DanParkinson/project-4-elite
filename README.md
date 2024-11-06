@@ -207,6 +207,7 @@ This process has been documented separately in [DEPLOYMENT.md](DEPLOYMENT.md)
 ### Content
 - balsamiq for wireframes 
 - DrawSQL for database design 
+https://favicon.io/favicon-generator/
 
 - Help with time widgets
 https://stackoverflow.com/questions/61076688/django-form-dateinput-with-widget-in-update-loosing-the-initial-value

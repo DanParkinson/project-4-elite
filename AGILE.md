@@ -114,7 +114,6 @@ MINORS
 - success messages need to be added to everything
 - make reservations availbale times neater
 - style available times correctly if long list
-- favicon
 - title
 - fonts
 - sign up forms formatted
