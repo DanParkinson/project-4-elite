@@ -110,7 +110,6 @@ MAJORS
 
 MINORS
 - success message need to be added to home, account pages to let users know they were succesful
-- navbar drop
 - error messages
 - success messages need to be added to everything
 - next reservation margin bottom on narrow screens
