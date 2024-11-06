@@ -10,7 +10,7 @@
       <!-- cardbody -->
       <div class="card-body">
         <!-- Heading -->
-        <h3 class="text-center">Make a Reservation</h3>
+        <h3 class="text-center">Title</h3>
         <!-- Form field-->
         <form method="post">
           {% csrf_token %}
@@ -21,18 +21,18 @@
             <div class="form-control">{{ field }}</div>
           </div>
           {% endfor %}
-          <!-- label above form input End-->
-          <!-- Form Field End-->
+
           <!-- buttons-->
           <div class="row justify-content-center mt-4">
             <div class="col-12 col-md-6 mb-3">
-              <button class="btn custom-button w-100" type="submit" name="action">Make Reservation</button>
+              <button class="btn custom-button w-100" type="submit" name="action">Button 1</button>
             </div>
             <div class="col-12 col-md-6 mb-3">
-              <a class="btn custom-button w-100" href="{% url 'home' %}">Back to Home</a>
+              <a class="btn custom-button w-100" href="{% url 'home' %}">Button 2</a>
             </div>
+            <!-- buttons end-->
           </div>
-          <!-- buttons end-->
+          <!-- Form Field End-->
         </form>
         <!-- cardbody End-->
       </div>

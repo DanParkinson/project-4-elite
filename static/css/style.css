@@ -125,10 +125,6 @@ main {
 }
 
 /* ------------------------------------------------------------------- forms */
-.make-reservation-form {
-    max-width: 400px;
-}
-
 /* Remove the default background and border color for input fields */
 input[type="text"],
 input[type="email"],
