@@ -187,6 +187,8 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 
 ## Issues and Bugs
 
+- edit reservation view not pre populating time but is populating all other information.
+
 ## Technologies Used
 ### Main Languages Used
 ### Frameworks, Libraries & Programs Used

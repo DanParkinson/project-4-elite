@@ -104,18 +104,12 @@ Now that users can fully control their own reservations. Admins need to be able 
 After a mentor meeting they have directed me to follow some specific bugs that are:
 
 MAJORS 
-- sign up forms formatted
-- phone number 
-- admin django 
 - 404 error
-- heroku
-- time field not prepopulating when editing a reservation. reservations/views.py line 171
 - testing
 
 
 MINORS
 - success message need to be added to home, account pages to let users know they were succesful
-- change password button gap
 - navbar drop
 - error messages
 - success messages need to be added to everything
@@ -126,6 +120,7 @@ MINORS
 - favicon
 - title
 - fonts
+- sign up forms formatted
 
 
 ## Phase 6 not started yet

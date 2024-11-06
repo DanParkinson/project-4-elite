@@ -12,14 +12,14 @@
               {% csrf_token %}
               {{ form.as_p }}
               <div class="d-flex mb-3 flex-wrap">
-                  {% if available_times %}
-                  <h5>Available times:</h5>
-                  <ul class = "available-times-list">
-                    {% for time in available_times %}
-                    <li>{{ time }}</li>
-                    {% endfor %}
-                  </ul>
-                  {% endif %}
+                {% if available_times %}
+                <h5>Available times:</h5>
+                <ul class="available-times-list">
+                  {% for time in available_times %}
+                  <li>{{ time }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
                 <button class="btn custom-button" type="submit" name="action">Make changes</button>
                 <a class="btn custom-button" href="{% url 'my_reservations' %}">Back to your reservations</a>
               </div>
