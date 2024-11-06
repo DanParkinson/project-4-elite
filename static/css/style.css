@@ -1,7 +1,7 @@
 /* ----------------------------- Fonts */
 body {
     font-family: 'Lora', serif;
-    font-weight: 500;
+    font-weight: 350;
     
   }
 
@@ -138,12 +138,49 @@ main {
     margin-top: 10px;
     font-weight: bold;
 }
-/* -------------------- forms */
+
+/* ------------------------------------------------------------------- forms */
 .make-reservation-form {
     max-width: 400px;
 }
 
+/* Remove the default background and border color for input fields */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+textarea, select {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    max-width: 400px;
+}
 
+/* Focused input field style */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: none;
+    box-shadow: none;
+}
+
+/* input field fills fall bars in form */
+form input[type="text"],
+form input[type="tel"],
+form input[type="number"],
+form input[type="date"] {
+  width: 100%;
+  max-width: 500px;
+  font-size: 16px;
+}
 
 /* -------------------- navbar */
 .navbar {

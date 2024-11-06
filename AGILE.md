@@ -114,8 +114,6 @@ MINORS
 - success messages need to be added to everything
 - make reservations availbale times neater
 - style available times correctly if long list
-- fonts
-- sign up forms formatted
 
 
 ## Phase 6 not started yet

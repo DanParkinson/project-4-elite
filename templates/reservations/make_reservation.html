@@ -1,33 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- container -->
 <div class="container pb-5 pt-4">
-  <div class="row">
-    <div class="card">
-      <div class="card-body">
-        <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-          <h3>Make a Reservation</h3>
-          <div class="col-md-8 mt-3 offset-md-2">
-            <form class="make-reservation-form" method="post">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <div class="d-flex mb-3 flex-wrap">
-                  {% if available_times %}
-                  <h5>Available times:</h5>
-                  <ul class = "available-times-list">
-                    {% for time in available_times %}
-                    <li>{{ time }}</li>
-                    {% endfor %}
-                  </ul>
-                  {% endif %}
-                <button class="btn custom-button" type="submit" name="action">Make Reservation</button>
-                <a class="btn custom-button" href="{% url 'home' %}">Back to Home</a>
-              </div>
-            </form>
-          </div>
+  <!-- row -->
+  <div class="row justify-content-center">
+    <!-- align everything center-->
+    <div>
+      <!-- card -->
+      <div class="card col-12 col-md-8 mx-auto">
+        <!-- cardbody -->
+        <div class="card-body">
+          <!-- Heading -->
+          <h3 class="text-center">Make a Reservation</h3>
+          <!-- Form field-->
+          <form class="make-reservation-form" method="post">
+            {% csrf_token %}
+            <!-- label above form input-->
+            {% for field in form %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              <div class="form-control">{{ field }}</div>
+            </div>
+            {% endfor %}
+            <!-- label above form input End-->
+            <!-- Form Field End-->
+            <!-- buttons-->
+            <div>
+              <button type="submit" name="action">Make Reservation</button>
+              <a href="{% url 'home' %}">Back to Home</a>
+            </div>
+            <!-- buttons end-->
+          </form>
+          <!-- cardbody End-->
         </div>
+        <!-- card End-->
       </div>
+      <!-- align center end -->
     </div>
+    <!-- row End -->
   </div>
+  <!-- container End-->
 </div>
 {% endblock %}
