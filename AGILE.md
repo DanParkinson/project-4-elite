@@ -107,6 +107,15 @@ MAJORS
 - 404 error
 - testing
 
+styling 
+make reservations --
+sign up --
+sign out --
+login 
+edit reservation 
+delete reservation 
+
+
 
 MINORS
 - success message need to be added to home, account pages to let users know they were succesful
