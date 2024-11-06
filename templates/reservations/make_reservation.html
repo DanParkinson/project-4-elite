@@ -8,7 +8,7 @@
     <!-- align everything center-->
     <div>
       <!-- card -->
-      <div class="card col-12 col-md-8 mx-auto">
+      <div class="card col-12 col-md-6 col-lg-4 mx-auto">
         <!-- cardbody -->
         <div class="card-body">
           <!-- Heading -->
@@ -26,9 +26,13 @@
             <!-- label above form input End-->
             <!-- Form Field End-->
             <!-- buttons-->
-            <div>
-              <button type="submit" name="action">Make Reservation</button>
-              <a href="{% url 'home' %}">Back to Home</a>
+            <div class="row justify-content-center mt-4">
+              <div class="col-12 col-md-6 mb-3">
+                <button class="btn custom-button w-100" type="submit" name="action">Make Reservation</button>
+              </div>
+              <div class="col-12 col-md-6 mb-3">
+                <a class="btn custom-button w-100" href="{% url 'home' %}">Back to Home</a>
+              </div>
             </div>
             <!-- buttons end-->
           </form>
