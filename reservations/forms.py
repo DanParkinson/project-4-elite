@@ -3,6 +3,7 @@ from .models import Reservation
 from django.utils import timezone
 from datetime import datetime
 from django.core.exceptions import ValidationError
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class ReservationForm(forms.ModelForm):
@@ -11,11 +12,6 @@ class ReservationForm(forms.ModelForm):
         fields = ['name', 'phone_number','number_of_guests','reservation_date','reservation_time','special_occasion']
     
     name = forms.CharField(max_length=100, label='Name')
-    
-    phone_number = forms.IntegerField(
-        min_value=0, #cant be negative
-        label = 'Phone Number',
-    )
     
     number_of_guests = forms.IntegerField(
         min_value=1,

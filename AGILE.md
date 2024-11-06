@@ -110,6 +110,8 @@ MAJORS
 - 404 error
 - heroku
 - time field not prepopulating when editing a reservation. reservations/views.py line 171
+- testing
+
 
 MINORS
 - success message need to be added to home, account pages to let users know they were succesful
