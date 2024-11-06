@@ -22,17 +22,17 @@
                 <a class="nav-link" href="">Menu</a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item mr-2">
+            <li class="nav-item mr-2 {% if request.path == '/reservations/make-reservation/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'make_reservation' %}">Make Reservation</a>
             </li>
-            <li class="nav-item mr-2">
+            <li class="nav-item mr-2 {% if request.path == '/reservations/my-reservations/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'my_reservations' %}">My Reservations</a>
             </li>
-            <li class="nav-item mr-2 {% if request.path == '/my-account/' %}active{% endif %}">
+            <li class="nav-item mr-2 {% if request.path == '/profiles/my-account/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'my_account' %}">My Account</a>
             </li>
             {% if user.is_staff %}
-            <li class="nav-item mr-2 {% if request.path == '/view-reservations/' %}active{% endif %}">
+            <li class="nav-item mr-2 {% if request.path == '/reservations/view-reservations/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'view_reservations_by_date' %}">Reservation Overview</a>
             </li>
             {% endif %}
@@ -46,7 +46,7 @@
                 <span class="navbar-text my-auto">Welcome, {{ user.username}}!</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                <a class="nav-link {% if request.path == 'logout_url' %}active{% endif %}" aria-current="page"
                     href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
@@ -54,11 +54,11 @@
                 <p class="navbar-text my-auto mr-2 text-white d-none d-lg-block">Join us to taste Elite cuisine </p>
             </li>
             <li class="nav-item mr-2">
-                <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                <a class="nav-link {% if request.path == '/accounts/signup/' %}active{% endif %}" aria-current="page"
                     href="{% url 'account_signup' %}">Register</a>
             </li>
             <li class="nav-item mr-2">
-                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}" aria-current="page"
                     href="{% url 'account_login' %}">Login</a>
             </li>
             {% endif %}

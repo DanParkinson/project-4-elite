@@ -112,7 +112,6 @@ MINORS
 - success message need to be added to home, account pages to let users know they were succesful
 - error messages
 - success messages need to be added to everything
-- next reservation margin bottom on narrow screens
 - make reservations availbale times neater
 - style available times correctly if long list
 - navbar underlines
