@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    phone_number = PhoneNumberField()
+    phone_number = PhoneNumberField(region="GB")
     number_of_guests = models.IntegerField()
     reservation_date = models.DateField()
     reservation_time = models.TimeField()
