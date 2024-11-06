@@ -112,6 +112,7 @@ make reservations --
 sign up --
 sign out --
 login 
+my reservations --
 edit reservation 
 delete reservation 
 

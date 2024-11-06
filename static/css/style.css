@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, p, label {
 /* ------------------------ buttons and links*/
 
 /* buttons */
-.custom-button, .narrow-button, .two-button{
+.custom-button, .inline-button{
     background-color: #EAD8B1;
     color: #001F3F;
 }
@@ -122,6 +122,13 @@ main {
     font-weight: bold;
     flex: 1 1 200px;
     padding-bottom: 10px;
+}
+
+.inline-button {
+    width: 100px;
+    border-radius: 5px;
+    font-weight: bold;
+    flex: 1 1 200px;
 }
 
 /* ------------------------------------------------------------------- forms */
@@ -225,4 +232,13 @@ form input[type="date"] {
     width: 300px;
     height: 150px;
     margin-bottom: 10px;
+}
+
+/* ----------------------- my_reservations.html */
+.reservation-details {
+    width: 60%;
+}
+
+.reservation-buttons{
+    width: 50%;
 }

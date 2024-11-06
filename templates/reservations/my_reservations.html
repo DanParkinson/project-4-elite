@@ -1,29 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-    <h3 class="mt-4 mb-4">Your Reservations</h3>
-    <div class="row">
-        {% if reservations %}
-        <ul class="list-group">
-            {% for reservation in reservations%}
-            <li class='list-group-item d-flex justify-content-between align-items-center'>
-                <div>
-                    <strong>Date:</strong> {{ reservation.reservation_date }}
-                    <br>
-                    <strong>Time:</strong> {{ reservation.reservation_time }}
+<div class="container pb-5 pt-4">
+    <!-- row -->
+    <div class="row justify-content-center">
+        <!-- card -->
+        <div class="card col-12 col-md-8 col-lg-10 mx-auto">
+            <!-- cardbody -->
+            <div class="card-body">
+                <!-- Heading -->
+                <h3 class="text-center">Your Reservations</h3>
+                    {% if reservations %}
+                    <ul class="list-group">
+                        {% for reservation in reservations%}
+                        <li class='list-group-item d-flex justify-content-between'>
+                            <div class="reservation-details">
+                                <strong>Date:</strong> {{ reservation.reservation_date }}
+                                <br>
+                                <strong>Time:</strong> {{ reservation.reservation_time }}
+                            </div>
+                            <div class="reservation-buttons mr-auto">
+                                <a class=" btn inline-button mx-1 mt-1"
+                                    href="{% url 'edit_reservation' reservation.id %}">Edit</a>
+                                <a class="btn inline-button mx-1 mt-1"
+                                    href="{% url 'delete_reservation' reservation.id %}">Delete</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>You have no upcoming reservations</p>
+                    {% endif %}
                 </div>
-                <div>
-                    <a class = "ml-3 btn narrow-button flex-fill mx-1" href ="{% url 'edit_reservation' reservation.id %}">Edit</a>
-                    <a class = "btn narrow-button flex-fill mx-1" href ="{% url 'delete_reservation' reservation.id %}">Delete</a>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>You have no upcoming reservations</p>
-        {% endif %}
-    </div>
-    <p class = "mt-3">*If a reservation is edited or deleted there is no guarantee it can be reverted to its original Date and Time*</p>
-</div>
-{% endblock %}
+                <p class=" text-center mt-3 mb-3">*If a reservation is edited or deleted there is no guarantee it can be reverted to
+                    its original Date and Time*</p>
+            </div>
+            {% endblock %}
