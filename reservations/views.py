@@ -21,10 +21,15 @@ def make_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            create_datetime_object(reservation_date, reservation_time)
-            create_end_time(reservation_datetime)
+            reservation_date = form.cleaned_data['reservation_date']
+            reservation_time = form.cleaned_data['reservation_time']
+
+            reservation_datetime = create_datetime_object(reservation_date, reservation_time)
+            end_time = create_end_time(reservation_datetime)
 
             assigned_seat = None
+            generate_all_times(reservation_datetime)
+
             for seat_id in range(1, number_of_tables + 1):
                 check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time)
                 if overlapping_reservation.exists():
@@ -32,24 +37,26 @@ def make_reservation(request):
                 else:
                     assigned_seat = seat_id
                     break
-            if seat_assigned:
+                
+            if assigned_seat:
                 reservation = form.save(commit=False)
                 reservation.seat_id = assigned_seat
                 reservation.save()
                 return redirect('home')
             else:
-                generate_all_times(reservation_datetime)
                 for seat_id in range(1, number_of_tables + 1):
-
-
-
-
+                    available_times = filter_available_times(all_times, reservation_date, seat_id)
+                    available_times = get_available_times_slice(available_times, reservation_time)
 
                 return render(request, 'reservations/make_reservation.html', {
                     'form' : form,
                     'available_times': available_times,
                     'error_message': 'Sorry, no tables are available at that time. Please choose another time.'   
                 })
+    else:
+        form = ReservationForm()
+
+    return render(request, 'reservations/make_reservation.html', {'form': form})
             
 
 def create_datetime_object(reservation_date, reservation_time):
@@ -79,12 +86,11 @@ def check_overlapping_reservation(seat_id, reservation_date, reservation_time, r
         seat_id=seat_id,
         reservation_date = reservation_date,
         reservation_time__range=(
-            reservation_datetime - timedelta(hours=1),
-            reservation_datetime, end_time
+            reservation_datetime - timedelta(minutes=45),
+            end_time
         )
     )
-
-    return overlapping_reservation
+    return overlapping_reservation.exists()
 
 def generate_all_times(reservation_datetime):
     """
@@ -123,10 +129,8 @@ def filter_available_times(all_times, reservation_date, seat_id):
         ).exists():
             continue
         available_times.append(time.strftime("%H:%M"))
-        
+
     return available_times
-
-
 
 def get_available_times_slice(available_times, reservation_time):
     """
@@ -149,28 +153,6 @@ def get_available_times_slice(available_times, reservation_time):
     available_times.remove(reservation_time)        
     # slice that shows three times either side reservation time
     return available_times[start_index:end_index]
-
-def assign_seat(reservation_date, reservation_time, reservation_datetime, end_time):
-    """
-    Assign a seat to a reservation if tables are not fully booked
-    """
-    # Set of available seat_ids
-    available_seats = set(range(1, number_of_tables + 1)) # {1,2,...}
-
-    # Get a list of occupied seat_ids at the given time
-    occupied_seats = set(Reservation.objects.filter(
-        reservation_date=reservation_date,
-        reservation_time__range=(reservation_datetime, end_time),
-    ).values_list('seat_id', flat=True))
-
-    # Remove occupied seats from the available seats
-    available_seats -= occupied_seats
-
-    if available_seats:
-        # Assign the first available seat
-        return available_seats.pop()
-    return None  # No available seats
-
 
 # End of make reservations
 
