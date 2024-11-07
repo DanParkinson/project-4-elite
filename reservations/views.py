@@ -218,7 +218,10 @@ def edit_reservation(request, reservation_id):
 
 @login_required
 def delete_reservation(request, reservation_id):
-    # get the reservation information or return 404 if not found
+    """
+    get the reservation information or return 404 if not found
+    deletes the reservation from the database
+    """
     reservation = get_object_or_404(
         Reservation,
         id = reservation_id,
@@ -231,8 +234,10 @@ def delete_reservation(request, reservation_id):
 
 @staff_member_required
 def admin_reservation_overview(request):
-    # function for admins to see a selected dates reservations
-    # pre load a reservations list. Date et to None as default 
+    """
+    function for admins to see a selected dates reservations
+    pre load a reservations list. Date set to None as default
+    """ 
     reservations = []
     selected_date = None
     if request.method == 'POST':
