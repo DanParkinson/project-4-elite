@@ -22,6 +22,15 @@
           first.{% endblocktrans %}
         </p>
         <!-- form -->
+        <!-- Display non-field errors at the top -->
+        {% if form.non_field_errors %}
+        <div class = "text-center">
+          {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <!-- input -->
         <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
           <!-- Render fields -->

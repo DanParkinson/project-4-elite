@@ -111,21 +111,16 @@ styling
 make reservations --
 sign up --
 sign out --
-login 
+login --
 my reservations --
 edit reservation --
 delete reservation --
 
+next session 
+
 accounts pages
-
-
-
-MINORS
-- success message need to be added to home, account pages to let users know they were succesful
-- error messages
-- success messages need to be added to everything
-- make reservations availbale times neater
-- style available times correctly if long list
+reservation overview
+available times
 
 
 ## Phase 6 not started yet
