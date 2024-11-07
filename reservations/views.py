@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 from .models import Reservation
 from .forms import ReservationForm
 
+number_of_tables = 2
+
 @login_required
 def make_reservation(request):
     """
@@ -30,6 +32,11 @@ def make_reservation(request):
                 reservation_date,
                 datetime.strptime(reservation_time, "%H:%M").time()
                 ))
+            
+
+            
+
+
             # Set the reservation end time to enforce a 1 hour 45 minute buffer
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
             # Check for overlapping reservations within the buffer period
@@ -58,19 +65,21 @@ def make_reservation(request):
     # Render the reservation form template with the form and available times (if any)
     return render(request, 'reservations/make_reservation.html', {'form': form, 'available_times': available_times})
 
-def check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
+def check_overlapping_reservations(reservation_date, reservation_datetime, end_time, number_of_tables):
     """
     Helper function to check for any overlapping reservations on the selected date.
-    Returns True if an overlapping reservation is found, otherwise False.
+    Returns True if number of reservations is greater than table number
     """
-    return Reservation.objects.filter(
+    overlapping_reservations = Reservation.objects.filter(
         reservation_date = reservation_date,
          # Look for existing reservations within the 1 hour 45 minute buffer range
         reservation_time__range=(
             reservation_datetime - timedelta(hours = 1, minutes = 45), # 2 hours before
             end_time, # 2 hours after
         )
-    ).exists()
+    )
+    
+    return overlapping_reservations.count() >= number_of_tables
 
 def generate_all_times(reservation_datetime):
     """
