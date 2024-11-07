@@ -8,6 +8,18 @@ from .forms import ReservationForm
 
 number_of_tables = 3
 
+table_info = {
+    #seat_id : capacity
+    1 : 2,
+    2 : 2,
+    3 : 4,
+    4 : 4,
+    5 : 6,
+    6 : 6,
+    7 : 8,
+    8 : 8,
+}
+
 @login_required
 def make_reservation(request):
     """

@@ -107,14 +107,7 @@ Phase 5 was mostly about tidying up the website design and fixing any issues tha
 ## Phase 6 
 During phase 6 multiple tables were implemented. The first attempt of this was poor and I realised that the whole structure of make_reservations needed remaking. Now the website can implement as many tables as it needs. edit_reservations was simple as i could just copy the code over from make_reservations.
 
-
-
-
-
-
-
-
-
+I have decided to make sure that tables have a capacity assigned to them and that reservations are only accepted if the capacity can hold the table. this SHOULD be a simple change in logic for how the seat is assigned. the hard part will be to make sure that a reservation of two people take up the smallest table possible. 
 
 
 # fixes
