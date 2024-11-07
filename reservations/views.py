@@ -32,8 +32,6 @@ def make_reservation(request):
 
             for seat_id in range(1, number_of_tables + 1):
                 if not check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
-                    continue
-                else:
                     assigned_seat = seat_id
                     break
                 
@@ -46,7 +44,7 @@ def make_reservation(request):
             else:
                 for seat_id in range(1, number_of_tables + 1):
                     available_times = filter_available_times(all_times, reservation_date, seat_id)
-                    available_times = get_available_times_slice(available_times, reservation_time)
+                    available_times.extend(get_available_times_slice(available_times, reservation_time))
 
                 return render(request, 'reservations/make_reservation.html', {
                     'form' : form,
