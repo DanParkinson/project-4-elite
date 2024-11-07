@@ -98,18 +98,27 @@ def filter_available_times(all_times, reservation_date):
 
 def get_available_times_slice(available_times, reservation_time):
     # slice the avaible times so that only 3 either side of reservation_time are returned
-    # get the index of the available times
-    if reservation_time in available_times:
-        selected_time_index = available_times.index(reservation_time)
+    # available times contains all the unbooked time slots
+    # add the reservation time to available times then select the nearest 3 reservations either side 
+    # remove the reservation time as this is unavailable
+    # return slice of nearest avaialbe times
+# debugging
+    print(f"Available Times: {available_times}")
+    print(f"Reservation Time: {reservation_time}")
+    # adds chosen reservation time to avaiable times
+    available_times.append(reservation_time)
+    # sorts the available times
+    available_times.sort()
 
-        # 3 times before and 3 times after chosen time
-        start_index = max(0, selected_time_index - 3)
-        end_index = min(len(selected_time_index), selected_time_index + 4)
+    selected_time_index = available_times.index(reservation_time)
+
+    # 3 times before and 3 times after chosen time
+    start_index = max(0, selected_time_index - 3)
+    end_index = min(len(available_times), selected_time_index + 3)
                     
-        # slice
-        return available_times[start_index:end_index]
-    return available_times
-
+    # slice
+    available_times.remove(reservation_time)
+    return available_times[start_index:end_index]
 
 # End of make reservations
 
