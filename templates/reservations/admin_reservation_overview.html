@@ -23,20 +23,6 @@
         <h4 class="mt-4">Reservations for {{ selected_date }}</h4>
 
         {% if reservations %}
-        <!-- Filter options
-        <div class="d-flex mb-2">
-            <label for="filter_column" class="mr-2">Filter by:</label>
-            <select id="filter_column" class="form-control" style="max-width: 150px;">
-                <option value="name">Name</option>
-                <option value="reservation_time">Time</option>
-                <option value="number_of_guests">Guests</option>
-                <option value="phone_number">Phone</option>
-                <option value="special_occasion">Occasion</option>
-            </select>
-            <input type="text" id="filter_input" placeholder="Search..." class="form-control ml-2" style="max-width: 200px;">
-        </div>
-        -->
-
         <!-- Reservations Grid -->
         <div class="table-responsive">
             <table class="table table-bordered text-center ">
@@ -48,6 +34,7 @@
                         <th>Guests</th>
                         <th>Phone</th>
                         <th>Occasion</th>
+                        <th>table number</th>
                     </tr>
                 </thead>
                 <!-- table content -->
@@ -59,6 +46,7 @@
                         <td>{{ reservation.number_of_guests }}</td>
                         <td>{{ reservation.phone_number }}</td>
                         <td>{{ reservation.special_occasion }}</td>
+                        <td>{{ reservation.seat_id }}</td>
                     </tr>
                     {% endfor%}
                 </tbody>
