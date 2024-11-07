@@ -31,12 +31,14 @@ def make_reservation(request):
                 all_times = generate_all_times(reservation_datetime)
                 # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, reservation_date)
-                # If no available times, add an error message for the user
-                if not available_times:
-                    form.add_error(None, "There are no available times for this date")
-                else:
+                # If available times tell the user the 3 nearest times either side of chosen time
+                if available_times:
+                    # only shows three times either side of reservation time
+                    available_times = get_available_times_slice(available_times, reservation_time)
                     # Inform the user that their chosen time is unavailable
                     form.add_error(None, "The chosen time is unavailable. Please see the available times below:")
+                else:
+                    form.add_error(None, "There are no available times for this date")
             else:
                 # If no overlaps are found, save the reservation and associate it with the current user
                 reservation = form.save(commit=False)
@@ -93,6 +95,21 @@ def filter_available_times(all_times, reservation_date):
             available_times.append(time.strftime("%H:%M"))
     # returns list that contains all times that arent taken
     return available_times
+
+def get_available_times_slice(available_times, reservation_time):
+    # slice the avaible times so that only 3 either side of reservation_time are returned
+    # get the index of the available times
+    if reservation_time in available_times:
+        selected_time_index = available_times.index(reservation_time)
+
+        # 3 times before and 3 times after chosen time
+        start_index = max(0, selected_time_index - 3)
+        end_index = min(len(selected_time_index), selected_time_index + 4)
+                    
+        # slice
+        return available_times[start_index:end_index]
+    return available_times
+
 
 # End of make reservations
 
