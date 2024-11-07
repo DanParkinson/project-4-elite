@@ -26,39 +26,39 @@ def make_reservation(request):
             # Extract and clean the reservation date and time from the form
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
+
             # Combine date and time into a timezone-aware datetime object
             reservation_datetime = timezone.make_aware(
                 datetime.combine(
                 reservation_date,
                 datetime.strptime(reservation_time, "%H:%M").time()
                 ))
-            
-
-            
-
 
             # Set the reservation end time to enforce a 1 hour 45 minute buffer
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
+
             # Check for overlapping reservations within the buffer period
             if check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
-                # Generate all possible times for the restaurant's open hours on the selected day
                 all_times = generate_all_times(reservation_datetime)
-                # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, reservation_date)
-                # If available times tell the user the 3 nearest times either side of chosen time
                 if available_times:
-                    # only shows three times either side of reservation time
                     available_times = get_available_times_slice(available_times, reservation_time)
-                    # Inform the user that their chosen time is unavailable
                     form.add_error(None, "The chosen time is unavailable. Please see the nearest available times below:")
                 else:
                     form.add_error(None, "There are no available times for this date")
             else:
-                # If no overlaps are found, save the reservation and associate it with the current user
-                reservation = form.save(commit=False)
-                reservation.user = request.user
-                reservation.save()
-                return redirect('home')
+                # Assign the reservation a seat
+                seat_id = assign_seat(reservation_date, reservation_time)
+
+                if available_seats:
+                    #save reservation and Assign the first available seat
+                    reservation = form.save(commit=False)
+                    reservation.user = request.user
+                    reservation.seat_id = seat_id
+                    reservation.save()
+                    return redirect('home')
+                else: 
+                    form.add_error(None, "Sorry, all tables are booked for this time.")
     # if request method else
     else:
         form = ReservationForm()
@@ -139,6 +139,28 @@ def get_available_times_slice(available_times, reservation_time):
     available_times.remove(reservation_time)        
     # slice that shows three times either side reservation time
     return available_times[start_index:end_index]
+
+def assign_seat(reservation_date, reservation_time):
+    """
+    Assign a seat to a reservation if tables are not fully booked
+    """
+    # Set of available seat_ids (tables)
+    available_seats = {1, 2}
+
+    # Get a list of occupied seat_ids at the given time
+    occupied_seats = set(Reservations.objects.filter(
+        reservation_date=reservation_date,
+        reservation_time=reservation_time,
+    ).values_list('seat_id', flat=True))
+
+    # Remove occupied seats from the available seats
+    available_seats -= occupied_seats
+
+    if available_seats:
+        # Assign the first available seat
+        return available_seats.pop()
+    return None  # No available seats
+
 
 # End of make reservations
 
