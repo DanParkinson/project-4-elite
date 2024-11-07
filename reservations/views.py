@@ -194,7 +194,7 @@ def edit_reservation(request, reservation_id):
                 # If available times tell the user the 3 nearest times either side of chosen time
                 if available_times:
                     # only shows three times either side of reservation time
-                    available_times = get_available_times_slice(available_times, reservation_time)
+                    available_times = get_available_times_slice(available_times, new_time)
                     # Inform the user that their chosen time is unavailable
                     form.add_error(None, "The chosen time is unavailable. Please see the nearest available times below:")
                 else:
@@ -206,6 +206,7 @@ def edit_reservation(request, reservation_id):
         # prepopulate the forms information if not post
         form = ReservationForm(instance = reservation)
         # convert time field into a string for ChoiceField for prepopulating the form
+        # this dosent work 
         if reservation.reservation_time:
             reservation_time_str = reservation.reservation_time.strftime("%H:%M")
             form.fields['reservation_time'].initial = reservation_time_str
