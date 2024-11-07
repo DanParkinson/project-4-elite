@@ -118,8 +118,31 @@ The site is functional but there is currently only 1 table in the restaraunt. To
 - make_reservation fucntion updated to check for tables. 
 - my_reservations needs formatting for smaller screens
 
+reservations are now appointed a seat_id. this works if the same time is selected. but if a reservation is made at 12 then 12:15 they are appointed the same table. 
 
-- first update the model 
+Ive broken it so heres what i need to do in order 
+
+user submits form for reservation
+
+if form is valid
+    create datetime
+    create end time
+
+    for table in table
+        check overlapping reservations
+        if not overlapping reservations
+            assign seat
+            submit form
+        else
+            tell user available times
+else
+    get form
+
+
+
+
+
+
 
 # fixes
 - password request change
