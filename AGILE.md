@@ -118,6 +118,9 @@ The site is functional but there is currently only 1 table in the restaraunt. To
 - make_reservation fucntion updated to check for tables. 
 - my_reservations needs formatting for smaller screens
 
+
+- first update the model 
+
 # fixes
 - password request change
 - location

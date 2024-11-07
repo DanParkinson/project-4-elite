@@ -11,6 +11,7 @@ class Reservation(models.Model):
     reservation_date = models.DateField()
     reservation_time = models.TimeField()
     special_occasion = models.CharField(max_length=400, blank=True)
+    seat_id = models.IntegerField()
 
     def __str__(self):
-        return f"{self.name} - {self.reservation_date} {self.reservation_time}"
+        return f"{self.name} - {self.reservation_date} {self.reservation_time} (Table {self.seat_id})"
