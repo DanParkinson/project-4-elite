@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from .models import Reservation
 from .forms import ReservationForm
 
-number_of_tables = 2
+number_of_tables = 3
 
 @login_required
 def make_reservation(request):
@@ -51,10 +51,9 @@ def make_reservation(request):
                 for seat_id in range(1, number_of_tables + 1):
                     available_seat_times = filter_available_times(all_times, reservation_date, seat_id)
                     available_times_slice = get_available_times_slice(available_seat_times, reservation_time)
-                
-                    # Convert the set back to a list to pass to the template
                     all_available_times.update(available_times_slice)
-                # order available times
+
+                # order available times and change to a list
                 available_times = sorted(list(all_available_times))
 
                 return render(request, 'reservations/make_reservation.html', {
@@ -67,7 +66,6 @@ def make_reservation(request):
 
     return render(request, 'reservations/make_reservation.html', {'form': form})
             
-
 def create_datetime_object(reservation_date, reservation_time):
     """
     Combine date and time into a timezone-aware datetime object
@@ -208,45 +206,49 @@ def edit_reservation(request, reservation_id):
             new_date= form.cleaned_data['reservation_date']
             new_time= form.cleaned_data['reservation_time']
             new_guests= form.cleaned_data['number_of_guests']
-            # create new datetime object
-            new_datetime = timezone.make_aware(
-                datetime.combine(
-                new_date,
-                datetime.strptime(new_time, "%H:%M").time()
-                )
-            )
-            # Set the reservation end time to enforce a 1 hour 45 minute buffer
-            end_time = new_datetime + timedelta(hours=1, minutes=45)
-                    # Check for overlapping reservations within the buffer period
-            if check_overlapping_reservations(new_date, new_datetime, end_time):
-                # Generate all possible times for the restaurant's open hours on the selected day
-                all_times = generate_all_times(new_datetime)
-                # Filter available times by removing those that overlap with existing reservations
-                available_times = filter_available_times(all_times, new_date)
-                # If available times tell the user the 3 nearest times either side of chosen time
-                if available_times:
-                    # only shows three times either side of reservation time
-                    available_times = get_available_times_slice(available_times, new_time)
-                    # Inform the user that their chosen time is unavailable
-                    form.add_error(None, "The chosen time is unavailable. Please see the nearest available times below:")
-                else:
-                    form.add_error(None, "There are no available times for this date")
-            else:
-                form.save()
+
+            # create a datetime object and an end time for reservations
+            new_datetime = create_datetime_object(new_date, new_time)
+            end_time = create_end_time(new_datetime)
+
+            # generates all the available times for the day
+            assigned_seat = None
+            all_times = generate_all_times(new_datetime)
+
+            # for each table, check if there are any reservations conflicitng with chosen reservation time
+            # if no conflict, assign the seat_id
+            for seat_id in range(1, number_of_tables + 1):
+                if not check_overlapping_reservation(seat_id, new_date, new_time, new_datetime, end_time):
+                    assigned_seat = seat_id
+                    break
+                       # save the form 
+            if assigned_seat:
+                reservation = form.save(commit=False)
+                reservation.seat_id = assigned_seat
+                reservation.save()
                 return redirect('my_reservations')
+            else:
+                
+                # if time is invlaid, return a list of available times
+                all_available_times = set() # set to remove duplicates
+                for seat_id in range(1, number_of_tables + 1):
+                    available_seat_times = filter_available_times(all_times, new_date, seat_id)
+                    available_times_slice = get_available_times_slice(available_seat_times, new_time)
+                    all_available_times.update(available_times_slice)
+
+                # order available times and change to a list
+                available_times = sorted(list(all_available_times))
+                form.add_error(None, "The selected time is unavailable. Please choose from nearby available times.")
+
     else:
-        # prepopulate the forms information if not post
+        #prepopulate the form if request
         form = ReservationForm(instance = reservation)
-        # convert time field into a string for ChoiceField for prepopulating the form
-        # this dosent work 
-        if reservation.reservation_time:
-            reservation_time_str = reservation.reservation_time.strftime("%H:%M")
-            form.fields['reservation_time'].initial = reservation_time_str
 
     return render(request, 'reservations/edit_reservation.html',{
         'form' : form,
         'available_times' : available_times,
         'reservation' : reservation,
+         
     })
 
 @login_required
