@@ -14,11 +14,11 @@
 
         <!-- Display error message if time is unavailable -->
         {% if form.non_field_errors %}
-          <div>
-            {% for error in form.non_field_errors %}
-              <p>{{ error }}</p>
-            {% endfor %}
-          </div>
+        <div>
+          {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+        </div>
         {% endif %}
 
         <!-- Form field-->
@@ -32,17 +32,18 @@
           </div>
           {% endfor %}
           <!-- available times if selected time is unavailable-->
-          <div class="d-flex mb-3 flex-wrap">
-            {% if available_times %}
-            <h5>Available times:</h5>
-            <ul class="available-times-list">
+          {% if available_times %}
+          <h5 class="text-center">Available times:</h5>
+          <div class="row">
               {% for time in available_times %}
-              <li>{{ time }}</li>
+              <div class="col-4 col-lg-2 mb-2 text-center">
+                <div class="available-times-item">{{ time }}</div>
+              </div>
               {% endfor %}
-            </ul>
-            {% endif %}
+            </div>
             <!-- available times end-->
           </div>
+          {% endif %}
           <!-- Form input End-->
           <!-- buttons-->
           <div class="row justify-content-center mt-4">

@@ -236,7 +236,7 @@ form input[type="date"] {
 }
 
 /* ----------------- make_reservations.html*/
-.available-times-list {
+.available-times-item {
     color:#EAD8B1;
     list-style-type: none
 }
