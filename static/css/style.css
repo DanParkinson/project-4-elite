@@ -140,7 +140,6 @@ input[type="password"],
 input[type="tel"],
 input[type="date"],
 textarea, select {
-    background-color: transparent;
     border: none;
     box-shadow: none;
     max-width: 400px;
