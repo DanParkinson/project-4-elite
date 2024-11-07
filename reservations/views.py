@@ -49,8 +49,8 @@ def make_reservation(request):
                 # if time is invlaid, return a list of available times
                 all_available_times = set() # set to remove duplicates
                 for seat_id in range(1, number_of_tables + 1):
-                    available_times = filter_available_times(all_times, reservation_date, seat_id)
-                    available_times.extend(get_available_times_slice(available_times, reservation_time))
+                    available_seat_times = filter_available_times(all_times, reservation_date, seat_id)
+                    available_times_slice = get_available_times_slice(available_seat_times, reservation_time)
                 
                     # Convert the set back to a list to pass to the template
                     all_available_times.update(available_times_slice)
