@@ -38,9 +38,10 @@ def make_reservation(request):
             end_time = reservation_datetime + timedelta(hours=1, minutes=45)
 
             # Check for overlapping reservations within the buffer period
-            if check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
+            if check_overlapping_reservations(reservation_date, reservation_datetime, end_time, number_of_tables):
                 all_times = generate_all_times(reservation_datetime)
                 available_times = filter_available_times(all_times, reservation_date)
+
                 if available_times:
                     available_times = get_available_times_slice(available_times, reservation_time)
                     form.add_error(None, "The chosen time is unavailable. Please see the nearest available times below:")
@@ -50,7 +51,7 @@ def make_reservation(request):
                 # Assign the reservation a seat
                 seat_id = assign_seat(reservation_date, reservation_time)
 
-                if available_seats:
+                if seat_id:
                     #save reservation and Assign the first available seat
                     reservation = form.save(commit=False)
                     reservation.user = request.user
@@ -148,7 +149,7 @@ def assign_seat(reservation_date, reservation_time):
     available_seats = {1, 2}
 
     # Get a list of occupied seat_ids at the given time
-    occupied_seats = set(Reservations.objects.filter(
+    occupied_seats = set(Reservation.objects.filter(
         reservation_date=reservation_date,
         reservation_time=reservation_time,
     ).values_list('seat_id', flat=True))
