@@ -55,6 +55,10 @@ def make_reservation(request):
 
                 # order available times and change to a list
                 available_times = sorted(list(all_available_times))
+                if available_times:
+                    form.add_error(None, "The selected time is unavailable. Please choose from nearby available times.")
+                else:
+                    form.add_error(None, "There are no available tables on this date")
 
                 return render(request, 'reservations/make_reservation.html', {
                     'form' : form,
@@ -238,7 +242,10 @@ def edit_reservation(request, reservation_id):
 
                 # order available times and change to a list
                 available_times = sorted(list(all_available_times))
-                form.add_error(None, "The selected time is unavailable. Please choose from nearby available times.")
+                if available_times:
+                    form.add_error(None, "The selected time is unavailable. Please choose from nearby available times.")
+                else:
+                    form.add_error(None, "There are no available tables on this date")
 
     else:
         #prepopulate the form if request
