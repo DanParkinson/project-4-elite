@@ -11,30 +11,33 @@ number_of_tables = 2
 @login_required
 def make_reservation(request):
     """
-    allows users to make reservations 
-    uses submit a reservation date and reservation time
-    these are combined into a reswervation datetime object
-    checks for overlapping reservation times 
-    if reservation time is taken. return list of available times
+    users can submit a form to make a reservation 
+    if not submitting then retrieve the form
     """
     available_times = []
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
+            # get cleaned form data
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
 
+            # create a datetime object and an end time for reservations
             reservation_datetime = create_datetime_object(reservation_date, reservation_time)
             end_time = create_end_time(reservation_datetime)
 
+            # generates all the available times for the day
             assigned_seat = None
             all_times = generate_all_times(reservation_datetime)
 
+            # for each table, check if there are any reservations conflicitng with chosen reservation time
+            # if no conflict, assign the seat_id
             for seat_id in range(1, number_of_tables + 1):
                 if not check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
                     assigned_seat = seat_id
                     break
-                
+            
+            # save the form 
             if assigned_seat:
                 reservation = form.save(commit=False)
                 reservation.seat_id = assigned_seat
@@ -42,9 +45,17 @@ def make_reservation(request):
                 reservation.save()
                 return redirect('home')
             else:
+                
+                # if time is invlaid, return a list of available times
+                all_available_times = set() # set to remove duplicates
                 for seat_id in range(1, number_of_tables + 1):
                     available_times = filter_available_times(all_times, reservation_date, seat_id)
                     available_times.extend(get_available_times_slice(available_times, reservation_time))
+                
+                    # Convert the set back to a list to pass to the template
+                    all_available_times.update(available_times_slice)
+                # order available times
+                available_times = sorted(list(all_available_times))
 
                 return render(request, 'reservations/make_reservation.html', {
                     'form' : form,
