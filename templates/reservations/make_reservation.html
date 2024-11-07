@@ -11,6 +11,16 @@
       <div class="card-body">
         <!-- Heading -->
         <h3 class="text-center">Make a Reservation</h3>
+
+        <!-- Display error message if time is unavailable -->
+        {% if form.non_field_errors %}
+          <div>
+            {% for error in form.non_field_errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <!-- Form field-->
         <form method="post">
           {% csrf_token %}
@@ -21,6 +31,18 @@
             <div class="form-control">{{ field }}</div>
           </div>
           {% endfor %}
+          <!-- available times if selected time is unavailable-->
+          <div class="d-flex mb-3 flex-wrap">
+            {% if available_times %}
+            <h5>Available times:</h5>
+            <ul class="available-times-list">
+              {% for time in available_times %}
+              <li>{{ time }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- available times end-->
+          </div>
           <!-- Form input End-->
           <!-- buttons-->
           <div class="row justify-content-center mt-4">
