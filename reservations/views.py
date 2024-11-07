@@ -8,6 +8,13 @@ from .forms import ReservationForm
 
 @login_required
 def make_reservation(request):
+    """
+    allows users to make reservations 
+    uses submit a reservation date and reservation time
+    these are combined into a reswervation datetime object
+    checks for overlapping reservation times 
+    if reservation time is taken. return list of available times
+    """
     # empty list to store available times if reservation time is already booked
     available_times = []
     # Process the form submission
@@ -36,7 +43,7 @@ def make_reservation(request):
                     # only shows three times either side of reservation time
                     available_times = get_available_times_slice(available_times, reservation_time)
                     # Inform the user that their chosen time is unavailable
-                    form.add_error(None, "The chosen time is unavailable. Please see the available times below:")
+                    form.add_error(None, "The chosen time is unavailable. Please see the nearest available times below:")
                 else:
                     form.add_error(None, "There are no available times for this date")
             else:
@@ -52,8 +59,10 @@ def make_reservation(request):
     return render(request, 'reservations/make_reservation.html', {'form': form, 'available_times': available_times})
 
 def check_overlapping_reservations(reservation_date, reservation_datetime, end_time):
-    # Helper function to check for any overlapping reservations on the selected date.
-    # Returns True if an overlapping reservation is found, otherwise False.
+    """
+    Helper function to check for any overlapping reservations on the selected date.
+    Returns True if an overlapping reservation is found, otherwise False.
+    """
     return Reservation.objects.filter(
         reservation_date = reservation_date,
          # Look for existing reservations within the 1 hour 45 minute buffer range
@@ -64,8 +73,10 @@ def check_overlapping_reservations(reservation_date, reservation_datetime, end_t
     ).exists()
 
 def generate_all_times(reservation_datetime):
-    # Helper function to generate a list of all potential reservation times
-    # within the restaurant's open hours, starting every 15 minutes.
+    """
+    Helper function to generate a list of all potential reservation times
+    within the restaurant's open hours, starting every 15 minutes.
+    """
     return [
         reservation_datetime.replace(hour = h, minute = m)
             for h in range(10, 21)
@@ -73,8 +84,10 @@ def generate_all_times(reservation_datetime):
         ]
 
 def filter_available_times(all_times, reservation_date):
-    # Helper function to filter out times that overlap with existing reservations on the selected date.
-    # Returns a list of available times that respect the 1 hour 45 minute buffer.
+    """
+    Helper function to filter out times that overlap with existing reservations on the selected date.
+    Returns a list of available times that respect the 1 hour 45 minute buffer.
+    """
     available_times = []
     # get all reservations on the chosen date
     chosen_day_reservations = Reservation.objects.filter(
@@ -97,12 +110,13 @@ def filter_available_times(all_times, reservation_date):
     return available_times
 
 def get_available_times_slice(available_times, reservation_time):
-    # slice the avaible times so that only 3 either side of reservation_time are returned
-    # available times contains all the unbooked time slots
-    # add the reservation time to available times then select the nearest 3 reservations either side 
-    # remove the reservation time as this is unavailable
-    # return slice of nearest avaialbe times
-    
+    """
+    slice the avaible times so that only 3 either side of reservation_time are returned
+    available times contains all the unbooked time slots
+    add the reservation time to available times then select the nearest 3 reservations either side 
+    remove the reservation time as this is unavailable
+    return slice of nearest avaialbe times
+    """
     # adds chosen reservation time to avaiable times
     available_times.append(reservation_time)
     # sorts the available times
@@ -121,6 +135,10 @@ def get_available_times_slice(available_times, reservation_time):
 
 @login_required
 def my_reservations(request):
+    """
+    Generates a list of reservations made by the logged in user
+    removes any reservation that is in the past
+    """
     # get the current time
     now = timezone.now()
     # filter reservations to collect the logged in users reservations
@@ -138,6 +156,11 @@ def my_reservations(request):
 
 @login_required
 def edit_reservation(request, reservation_id):
+    """
+    requests the reservation information from the database 
+    prepopulates the form 
+    functions very similar to make reservations
+    """
     # get the reservation information or return 404 if not found
     reservation = get_object_or_404(
         Reservation,
@@ -168,10 +191,14 @@ def edit_reservation(request, reservation_id):
                 all_times = generate_all_times(new_datetime)
                 # Filter available times by removing those that overlap with existing reservations
                 available_times = filter_available_times(all_times, new_date)
-                if not available_times:
-                    form.add_error(None, "No available times for this date")
+                # If available times tell the user the 3 nearest times either side of chosen time
+                if available_times:
+                    # only shows three times either side of reservation time
+                    available_times = get_available_times_slice(available_times, reservation_time)
+                    # Inform the user that their chosen time is unavailable
+                    form.add_error(None, "The chosen time is unavailable. Please see the nearest available times below:")
                 else:
-                    form.add_error(None, "Selected time is unavailable. See available times below.")
+                    form.add_error(None, "There are no available times for this date")
             else:
                 form.save()
                 return redirect('my_reservations')
