@@ -101,26 +101,7 @@ Users need to be able to delete a reservation if needed
 ## Phase 5
 
 Now that users can fully control their own reservations. Admins need to be able to view all reservations on any given day.
-After a mentor meeting they have directed me to follow some specific bugs that are:
-
-MAJORS 
-- 404 error
-- testing
-
-styling 
-make reservations --
-sign up --
-sign out --
-login --
-my reservations --
-edit reservation --
-delete reservation --
-
-next session 
-
-accounts pages
-reservation overview
-available times
+Phase 5 was mostly about tidying up the website design and fixing any issues that i noticed. Now that the site is functioning I can move onto phase 6.
 
 
 ## Phase 6 not started yet
