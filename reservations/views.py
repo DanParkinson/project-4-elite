@@ -28,7 +28,7 @@ def make_reservation(request):
             end_time = create_end_time(reservation_datetime)
 
             assigned_seat = None
-            generate_all_times(reservation_datetime)
+            all_times = generate_all_times(reservation_datetime)
 
             for seat_id in range(1, number_of_tables + 1):
                 if not check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
