@@ -33,6 +33,7 @@ def make_reservation(request):
             # get cleaned form data
             reservation_date = form.cleaned_data['reservation_date']
             reservation_time = form.cleaned_data['reservation_time']
+            number_of_guests = form.cleaned_data['number_of_guests']
 
             # create a datetime object and an end time for reservations
             reservation_datetime = create_datetime_object(reservation_date, reservation_time)
@@ -44,10 +45,12 @@ def make_reservation(request):
 
             # for each table, check if there are any reservations conflicitng with chosen reservation time
             # if no conflict, assign the seat_id
-            for seat_id in range(1, number_of_tables + 1):
-                if not check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
-                    assigned_seat = seat_id
-                    break
+            for seat_id, capacity in table_info.items():
+                # Only check tables that can fit the required number of guests
+                if capacity >= number_of_guests:
+                    if not check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
+                        assigned_seat = seat_id
+                        break
             
             # save the form 
             if assigned_seat:
