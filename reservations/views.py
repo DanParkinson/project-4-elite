@@ -39,15 +39,17 @@ def make_reservation(request):
             reservation_datetime = create_datetime_object(reservation_date, reservation_time)
             end_time = create_end_time(reservation_datetime)
 
-            # generates all the available times for the day
+            
             assigned_seat = None
+            # selects the tables suitable for the party size
+            suitable_tables = suitable_tables(number_of_guests, table_info)
+            # generates all the available times for the day
             all_times = generate_all_times(reservation_datetime)
 
             # for each table, check if there are any reservations conflicitng with chosen reservation time
             # if no conflict, assign the seat_id
-            for seat_id, capacity in table_info.items():
+            for seat_id in suitable_tables.keys():
                 # Only check tables that can fit the required number of guests
-                if capacity >= number_of_guests:
                     if not check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
                         assigned_seat = seat_id
                         break
@@ -63,7 +65,7 @@ def make_reservation(request):
                 
                 # if time is invlaid, return a list of available times
                 all_available_times = set() # set to remove duplicates
-                for seat_id in range(1, number_of_tables + 1):
+                for seat_id in suitable_tables.keys():
                     available_seat_times = filter_available_times(all_times, reservation_date, seat_id)
                     available_times_slice = get_available_times_slice(available_seat_times, reservation_time)
                     all_available_times.update(available_times_slice)
@@ -84,6 +86,17 @@ def make_reservation(request):
         form = ReservationForm()
 
     return render(request, 'reservations/make_reservation.html', {'form': form})
+
+def suitable_tables(number_of_guests, table_info):
+    """
+    return a dictionary of suitable tables to accomodate the number of guests
+    """
+    suitable_tables = {}
+    for seat_id, capacity in table_info.items():
+        if capacity >= number_of_guests:
+            suitable_tables[seat_id] = capacity
+    return suitable_tables
+
             
 def create_datetime_object(reservation_date, reservation_time):
     """
@@ -230,13 +243,16 @@ def edit_reservation(request, reservation_id):
             new_datetime = create_datetime_object(new_date, new_time)
             end_time = create_end_time(new_datetime)
 
-            # generates all the available times for the day
+            
             assigned_seat = None
+            # generates all the available times for the day
             all_times = generate_all_times(new_datetime)
+            # selects the tables suitable for the party size
+            suitable_tables = suitable_tables(number_of_guests, table_info)
 
             # for each table, check if there are any reservations conflicitng with chosen reservation time
             # if no conflict, assign the seat_id
-            for seat_id in range(1, number_of_tables + 1):
+            for seat_id in suitable_tables.keys():
                 if not check_overlapping_reservation(seat_id, new_date, new_time, new_datetime, end_time):
                     assigned_seat = seat_id
                     break
@@ -250,7 +266,7 @@ def edit_reservation(request, reservation_id):
                 
                 # if time is invlaid, return a list of available times
                 all_available_times = set() # set to remove duplicates
-                for seat_id in range(1, number_of_tables + 1):
+                for seat_id in suitable_tables.keys():
                     available_seat_times = filter_available_times(all_times, new_date, seat_id)
                     available_times_slice = get_available_times_slice(available_seat_times, new_time)
                     all_available_times.update(available_times_slice)
