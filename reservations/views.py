@@ -145,7 +145,7 @@ def assign_seat(reservation_date, reservation_time):
     """
     Assign a seat to a reservation if tables are not fully booked
     """
-    # Set of available seat_ids (tables)
+    # Set of available seat_ids
     available_seats = set(range(1, number_of_tables + 1)) # {1,2,...}
 
     # Get a list of occupied seat_ids at the given time

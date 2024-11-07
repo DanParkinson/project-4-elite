@@ -4,4 +4,5 @@ from .models import Reservation
 # Register your models here.
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'phone_number','number_of_guests','reservation_date','reservation_time','special_occasion')
+    list_display = ('user', 'name', 'phone_number','number_of_guests','reservation_date','reservation_time','special_occasion','seat_id')
+    ordering = ('reservation_date', 'reservation_time')
