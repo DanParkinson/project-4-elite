@@ -249,7 +249,7 @@ def edit_reservation(request, reservation_id):
             # generates all the available times for the day
             all_times = generate_all_times(new_datetime)
             # selects the tables suitable for the party size
-            suitable_tables = get_suitable_tables(number_of_guests, table_info)
+            suitable_tables = get_suitable_tables(new_guests, table_info)
 
             # for each table, check if there are any reservations conflicitng with chosen reservation time
             # if no conflict, assign the seat_id
