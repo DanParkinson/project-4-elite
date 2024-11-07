@@ -102,22 +102,19 @@ def get_available_times_slice(available_times, reservation_time):
     # add the reservation time to available times then select the nearest 3 reservations either side 
     # remove the reservation time as this is unavailable
     # return slice of nearest avaialbe times
-# debugging
-    print(f"Available Times: {available_times}")
-    print(f"Reservation Time: {reservation_time}")
+    
     # adds chosen reservation time to avaiable times
     available_times.append(reservation_time)
     # sorts the available times
     available_times.sort()
-
+    # create index out of available times
     selected_time_index = available_times.index(reservation_time)
-
     # 3 times before and 3 times after chosen time
     start_index = max(0, selected_time_index - 3)
     end_index = min(len(available_times), selected_time_index + 3)
-                    
-    # slice
-    available_times.remove(reservation_time)
+    # remove the reservation time as this is already booked
+    available_times.remove(reservation_time)        
+    # slice that shows three times either side reservation time
     return available_times[start_index:end_index]
 
 # End of make reservations
