@@ -104,25 +104,10 @@ Now that users can fully control their own reservations. Admins need to be able 
 Phase 5 was mostly about tidying up the website design and fixing any issues that i noticed. Now that the site is functioning I can move onto phase 6.
 
 
-## Phase 6 not started yet
-The site is functional but there is currently only 1 table in the restaraunt. To change this:
-- multiple tables need to be created. Each with unique id number attached to it. Amount of people they can seat will be considered later.
-- Each reservation needs to be associated to the unique id 
-- the double booking system needs to check that the table is free. 
-- reservation overview then needs to say which table the reservation is for.
+## Phase 6 
+During phase 6 multiple tables were implemented. The first attempt of this was poor and I realised that the whole structure of make_reservations needed remaking. Now the website can implement as many tables as it needs. edit_reservations was simple as i could just copy the code over from make_reservations.
 
-- For this I will need to update my reservation model to have a table ID
-- create a list of table IDs
-- check_overlapping_reservations function needs to include a table ID
-- make get_avaialbe_table function that uses check_overlapping_reservations function 
-- make_reservation fucntion updated to check for tables. 
-- my_reservations needs formatting for smaller screens
 
-reservations are now appointed a seat_id. this works if the same time is selected. but if a reservation is made at 12 then 12:15 they are appointed the same table. 
-
-Ive broken it so heres what i need to do in order. 
-
-make reservations now works and allows users to book a seat confidently. edit reservation now needs updating as well as the reservation overview
 
 
 
