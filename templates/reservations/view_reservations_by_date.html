@@ -3,24 +3,45 @@
 {% block content %}
 
 <!-- container -->
-<div class="container pb-5 pt-4">
-    <!-- row -->
-    <div class="row justify-content-center">
-        <!-- card -->
-        <div class="card col-12 col-md-8 col-lg-10 mx-auto">
-            <!-- cardbody -->
-            <div class="card-body">
-                <!-- Heading -->
-                <h3 class="text-center">Reservation Overview</h3>
+<div class="container pb-5 pt-4">>
+    <!-- Heading -->
+    <h3 class="text-center">Reservation Overview</h3>
 
-                <!-- Date Selection Form -->
-                <form method="POST" class="text-center">
-                    {% csrf_token %}
-                    <label for="reservation_date" class="mr-2">Select Date:</label>
-                    <input type="date" id="reservation_date" name="reservation_date" required
-                        class="form-control d-inline-block w-auto">
-                    <button class="btn custom-button ml-2" type="submit">View Reservations</button>
-                    <!-- Date selection form end-->
-                </form>
+    <!-- Date filter Form -->
+    <form method="POST" class="mb-3">
+        {% csrf_token %}
+        <div class="d-flex align-items-center">
+            <label for="reservation_date" class="mr-2">Select Date:</label>
+            <input type="date" id="reservation_date" name="reservation_date" required class="form-control mr-2"
+                style="max-width: 200px;">
+            <button class="btn custom-button" style="max-width: 200px;" type="submit">View Reservations</button>
+        </div>
+        <!-- Date selection form end-->
+    </form>
 
-                {% endblock %}
+    {% if selected_date %}
+        <h4 class="mt-4">Reservations for {{ selected_date }}</h4>
+
+        {% if reservations %}
+        <!-- Filter options -->
+        <div class="d-flex mb-2">
+            <label for="filter_column" class="mr-2">Filter by:</label>
+            <select id="filter_column" class="form-control" style="max-width: 150px;"></select>
+
+
+
+
+        <!-- else if reservations -->
+        {% else %}
+        <p>There are no reservations for {{ selected_date }}</p>
+        <!-- end if reservations -->
+        {% endif %}
+
+
+
+
+
+        {% endif %}
+        <!-- container end-->
+    </div>
+    {% endblock %}
