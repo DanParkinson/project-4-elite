@@ -27,6 +27,7 @@ def make_reservation(request):
     if not submitting then retrieve the form
     """
     available_times = []
+    suitable_tables = {}
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
