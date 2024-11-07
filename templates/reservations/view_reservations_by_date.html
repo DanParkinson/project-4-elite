@@ -1,42 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-    <h3 class="mt-4 mb-4">Reservation Overview</h3>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="reservation_date">Select Date:</label>
-        <input type="date" id="reservation_date" name="reservation_date" required>
-        <button class="btn custom-button flex-fill mx-1" type="submit">View Reservations</button>
-    </form>
 
-    {% if selected_date%}
-    <h4 class="mt-4 mb-4">reservations for {{selected_date}}</h4>
-    {% if reservations %}
-    <div class=" row mb-5 reservation-overview">
-        {% for reservation in reservations%}
-        <div class="reservation-overview-item">
-            <div class="col">
-                <div class='list-group-item d-flex justify-content-between align-items-center mb-2'>
-                    <div>
-                        <strong>Name: </strong>{{ reservation.name }}
-                        <br>
-                        <strong>Time: </strong>{{ reservation.reservation_time }}
-                        <br>
-                        <strong>Guests: </strong>{{ reservation.number_of_guests }}
-                        <br>
-                        <strong>Phone: </strong>{{ reservation.phone_number}}
-                        <br>
-                        <strong>Occasion: </strong>{{reservation.special_occasion}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p>There are no reservations currently for {{selected_date}}</p>
-    {% endif%}
-    {% endif%}
-    {% endblock %}
-</div>
+<!-- container -->
+<div class="container pb-5 pt-4">
+    <!-- row -->
+    <div class="row justify-content-center">
+        <!-- card -->
+        <div class="card col-12 col-md-8 col-lg-10 mx-auto">
+            <!-- cardbody -->
+            <div class="card-body">
+                <!-- Heading -->
+                <h3 class="text-center">Reservation Overview</h3>
+
+                <!-- Date Selection Form -->
+                <form method="POST" class="text-center">
+                    {% csrf_token %}
+                    <label for="reservation_date" class="mr-2">Select Date:</label>
+                    <input type="date" id="reservation_date" name="reservation_date" required
+                        class="form-control d-inline-block w-auto">
+                    <button class="btn custom-button ml-2" type="submit">View Reservations</button>
+                    <!-- Date selection form end-->
+                </form>
+
+                {% endblock %}
