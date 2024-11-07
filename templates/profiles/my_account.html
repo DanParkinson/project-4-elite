@@ -1,24 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container container-custom">
-    <div class="row">
-        <div class="card">
+<!-- container -->
+<div class="container pb-5 pt-4">
+    <!-- row -->
+    <div class="row justify-content-center">
+        <!-- card -->
+        <div class="card col-12 col-md-8 col-lg-10 mx-auto">
+            <!-- cardbody -->
             <div class="card-body">
-                <div>
+                <div class="text-center">
+                    <!-- Heading -->
                     <h3>My Account</h3>
+                    <!-- account details -->
                     <p><strong>Username:</strong> {{ username }}</p>
                     <p><strong>Email:</strong> {{ email }}</p>
                 </div>
-                <div class="d-flex mb-3 flex-wrap">
-                    <a class="btn custom-button flex-fill mx-1" href="{% url 'update_account' %}">Edit Details</a>
-                    <a class="btn custom-button flex-fill mx-1" href="{% url 'account_change_password' %}">Change
-                        Password</a>
-                    <a class="btn custom-button flex-fill mx-1" href="{% url 'delete_account' %}">Delete Acount</a>
+                <!-- buttons -->
+                <div class="row justify-content-center mt-4">
+                    <div class="col-12 col-md-6 mb-3">
+                        <a class="btn custom-button w-100" href="{% url 'update_account' %}">Edit Details</a>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <a class="btn custom-button w-100" href="{% url 'account_change_password' %}">Change
+                            Password</a>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <a class="btn custom-button w-100" href="{% url 'delete_account' %}">Delete Acount</a>
+                    </div>
                 </div>
+                <!-- buttons end-->
             </div>
+            <!-- cardbody End-->
         </div>
+        <!-- card End-->
     </div>
+    <!-- row End -->
+</div>
+<!-- container End-->
 </div>
 
 {% endblock %}
