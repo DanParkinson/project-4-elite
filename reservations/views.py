@@ -24,12 +24,25 @@ def make_reservation(request):
             create_datetime_object(reservation_date, reservation_time)
             create_end_time(reservation_datetime)
 
+            assigned_seat = None
             for seat_id in range(1, number_of_tables + 1):
-                check_overlapping_reservations(seat_id, reservation_date, reservation_time, reservation_datetime, end_time)
+                check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time)
                 if overlapping_reservation.exists():
                     continue
                 else:
-                    Reservation.seat_id = seat_id
+                    assigned_seat = seat_id
+                    break
+            if seat_assigned:
+                reservation = form.save(commit=False)
+                reservation.seat_id = assigned_seat
+                reservation.save()
+                return redirect('home')
+            else:
+                return render(request, 'reservations/make_reservation.html', {
+                    'form' : form,
+                    'available_times': available_times,
+                    'error_message': 'Sorry, no tables are available at that time. Please choose another time.'   
+                })
             
 
 
@@ -55,12 +68,12 @@ def create_end_time(reservation_datetime):
     end_time = reservation_datetime + timedelta(minutes=45)
     return end_time
 
-def check_overlapping_reservations(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
+def check_overlapping_reservation(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
     """
     Helper function to check for any overlapping reservations on the selected date.
     Returns True if an overlapping reservation exists
     """
-    overlapping_reservations = Reservation.objects.filter(
+    overlapping_reservation = Reservation.objects.filter(
         seat_id=seat_id,
         reservation_date = reservation_date,
         reservation_time__range=(

@@ -130,11 +130,11 @@ if form is valid
 
     for table in table
         check overlapping reservations
-        if not overlapping reservations
-            assign seat
-            submit form
+        if overlapping reservations
+            continue
         else
-            tell user available times
+            assign seat id
+    
 else
     get form
 
