@@ -137,11 +137,17 @@ main {
     padding-bottom: 10px;
 }
 
+/* edit reservations buttons */
 .inline-button {
     width: 100px;
     border-radius: 5px;
     font-weight: bold;
     flex: 1 1 200px;
+}
+
+/* reservation overview */
+.width-200 {
+    max-width: 200px;
 }
 
 /* ------------------------------------------------------------------- forms */

@@ -12,9 +12,9 @@
         {% csrf_token %}
         <div class="d-flex align-items-center">
             <label for="reservation_date" class="mr-2">Select Date:</label>
-            <input type="date" id="reservation_date" name="reservation_date" required class="form-control mr-2"
-                style="max-width: 200px;">
-            <button class="btn custom-button" style="max-width: 200px;" type="submit">View Reservations</button>
+            <input type="date" id="reservation_date" name="reservation_date" required class="form-control mr-2">
+            <button class="btn custom-button mr-2 width-200" type="submit">View Reservations</button>
+            <a class="btn custom-button width-200" href="{% url 'make_reservation' %}">Make a Reservation</a>
         </div>
         <!-- Date selection form end-->
     </form>
