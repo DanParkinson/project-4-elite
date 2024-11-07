@@ -38,17 +38,19 @@ def make_reservation(request):
                 reservation.save()
                 return redirect('home')
             else:
+                generate_all_times(reservation_datetime)
+                for seat_id in range(1, number_of_tables + 1):
+
+
+
+
+
                 return render(request, 'reservations/make_reservation.html', {
                     'form' : form,
                     'available_times': available_times,
                     'error_message': 'Sorry, no tables are available at that time. Please choose another time.'   
                 })
             
-
-
-        
-
-
 
 def create_datetime_object(reservation_date, reservation_time):
     """
@@ -89,21 +91,23 @@ def generate_all_times(reservation_datetime):
     Helper function to generate a list of all potential reservation times
     within the restaurant's open hours, starting every 15 minutes.
     """
-    return [
+    all_times =  [
         reservation_datetime.replace(hour = h, minute = m)
             for h in range(10, 21)
             for m in range(0, 60, 15)
         ]
+    return all_times
 
-def filter_available_times(all_times, reservation_date):
+def filter_available_times(all_times, reservation_date, seat_id):
     """
     Helper function to filter out times that overlap with existing reservations on the selected date.
     Returns a list of available times that respect the 1 hour 45 minute buffer.
     """
     available_times = []
     # get all reservations on the chosen date
-    chosen_day_reservations = Reservation.objects.filter(
-        reservation_date = reservation_date
+    seat_reservations = Reservation.objects.filter(
+        reservation_date = reservation_date,
+        seat_id=seat_id,
         )
     # Check each potential reservation time for conflicts
     for time in all_times:
@@ -111,15 +115,18 @@ def filter_available_times(all_times, reservation_date):
         if reservation_date ==  timezone.now().date() and time < timezone.now():
             continue
         # If no overlapping reservation exists within the buffer, add time to available_times
-        if not chosen_day_reservations.filter(
+        if seat_reservations.filter(
             reservation_time__range = (
-                time - timedelta(hours=1, minutes=45),
-                time + timedelta(hours=1, minutes=45),
+                time - timedelta(minutes=45),
+                time + timedelta(minutes=45),
             )
         ).exists():
-            available_times.append(time.strftime("%H:%M"))
-    # returns list that contains all times that arent taken
+            continue
+        available_times.append(time.strftime("%H:%M"))
+        
     return available_times
+
+
 
 def get_available_times_slice(available_times, reservation_time):
     """
