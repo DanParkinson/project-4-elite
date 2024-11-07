@@ -1,25 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container pt-5">
-    <div class="row">
-        <div class="card">
+<!-- container -->
+<div class="container pb-5 pt-4">
+    <!-- row -->
+    <div class="row justify-content-center">
+        <!-- card -->
+        <div class="card col-12 col-md-8 col-lg-10 mx-auto">
+            <!-- cardbody -->
             <div class="card-body">
-                <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-                    <h3>Update Account</h3>
-                </div>
-                <div class="col-md-8 mt-3 offset-md-2">
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <div class="d-flex mb-3 flex-wrap">
-                            <button type="submit" class="btn custom-button">Save Changes</button>
-                            <a class="btn custom-button" href="{% url 'my_account' %}">Back to Account</a>
+                <!-- Heading -->
+                <h3 class="text-center">Update Account</h3>
+                <!-- form -->
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- form input-->
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        <div class="form-control">{{ field }}</div>
+                    </div>
+                    <!-- Display error messages for each field -->
+                    {% if field.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- buttons-->
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-12 col-md-6 mb-3">
+                            <button type="submit" class="btn custom-button w-100">Save Changes</button>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <a class="btn custom-button w-100" href="{% url 'my_account' %}">Back to Account</a>
+                        </div>
+                        <!-- buttons end-->
+                    </div>
+                    <!-- Form Field End-->
+                </form>
+                <!-- cardbody End-->
             </div>
+            <!-- card End-->
         </div>
+        <!-- row End -->
     </div>
+    <!-- container End-->
 </div>
 {% endblock %}
