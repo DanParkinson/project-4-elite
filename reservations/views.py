@@ -180,7 +180,7 @@ def delete_reservation(request, reservation_id):
     return render(request, 'reservations/delete_reservation.html', {'reservation' : reservation})
 
 @staff_member_required
-def view_reservations_by_date(request):
+def admin_reservation_overview(request):
     # function for admins to see a selected dates reservations
     # pre load a reservations list. Date et to None as default 
     reservations = []
@@ -193,7 +193,7 @@ def view_reservations_by_date(request):
                 reservation_date = selected_date
             ).order_by(
                 'reservation_date', 'reservation_time')
-    return render(request, 'reservations/view_reservations_by_date.html', {
+    return render(request, 'reservations/admin_reservation_overview.html', {
         'reservations' : reservations,
         'selected_date' : selected_date,
     })
