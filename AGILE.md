@@ -120,23 +120,11 @@ The site is functional but there is currently only 1 table in the restaraunt. To
 
 reservations are now appointed a seat_id. this works if the same time is selected. but if a reservation is made at 12 then 12:15 they are appointed the same table. 
 
-Ive broken it so heres what i need to do in order 
+Ive broken it so heres what i need to do in order. 
 
-user submits form for reservation
+make reservations now works and allows users to book a seat confidently. edit reservation now needs updating as well as the reservation overview
 
-if form is valid
-    create datetime
-    create end time
 
-    for table in table
-        check overlapping reservations
-        if overlapping reservations
-            continue
-        else
-            assign seat id
-    
-else
-    get form
 
 
 
