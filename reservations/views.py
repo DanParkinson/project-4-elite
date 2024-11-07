@@ -40,6 +40,7 @@ def make_reservation(request):
             if assigned_seat:
                 reservation = form.save(commit=False)
                 reservation.seat_id = assigned_seat
+                reservation.user = request.user
                 reservation.save()
                 return redirect('home')
             else:
