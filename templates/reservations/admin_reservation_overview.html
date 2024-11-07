@@ -40,7 +40,7 @@
         <div class="table-responsive">
             <table class="table table-bordered text-center ">
                 <!-- table heading -->
-                <thead class="thead-dark">
+                <thead class="thead-custom">
                     <tr>
                         <th>Name</th>
                         <th>Time</th>
@@ -52,7 +52,7 @@
                 <!-- table content -->
                 <tbody>
                     {% for reservation in reservations %}
-                    <tr>
+                    <tr class="tr-custom">
                         <td>{{ reservation.name }}</td>
                         <td>{{ reservation.reservation_time }}</td>
                         <td>{{ reservation.number_of_guests }}</td>

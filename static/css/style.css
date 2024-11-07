@@ -63,6 +63,19 @@ h1, h2, h3, h4, h5, p, label {
     color: #ffffff;
 }
 
+/* ------------------------ tables*/
+/* -------------table heading*/
+.thead-custom {
+    background-color:#3A6D8C;
+    color:#EAD8B1;
+}
+
+/* -------------table cells*/
+.tr-custom {
+    background-color: #6A9AB0;
+    color:#EAD8B1;
+}
+
 /* ------------------------ hovers*/
 
 /* navbar items change color on hover*/
