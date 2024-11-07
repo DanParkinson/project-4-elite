@@ -21,17 +21,23 @@ def make_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            create_date_time_object(reservation_date, reservation_time)
+            create_datetime_object(reservation_date, reservation_time)
             create_end_time(reservation_datetime)
 
             for seat_id in range(1, number_of_tables + 1):
-                if not check_overlapping_reservations(reservation_date, reservation_datetime, end_time, number_of_tables):
+                check_overlapping_reservations(seat_id, reservation_date, reservation_time, reservation_datetime, end_time)
+                if overlapping_reservation.exists():
+                    continue
+                else:
+                    Reservation.seat_id = seat_id
+            
+
 
         
 
 
 
-def create_date_time_object(reservation_date, reservation_time):
+def create_datetime_object(reservation_date, reservation_time):
     """
     Combine date and time into a timezone-aware datetime object
     """
@@ -49,21 +55,21 @@ def create_end_time(reservation_datetime):
     end_time = reservation_datetime + timedelta(minutes=45)
     return end_time
 
-def check_overlapping_reservations(reservation_date, reservation_datetime, end_time, number_of_tables):
+def check_overlapping_reservations(seat_id, reservation_date, reservation_time, reservation_datetime, end_time):
     """
     Helper function to check for any overlapping reservations on the selected date.
-    Returns True if number of reservations is greater than table number
+    Returns True if an overlapping reservation exists
     """
     overlapping_reservations = Reservation.objects.filter(
+        seat_id=seat_id,
         reservation_date = reservation_date,
-         # Look for existing reservations within the 1 hour 45 minute buffer range
         reservation_time__range=(
-            reservation_datetime - timedelta(hours = 1, minutes = 45), # 2 hours before
-            end_time, # 2 hours after
+            reservation_datetime - timedelta(hours=1),
+            reservation_datetime, end_time
         )
     )
-    
-    return overlapping_reservations.count() >= number_of_tables
+
+    return overlapping_reservation
 
 def generate_all_times(reservation_datetime):
     """
