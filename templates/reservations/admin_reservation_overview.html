@@ -39,6 +39,7 @@
         <!-- Reservations Grid -->
         <div class="table-responsive">
             <table class="table table-bordered text-center ">
+                <!-- table heading -->
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -48,21 +49,24 @@
                         <th>Occasion</th>
                     </tr>
                 </thead>
+                <!-- table content -->
+                <tbody>
+                    {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.name }}</td>
+                        <td>{{ reservation.reservation_time }}</td>
+                        <td>{{ reservation.number_of_guests }}</td>
+                        <td>{{ reservation.phone_number }}</td>
+                        <td>{{ reservation.special_occasion }}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
             </table>
-
-
-
-
         <!-- else if reservations -->
         {% else %}
         <p>There are no reservations for {{ selected_date }}</p>
         <!-- end if reservations -->
         {% endif %}
-
-
-
-
-
         {% endif %}
         <!-- container end-->
     </div>
