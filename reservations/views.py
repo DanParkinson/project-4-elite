@@ -6,8 +6,6 @@ from datetime import datetime, timedelta
 from .models import Reservation
 from .forms import ReservationForm
 
-number_of_tables = 3
-
 table_info = {
     #seat_id : capacity
     1 : 2,
@@ -97,8 +95,7 @@ def get_suitable_tables(number_of_guests, table_info):
         if capacity >= number_of_guests:
             suitable_tables[seat_id] = capacity
     return suitable_tables
-
-            
+    
 def create_datetime_object(reservation_date, reservation_time):
     """
     Combine date and time into a timezone-aware datetime object

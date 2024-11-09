@@ -110,7 +110,7 @@ During phase 6 multiple tables were implemented. The first attempt of this was p
 I have decided to make sure that tables have a capacity assigned to them and that reservations are only accepted if the capacity can hold the table. this SHOULD be a simple change in logic for how the seat is assigned. the hard part will be to make sure that a reservation of two people take up the smallest table possible. This was simpler than I thought. 
 
 ## Phase 7 
-Now to do some automated testing. I also need to update the manul testing in TESTING.md
+Now to do some automated testing. I also need to update the manual testing in TESTING.md
 
 
 # fixes

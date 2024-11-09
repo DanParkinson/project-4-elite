@@ -2,11 +2,11 @@
 
 A variety of exploratory tests were performed throughout the project.
 
-## MANUAL TESTING
+## MANUAL TESTING During DEVELOPMENT
 
 Getting the live deployed site working. This is well documented in the latter sections of [DEPLOYMENT.md](DEPLOYMENT.md)
 
-## Super User
+### Super User
 
 <details>
 <summary>Click me</summary>
@@ -25,7 +25,7 @@ Admin login now functions correctly.
 
 </details>
 
-## Creating Templates 
+### Creating Templates 
 
 <details>
 <summary>Click me</summary>
@@ -46,7 +46,7 @@ Once the templates partials are populated. The server looks like this
 
 </details>
 
-## Connecting CSS and JS
+### Connecting CSS and JS
 
 <details>
 <summary>Click me</summary>
@@ -73,7 +73,7 @@ Server with backgorund colour and console message from javascrpit.
 
 </details>
 
-## AllAuth
+### AllAuth
 
 <details>
 <summary>Click me</summary>
@@ -117,7 +117,7 @@ Server with backgorund colour and console message from javascrpit.
 
 </details>
 
-## Authentication 
+### Authentication 
 
 <details>
 <summary>Click me</summary>
@@ -136,7 +136,7 @@ Server with backgorund colour and console message from javascrpit.
 
 </details>
 
-## Account editing
+### Account editing
 
 <details>
 <summary>Click me</summary>
@@ -148,7 +148,7 @@ Tests were performed to check that:
 
 </details>
 
-## Making reservations
+### Making reservations
 
 <details>
 <summary>Click me</summary>
@@ -181,7 +181,7 @@ Multiple checks were made for making reservations
 
 </details>
 
-## homepage next reservation 
+### homepage next reservation 
 
 <details>
 <summary>Click me</summary>
@@ -192,7 +192,7 @@ Multiple checks were made for making reservations
 
 </details>
 
-## Double Booking 
+### Double Booking 
 
 <details>
 <summary>Click me</summary>
@@ -221,7 +221,7 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 ![Double booking](docs/testing/8double_booking04.png)
 
-## Users can see availble times on the day that they book if table in unavailable at their chosen time
+### Users can see availble times on the day that they book if table in unavailable at their chosen time
 
 - users can now see available times when inputting a reservation that is taken
 
@@ -237,7 +237,7 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 </details>
 
-## my reservations page 
+### my reservations page 
 
 <details>
 <summary>Click me</summary>
@@ -270,7 +270,7 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 </details>
 
-## staff reservation overview
+### staff reservation overview
 
 <details>
 <summary>Click me</summary>
@@ -282,3 +282,43 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 ![reservation overview](docs/testing/10reservation_overview02.png)
 
 </details>
+
+### Double booking with multiple tables
+
+There are 8 tables in the restaraunt each with a maximum seating capacity. Tables need to be linked with reservations they can accomodate and ensure that the booking has at least 1 hour to enjoy their reservation. 
+
+For reference 
+- table 1 2 guests
+- table 2 2 guests 
+- table 3 4 guests 
+- table 4 4 guests 
+- table 5 6 guests 
+- table 6 6 guests 
+- table 7 8 guests 
+- table 8 8 guests 
+
+- both table 1 and 2 can only hold 2 people. Currently they are booked. 
+
+![11tables01](docs/testing/11tables01.png)
+
+- If a user trys to book with 1 or 2 guests a bigger table capacity will be used.
+
+![11tables02](docs/testing/11tables02.png)
+
+- If a user books a reservation with 2 guests an hour after a 2 capacity finishes they get assigned the samllest table.
+
+![11tables03](docs/testing/11tables03.png)
+
+- If a user trys to book a capacity of 8 people tables 7 and 8 will be used.
+
+![11tables04](docs/testing/11tables04.png)
+
+- If a user trys to book an 8 capacity table when table 7 and 8 are booked they will be given availble times based on their capacity. This proves multiple tests:
+
+- table 7 and 8s bookings are currently staggered. The 11:15 available time is okay for 1 table and not the other so only 1 booking can be made at this time.
+- tables 5 and 6 are free which have a capacity of 6 guests. Their available times are not shown as they cannot be seated. 
+- There are plenty of times for the day still available but i have sliced them down to the nearest times 3 either side.
+- these time are available on other days so the date is checked correctly
+- Since there are two tables that can hold this capacity there will be duplicated available time slots e.g. 11:00, 11:00. Only one is shown to not confuse users. 
+
+- ![11tables05](docs/testing/11tables05.png)
