@@ -394,11 +394,26 @@ Since the site is relativly small manual testing can cover the testing required.
 
 ![Signed in html errors](docs/testing/12htmlvalidator09.png)
 
+#### edit reservation 
+
+- stray closing div tage removed 
+
+![Signed in html errors](docs/testing/12htmlvalidator19.png)
+
+![Signed in html errors](docs/testing/12htmlvalidator020.png)
+
+#### delete reservation 
+
+- no errors 
+
+![Signed in html errors](docs/testing/12htmlvalidator021.png)
+
 #### my reservations 
 
 - no errors 
 
 ![Signed in html errors](docs/testing/12htmlvalidator10.png)
+
 
 #### my account 
 
@@ -471,10 +486,47 @@ no custom js was used to no validation needed
 <details>
 <summary>Click me</summary>
 
+- no errors found in any python 
 
+- home views
 
+![Python errors](docs/testing/14pythonvalidator01.png)
+
+- profiles views
+
+![Python errors](docs/testing/14pythonvalidator02.png)
+
+- reservation forms
+
+![Python errors](docs/testing/14pythonvalidator03.png)
+
+- reservation models 
+
+![Python errors](docs/testing/14pythonvalidator04.png)
+
+- reservation views 
+
+![Python errors](docs/testing/14pythonvalidator05.png)
 
 </details>
 
+## Lighthouse 
 
+- hompage 
+
+- about us
+
+- menu
+
+- make reservation 
+
+- my reservations 
+
+- my account 
+
+- details update 
+
+- password update 
+
+- 
 

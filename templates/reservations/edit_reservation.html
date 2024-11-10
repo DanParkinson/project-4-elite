@@ -23,24 +23,24 @@
 
         <form method="post">
           {% csrf_token %}
-            {% for field in form %}
-            <div class="form-group">
-              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-              <div class="form-control">{{ field }}</div>
+          {% for field in form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <div class="form-control">{{ field }}</div>
+          </div>
+          {% endfor %}
+          <!-- available times if selected time is unavailable-->
+          {% if available_times %}
+          <h5 class="text-center">Nearest available times:</h5>
+          <div class="row">
+            {% for time in available_times %}
+            <div class="col-4 col-lg-2 mb-2 text-center">
+              <div class="available-times-item">{{ time }}</div>
             </div>
             {% endfor %}
-            <!-- available times if selected time is unavailable-->
-            {% if available_times %}
-              <h5 class="text-center">Nearest available times:</h5>
-              <div class="row">
-                {% for time in available_times %}
-                <div class="col-4 col-lg-2 mb-2 text-center">
-                  <div class="available-times-item">{{ time }}</div>
-                </div>
-                {% endfor %}
-                {% endif %}
-                <!-- available times end-->
-              </div>
+            {% endif %}
+            <!-- available times end-->
+
           <div class="row justify-content-center mt-4">
             <div class="col-12 col-md-6 mb-3">
               <button class="btn custom-button w-100" type="submit" name="action">Make changes</button>
@@ -48,7 +48,8 @@
             <div class="col-12 col-md-6 mb-3">
               <a class="btn custom-button w-100" href="{% url 'my_reservations' %}">Your reservations</a>
             </div>
-            <p class="text-center">Your reservation will be kept intact if you try to change it and there are no available times to change it to</p>
+            <p class="text-center">Your reservation will be kept intact if you try to change it and there are no
+              available times to change it to</p>
             <!-- buttons end-->
           </div>
           <!-- Form Field End-->
