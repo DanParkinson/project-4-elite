@@ -30,3 +30,6 @@ def index(request):
 
 def about_us(request):
     return render(request, 'about_us.html') # loads about_us.html on request
+
+def menu(request):
+    return render(request, 'menu.html') # loads about_us.html on request
