@@ -379,41 +379,62 @@ Since the site is relativly small manual testing can cover the testing required.
 
 ### Signed in 
 
+<details>
+<summary>Click me</summary>
+
 #### home page 
 
+- no errors 
 
+![Signed in html errors](docs/testing/12htmlvalidator08.png)
 
 #### make reservation
 
+- no errors 
 
+![Signed in html errors](docs/testing/12htmlvalidator09.png)
 
 #### my reservations 
 
+- no errors 
 
+![Signed in html errors](docs/testing/12htmlvalidator10.png)
 
 #### my account 
 
+- no errors 
 
+![Signed in html errors](docs/testing/12htmlvalidator11.png)
 
 #### edit account details 
 
+- no errors 
 
-
-#### delete account 
-
-
+![Signed in html errors](docs/testing/12htmlvalidator12.png)
 
 #### change password 
 
+- buttons with links changed to anchors 
 
+![Signed in html errors](docs/testing/12htmlvalidator13.png)
+
+![Signed in html errors](docs/testing/12htmlvalidator14.png)
+
+#### delete account 
+
+![Signed in html errors](docs/testing/12htmlvalidator15.png)
 
 #### reservation overview 
 
+- closed container div
 
+![Signed in html errors](docs/testing/12htmlvalidator16.png)
+
+![Signed in html errors](docs/testing/12htmlvalidator17.png)
 
 #### log out 
 
+![Signed in html errors](docs/testing/12htmlvalidator18.png)
 
-
-
+</details>
 
