@@ -438,3 +438,43 @@ Since the site is relativly small manual testing can cover the testing required.
 
 </details>
 
+### CSS VALIDATION
+
+[Jigsaw](https://jigsaw.w3.org/css-validator/)
+
+<details>
+<summary>Click me</summary>
+
+- 1 error found with incorrect input. removed it as it contributes nothing
+
+![CSS errors](docs/testing/13cssvalidator01.png)
+
+![CSS errors](docs/testing/13cssvalidator02.png)
+
+</details>
+
+### JS VALIDATION 
+
+[JSHint](https://jshint.com/)
+
+<details>
+<summary>Click me</summary>
+
+no custom js was used to no validation needed
+
+</details>
+
+### PYTHON VALIDATION 
+
+[PEP8](https://www.pythonchecker.com/)
+
+<details>
+<summary>Click me</summary>
+
+
+
+
+</details>
+
+
+
