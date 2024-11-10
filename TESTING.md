@@ -512,21 +512,37 @@ no custom js was used to no validation needed
 
 ## Lighthouse 
 
-- hompage 
+<details>
+<summary>Click me</summary>
 
-- about us
+- All light house checks passed 
 
-- menu
+![Lighthouse checks](docs/testing/15LH01.png)
 
-- make reservation 
+![Lighthouse checks](docs/testing/15LH02.png)
 
-- my reservations 
+![Lighthouse checks](docs/testing/15LH03.png)
 
-- my account 
+![Lighthouse checks](docs/testing/15LH04.png)
 
-- details update 
+![Lighthouse checks](docs/testing/15LH05.png)
 
-- password update 
+![Lighthouse checks](docs/testing/15LH06.png)
 
-- 
+![Lighthouse checks](docs/testing/15LH07.png)
 
+![Lighthouse checks](docs/testing/15LH08.png)
+
+![Lighthouse checks](docs/testing/15LH09.png)
+
+![Lighthouse checks](docs/testing/15LH10.png)
+
+![Lighthouse checks](docs/testing/15LH11.png)
+
+![Lighthouse checks](docs/testing/15LH12.png)
+
+![Lighthouse checks](docs/testing/15LH13.png)
+
+![Lighthouse checks](docs/testing/15LH14.png)
+
+</details>
