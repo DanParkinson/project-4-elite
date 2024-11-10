@@ -285,6 +285,9 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 ### Double booking with multiple tables
 
+<details>
+<summary>Click me</summary>
+
 There are 8 tables in the restaraunt each with a maximum seating capacity. Tables need to be linked with reservations they can accomodate and ensure that the booking has at least 1 hour to enjoy their reservation. 
 
 For reference 
@@ -323,6 +326,8 @@ For reference
 
 - ![11tables05](docs/testing/11tables05.png)
 
+</details>
+
 ## AUTOMATED TESTING 
 
 Since the site is relativly small manual testing can cover the testing required. If the site is too grow further I will implement automated testing to ensure all code is checked.
@@ -330,4 +335,49 @@ Since the site is relativly small manual testing can cover the testing required.
 ## VALIDATORS 
 
 [W3C Markup Validator](https://validator.w3.org/)
+
+### Not SIGNED IN 
+
+<details>
+<summary>Click me</summary>
+
+#### home page
+
+- error with header not being in body tag. extra divs removed.
+
+![Not signed in html errors](docs/testing/12htmlvalidator01.png)
+
+![Not signed in html errors](docs/testing/12htmlvalidator02.png)
+
+#### About us 
+
+- no errors 
+
+![Not signed in html errors](docs/testing/12htmlvalidator03.png)
+
+#### menu page 
+
+- no errors
+
+![Not signed in html errors](docs/testing/12htmlvalidator04.png)
+
+#### sign up page 
+
+- no errors 
+
+![Not signed in html errors](docs/testing/12htmlvalidator05.png)
+
+#### Login page 
+
+- missing closing div on form element 
+
+![Not signed in html errors](docs/testing/12htmlvalidator06.png)
+
+![Not signed in html errors](docs/testing/12htmlvalidator07.png)
+
+</details>
+
+
+
+
 
