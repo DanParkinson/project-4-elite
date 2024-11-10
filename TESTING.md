@@ -546,3 +546,17 @@ no custom js was used to no validation needed
 ![Lighthouse checks](docs/testing/15LH14.png)
 
 </details>
+
+## Browser checks 
+
+- webiste has been checked on chrome, firefox, bing
+
+## Unresolved issues 
+
+- the edit reservations page prepopulates all fields except for the time field 
+
+- During my html validation. The change password page flagged on google chrome as a dangerous site. This did not happen on any other browser. 
+
+- Users cannot request an email to change their passwords.
+
+- users are not sent email confirmation of their reservations or account details changing
