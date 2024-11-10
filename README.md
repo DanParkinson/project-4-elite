@@ -346,10 +346,36 @@ Clear buttons for user decision
 
 ![Logout](docs/readme/features/features21.png)
 
-
 ### Design Features
-### Existing Features
+
+Users must login for making reservations or accessing their own reservations
+
+Standard users can 
+
+- access home page
+- make reservations
+- edit their own reservations 
+- delete their own reservations 
+- view all of their reservations in time order 
+- manage their own account details
+- register, login, logout 
+
+Super Users can all of the above and
+
+- Access the admin reservation overview page to see all reservations on any given day
+
 ### Future Adaptations
+
+- personlaised success messgaes to be even more clear to users
+- Users will be able to request a forgottten password code to be able to change it
+- Users will be able to leave a review of the site 
+- Users will have access to the menu of the restaurant 
+- Users will be able to request more information on the about us page 
+- A hiring page that is toggleable by admins to advertise job alerts 
+
+- Superusers will be able to confirm reviews
+- Superusers will be able to list job advertisements 
+- Superusers will be able to upload a pdf of their menu or customise a menu dropdown 
 
 ## Issues and Bugs
 
@@ -411,20 +437,34 @@ This process has been documented separately in [DEPLOYMENT.md](DEPLOYMENT.md)
 ## Credits
 ### Content
 - balsamiq for wireframes 
+
 - DrawSQL for database design 
-https://favicon.io/favicon-generator/
-https://fonts.google.com/
+
+- bootstrap for easy css styling
+
+- favicons at https://favicon.io/favicon-generator/
+
+- fonts from google fonts https://fonts.google.com/
 
 - Help with time widgets
 https://stackoverflow.com/questions/61076688/django-form-dateinput-with-widget-in-update-loosing-the-initial-value
+
 - help with datetime objects 
 https://dataheadhunters.com/academy/date-and-time-data-cleaning-techniques-for-standardization-and-parsing/
+https://stackoverflow.com/questions/9578906/easiest-way-to-combine-date-and-time-strings-to-single-datetime-object-using-pyt
+
 - bootstrap help
 https://hackerthemes.com/bootstrap-cheatsheet/
-- Django messages 
+
+- Django messages for future implementation
 https://ordinarycoders.com/blog/article/django-messages-framework?utm_content=cmp-true
 
-### People
+- Colour Schema 
+https://colorhunt.co/
+
+The book Python Crash Course by Eric Mattes for help with python. Particularly slices, django forms, dicionary work, sets and bolstering my knowledge of the organisation of my code.
 
 ## Acknowledgements
-https://stackoverflow.com/questions/9578906/easiest-way-to-combine-date-and-time-strings-to-single-datetime-object-using-pyt
+
+I would like to thank my family for their valued opinions and critic during the process of design and development.
+I would like to thank my tutor Excellence, for their invaluable help and guidance throughout the process

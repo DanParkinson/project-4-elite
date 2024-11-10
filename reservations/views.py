@@ -38,7 +38,6 @@ def make_reservation(request):
             reservation_datetime = create_datetime_object(reservation_date, reservation_time)
             end_time = create_end_time(reservation_datetime)
 
-            
             assigned_seat = None
             # selects the tables suitable for the party size
             suitable_tables = get_suitable_tables(number_of_guests, table_info)

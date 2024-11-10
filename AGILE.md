@@ -110,7 +110,7 @@ During phase 6 multiple tables were implemented. The first attempt of this was p
 I have decided to make sure that tables have a capacity assigned to them and that reservations are only accepted if the capacity can hold the table. this SHOULD be a simple change in logic for how the seat is assigned. the hard part will be to make sure that a reservation of two people take up the smallest table possible. This was simpler than I thought. 
 
 ## Phase 7 
-Finishing everything 
+Finishing everything off
 
 - html, css, python validators 
 - lighthouse 
@@ -123,6 +123,16 @@ Finishing everything
 - frameworks and libraries
 - credits
 - people 
+
+## Final 
+
+Future inplementations to add are below:
+
+![unfinished User Stories](docs/agile/userstories.png)
+
+User reviews will be completed at a later stage. 
+
+Users will be able to request an email to change their password
 
 
 # fixes
