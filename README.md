@@ -1,5 +1,9 @@
 # README
 
+![mock-up images](docs/readme/mockup.png "Website preview at different resolutions")
+
+[View The Live Project Here](https://elite-reservations-cd461c878952.herokuapp.com/)
+
 ## Table of Contents
 1. Introduction
     - Scenario
@@ -145,7 +149,7 @@ I have gone for
 
  - #001F3F - navbar
  - #3A6D8C - main background
- - #6A9AB0
+ - #6A9AB0 - card body for contrast
  - #EAD8B1 - text colour
 
 ### Database Design 
@@ -155,6 +159,10 @@ Entity Relationship Diagrams help to visualise database architecture before crea
 <summary>Entity Relationship Diagram</summary>
 
 ![Database Plan](docs/readme/basesql-database.png)
+
+- After working on the website i thought it wasnt needed to have the calender model. The reservations could just be sorted in their own views. The review model will be implemented in a future update of the website. 
+
+![Database Plan](docs/readme/basesql-database2.png)
 
 </details>
 
@@ -181,6 +189,164 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 </details>
 
 ## Features
+
+Home Page 
+
+Users understand the websites purpose on landing 
+
+Useful buttons clear in center of screen for ease of use 
+
+Buttons change depending if user is logged in
+
+next reservation clear to user for reminder
+
+![Homepage](docs/readme/features/features1.png)
+
+![Homepage log in](docs/readme/features/features2.png)
+
+NavBar
+
+Minimised Navigation
+
+The whole site uses a collapsible menu to save screen real estate on all resolutions.
+
+It occupies the whole screen to encourage the user to make a decision where to navigate to.
+
+Menu options also change depending on whether or not the user is logged in.
+
+To assist user, link elements change style when hovering.
+
+User greeting message for confirmation of login 
+
+![Navbar](docs/readme/features/features3.png)
+
+![Navbar small screens](docs/readme/features/features4.png)
+
+Footer 
+
+Fixed Footer
+
+Links are always available at the bottom of the page for all viewscreen sizes.
+
+To assist user, link elements change style when hovering.
+
+![Footer](docs/readme/features/features5.png)
+
+About Us 
+
+Information for users if they want more interactivity with the business 
+
+Promotes good community values for improving revenue 
+
+![About Us ](docs/readme/features/features6.png)
+
+Menu 
+
+Menu page will be populated with a pdf when business needs to update it
+
+information message avaialbe to show as place holder 
+
+![Menu](docs/readme/features/features7.png)
+
+Make Reservation 
+
+Form contains all information user needs to make reservation or for staff to contact them 
+
+If reservation requested is unavailable then user will be told nearest possible times available 
+
+![Make Reservation](docs/readme/features/features8.png)
+
+![Make Reservation small devices](docs/readme/features/features9.png)
+
+My Reservations 
+
+Shows clear list in date/time order of users reservations
+
+buttons linked to each reservation for ease of use 
+
+Also serves as confirmation of reservation 
+
+![My Reservation](docs/readme/features/features10.png)
+
+Edit Reservation 
+
+Prepopulates reservation details (except time) 
+
+Keeps the reservation in tact unless a new reservation is submitted 
+
+available times will appear if selected reservation time is unavailable
+
+![Edit Reservation](docs/readme/features/features11.png)
+
+Delete Reservation 
+
+Warning message to ensure user knows the risk
+
+![Delete Reservation](docs/readme/features/features12.png)
+
+My Account 
+
+Shows user account details 
+
+Buttons clear for user interaction
+
+![My account ](docs/readme/features/features13.png)
+
+Edit Account Details 
+
+Prepopulated form so user knows their details 
+
+![Edit account ](docs/readme/features/features14.png)
+
+Change Password 
+
+Users need to input their current password for safety 
+
+double password input removes potential mistakes 
+
+Forgotten password button will be applicable in future update
+
+![Change Password ](docs/readme/features/features15.png)
+
+Delete Account 
+
+Warning message to ensure user knows the risk
+
+![Delete Account](docs/readme/features/features16.png)
+
+Admin Reservation Overview 
+
+Table with date picker
+
+Reservations in time order with all applicable fields for ease of use 
+
+make reservation button for if a customer would like to make a reservation over the phone or in person 
+
+Designed for desktop use. NOT FORMATTED FOR MOBILE DEVICES
+
+![Admin Reservation Overview](docs/readme/features/features17.png)
+
+![Admin Reservation Overview](docs/readme/features/features18.png)
+
+Register
+
+Standard allauth signup page adapted to the site's theme.
+
+![Register](docs/readme/features/features19.png)
+
+Login 
+
+Standard allauth signup page adapted to the site's theme.
+
+![Login ](docs/readme/features/features20.png)
+
+Logout 
+
+Clear buttons for user decision
+
+![Logout](docs/readme/features/features21.png)
+
+
 ### Design Features
 ### Existing Features
 ### Future Adaptations
