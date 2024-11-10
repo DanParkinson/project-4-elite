@@ -377,6 +377,42 @@ Since the site is relativly small manual testing can cover the testing required.
 
 </details>
 
+### Signed in 
+
+#### home page 
+
+
+
+#### make reservation
+
+
+
+#### my reservations 
+
+
+
+#### my account 
+
+
+
+#### edit account details 
+
+
+
+#### delete account 
+
+
+
+#### change password 
+
+
+
+#### reservation overview 
+
+
+
+#### log out 
+
 
 
 
