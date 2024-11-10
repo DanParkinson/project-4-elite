@@ -1,23 +1,20 @@
 {% load static %}
-
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     {% include 'includes/head.html' %}
-    {% include 'includes/navbar.html' %}
 </head>
-
+<header>
+    {% include 'includes/navbar.html' %}
+</header>
 <body class="d-flex flex-column min-vh-100">
-    {% include 'includes/messages.html' %}
-    <main class ="flex-fill">
+    <main class="flex-fill">
         <!-- Block content-->
         {% block content %}
-        
+
         {% endblock %}
     </main>
     <footer class="footer fixed-bottom">
@@ -27,5 +24,4 @@
     <!-- scripts-->
     {% include 'includes/scripts.html' %}
 </body>
-
 </html>

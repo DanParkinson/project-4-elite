@@ -322,3 +322,12 @@ For reference
 - Since there are two tables that can hold this capacity there will be duplicated available time slots e.g. 11:00, 11:00. Only one is shown to not confuse users. 
 
 - ![11tables05](docs/testing/11tables05.png)
+
+## AUTOMATED TESTING 
+
+Since the site is relativly small manual testing can cover the testing required. If the site is too grow further I will implement automated testing to ensure all code is checked.
+
+## VALIDATORS 
+
+[W3C Markup Validator](https://validator.w3.org/)
+
