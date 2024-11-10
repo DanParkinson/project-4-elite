@@ -189,9 +189,48 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 
 - edit reservation view not pre populating time but is populating all other information.
 
+- Change password page was flagged as dangerous by Chrome when validating html. 
+
 ## Technologies Used
 ### Main Languages Used
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5 "Link to HTML Wiki")
+- [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets "Link to CSS Wiki")
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language) "Link to Python Wiki")
+
 ### Frameworks, Libraries & Programs Used
+
+- [Balsamiq](https://balsamiq.com/) for wireframing
+- [Lucidchart](https://lucid.co/) to produce ERD's
+- [GitHub](https://github.com/) for repo storage and Agile project management using Kanban boards/issue tracking.
+- [Heroku](https://id.heroku.com/) for project deployment to the world wide web.
+- [Python3 ](https://docs.python.org/3/) with the following modules
+asgiref==3.8.1
+dj-database-url==0.5.0
+Django==4.2.16
+django-allauth==0.57.2
+django-phonenumber-field==8.0.0
+gunicorn==20.1.0
+oauthlib==3.2.2
+phonenumbers==8.13.49
+psycopg2==2.9.10
+PyJWT==2.9.0
+python3-openid==3.2.0
+requests-oauthlib==2.0.0
+sqlparse==0.5.1
+whitenoise==6.5.0
+- [Bootstrap](https://getbootstrap.com/)
+- [JQuery](https://jquery.com/) 
+- [Django](https://www.djangoproject.com/)
+- [Django Templating](https://docs.djangoproject.com/en/4.0/ref/templates/language/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Favicon-Icons](https://favicon.io/favicon-generator/)
+- [Allauth](https://django-allauth.readthedocs.io/en/latest/)
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+- [W3C Markup Validator](https://validator.w3.org/) HTML linter
+- [Jigsaw](https://jigsaw.w3.org/css-validator/) CSS linter
+- [JSHint](https://jshint.com/) JS linter
+- [PEP8](https://www.pythonchecker.com/) Python linter
 
 ## Testing
 Refer to [TESTING.md](TESTING.md) for details on manual and automated testing.

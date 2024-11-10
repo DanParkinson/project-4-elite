@@ -127,7 +127,6 @@ Finishing everything
 
 # fixes
 - password request change
-- location
 
 
 
