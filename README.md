@@ -425,9 +425,9 @@ whitenoise==6.5.0
 - [PEP8](https://www.pythonchecker.com/) Python linter
 
 ## Testing
-Refer to [TESTING.md](TESTING.md) for details on manual and automated testing.
+Refer to [TESTING.md](TESTING.md) for details on manual testing. 
 - manual testing.
-- automated testing.
+- No automated testing was performed as the project was rather small.
 - Lighthouse site performance checks.
 - linter checks on HTML, CSS, JavaScript and Python code.
 
