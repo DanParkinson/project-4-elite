@@ -11,11 +11,11 @@ Getting the live deployed site working. This is well documented in the latter se
 <details>
 <summary>Click me</summary>
 
-When i originally tried to login as a superuser i recieved this error.
+When I originally tried to login as a superuser I recieved this error.
 
 ![Error](docs/testing/1superuser01.png)
 
-After using code institute support i had forgotten to add.
+After using code institute support I had forgotten to add.
 
 ![CSFR](docs/testing/1superuser02.png)
 
@@ -30,17 +30,17 @@ Admin login now functions correctly.
 <details>
 <summary>Click me</summary>
 
-Create a top level directory to include your templates 
+Create a top level directory to include your templates.
 
 ![Templates](docs/testing/2templates01.png)
 
-connect the templates directory to *elite/settings.py*
+connect the templates directory to *elite/settings.py*.
 
 ![Templates](docs/testing/2templates02.png)
 
 ![Templates](docs/testing/2templates03.png)
 
-Once the templates partials are populated. The server looks like this
+Once the templates partials are populated. The server looks like this.
 
 ![Templates](docs/testing/2templates04.png)
 
@@ -55,7 +55,7 @@ Connect the static directory to *elite/settings.py*.
 
 ![static](docs/testing/3static01.png)
 
-Create you style.css as shown at the top level.
+Create style.css as shown at the top level.
 
 ![static](docs/testing/3static02.png)
 
@@ -155,27 +155,27 @@ Tests were performed to check that:
 
 Multiple checks were made for making reservations
 
-- phone number has to be positive number
+- Phone number has to be positive number.
 
 ![make reservations checks ](docs/testing/6make_reservations02.png)
 
-- number of guests has to be between 1 and 9 
+- Number of guests has to be between 1 and 9.
 
 ![make reservations checks ](docs/testing/6make_reservations03.png)
 
-- reservation date has to be today onwards
+- Reservation date has to be today onwards.
 
 ![make reservations checks ](docs/testing/6make_reservations04.png)
 
-- time fields are 15 minute intervals
+- Time fields are 15 minute intervals.
 
 ![make reservations checks ](docs/testing/6make_reservations05.png)
 
-- reservations are saved to the databse
+- Reservations are saved to the database.
 
 ![make reservations checks ](docs/testing/6make_reservations01.png)
 
-- Users recieve error message when a datetime is selected that is in the past 
+- Users recieve error message when a datetime is selected that is in the past.
 
 ![make reservations checks ](docs/testing/6make_reservations06.png)
 
@@ -199,9 +199,9 @@ Multiple checks were made for making reservations
 
 ### With 1 table 
 
-Users can no longer book reservations that are two hours behind or ahead of an already existing reservation
+Users can no longer book reservations that are two hours (changed to 1 hour) behind or ahead of an already existing reservation.
 
-- booked reservation
+- Booked reservation.
 
 ![Double booking](docs/testing/8double_booking01.png)
 
@@ -209,25 +209,25 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 ![Double booking](docs/testing/8double_booking02.png)
 
-- attempt to book 1 hour 45 minutes before
+- Attempt to book 1 hour 45 minutes before.
 
 ![Double booking](docs/testing/8double_booking03.png)
 
-- attempt to book 2 hours either side succesful
+- Attempt to book 2 hours either side succesful.
 
 ![Double booking](docs/testing/8double_booking05.png)
 
-- attempt to book on another day but same time
+- Attempt to book on another day but same time.
 
 ![Double booking](docs/testing/8double_booking04.png)
 
-### Users can see availble times on the day that they book if table in unavailable at their chosen time
+### Users can see availble times on the day that they book, if table is unavailable at their chosen time
 
-- users can now see available times when inputting a reservation that is taken
+- Users can now see available times when inputting a reservation that is taken.
 
 ![Double booking](docs/testing/8double_booking06.png)
 
-- Users are now told that there are no available times if fully booked 
+- Users are now told that there are no available times if fully booked.
 
 ![Double booking](docs/testing/8double_booking07.png)
 
@@ -242,29 +242,29 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 <details>
 <summary>Click me</summary>
 
-- users can see all of their reservations that are in the future
+- Users can see all of their reservations that are in the future.
 
 ![my reservations](docs/testing/9my_reservations01.png)
 
-- Users can now edit their reservations 
-- form prepopulates reservation details when editing except for time
+- Users can now edit their reservations.
+- Form prepopulates reservation details when editing except for time.
 
 ![my reservations](docs/testing/9my_reservations02.png)
 
-- reservation details can be chnaged
-- my reservations updated
+- Reservation details can be chnaged.
+- My reservations updated.
 
 ![my reservations](docs/testing/9my_reservations03.png)
 
-- users can now delete reservations 
+- Users can now delete reservations.
 
 ![my reservations](docs/testing/9my_reservations04.png)
 
-- my reserations updated
+- My reserations updated.
 
 ![my reservations](docs/testing/9my_reservations05.png)
 
-- database deletes and changes the reservations
+- Database deletes and changes the reservations.
 
 ![my reservations](docs/testing/9my_reservations06.png)
 
@@ -290,7 +290,7 @@ Users can no longer book reservations that are two hours behind or ahead of an a
 
 There are 8 tables in the restaraunt each with a maximum seating capacity. Tables need to be linked with reservations they can accomodate and ensure that the booking has at least 1 hour to enjoy their reservation. 
 
-For reference 
+For reference:
 - table 1 2 guests
 - table 2 2 guests 
 - table 3 4 guests 
@@ -300,7 +300,7 @@ For reference
 - table 7 8 guests 
 - table 8 8 guests 
 
-- both table 1 and 2 can only hold 2 people. Currently they are booked. 
+- Both table 1 and 2 can only hold 2 people. Currently they are booked. 
 
 ![11tables01](docs/testing/11tables01.png)
 
@@ -318,10 +318,10 @@ For reference
 
 - If a user trys to book an 8 capacity table when table 7 and 8 are booked they will be given availble times based on their capacity. This proves multiple tests:
 
-- table 7 and 8s bookings are currently staggered. The 11:15 available time is okay for 1 table and not the other so only 1 booking can be made at this time.
-- tables 5 and 6 are free which have a capacity of 6 guests. Their available times are not shown as they cannot be seated. 
+- Table 7 and 8s bookings are currently staggered. The 11:15 available time is okay for 1 table and not the other so only 1 booking can be made at this time.
+- Tables 5 and 6 are free which have a capacity of 6 guests. Their available times are not shown as they cannot be seated. 
 - There are plenty of times for the day still available but i have sliced them down to the nearest times 3 either side.
-- these time are available on other days so the date is checked correctly
+- These time are available on other days so the date is checked correctly
 - Since there are two tables that can hold this capacity there will be duplicated available time slots e.g. 11:00, 11:00. Only one is shown to not confuse users. 
 
 - ![11tables05](docs/testing/11tables05.png)
@@ -400,13 +400,13 @@ Since the site is relativly small manual testing can cover the testing required.
 
 ![Signed in html errors](docs/testing/12htmlvalidator19.png)
 
-![Signed in html errors](docs/testing/12htmlvalidator020.png)
+![Signed in html errors](docs/testing/12htmlvalidator20.png)
 
 #### delete reservation 
 
 - no errors 
 
-![Signed in html errors](docs/testing/12htmlvalidator021.png)
+![Signed in html errors](docs/testing/12htmlvalidator21.png)
 
 #### my reservations 
 
@@ -460,7 +460,7 @@ Since the site is relativly small manual testing can cover the testing required.
 <details>
 <summary>Click me</summary>
 
-- 1 error found with incorrect input. removed it as it contributes nothing
+- 1 error found with incorrect input. Removed it as it contributes nothing.
 
 ![CSS errors](docs/testing/13cssvalidator01.png)
 
@@ -475,7 +475,7 @@ Since the site is relativly small manual testing can cover the testing required.
 <details>
 <summary>Click me</summary>
 
-no custom js was used to no validation needed
+No custom js was used so no validation needed.
 
 </details>
 
@@ -486,7 +486,7 @@ no custom js was used to no validation needed
 <details>
 <summary>Click me</summary>
 
-- no errors found in any python 
+- No errors found in any Python. 
 
 - home views
 
@@ -551,12 +551,3 @@ no custom js was used to no validation needed
 
 - webiste has been checked on chrome, firefox, bing
 
-## Unresolved issues 
-
-- the edit reservations page prepopulates all fields except for the time field 
-
-- During my html validation. The change password page flagged on google chrome as a dangerous site. This did not happen on any other browser. 
-
-- Users cannot request an email to change their passwords.
-
-- users are not sent email confirmation of their reservations or account details changing

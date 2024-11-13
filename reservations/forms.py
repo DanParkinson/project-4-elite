@@ -44,9 +44,11 @@ class ReservationForm(forms.ModelForm):
         label='Special Occasion'
     )
 
-    # combing date and time into one variable to stop users choosing a time in the past 
-    # if their reservation is today
     def clean(self):
+        """
+        COmbines date and time into one variable to stop users selecting 
+        a time in the past on the reservation form, if their date is today
+        """
         cleaned_data = super().clean()
         reservation_date = cleaned_data.get('reservation_date')
         reservation_time = cleaned_data.get('reservation_time')

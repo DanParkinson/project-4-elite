@@ -180,9 +180,9 @@ def get_available_times_slice(available_times, reservation_time):
     available_times.append(reservation_time)
     # sorts the available times
     available_times.sort()
-    # create index out of available times
+    # create index out of available times. Finds the position of the reservation time
     selected_time_index = available_times.index(reservation_time)
-    # 3 times before and 3 times after chosen time
+    # 3 times before and 3 times after reservation time 
     start_index = max(0, selected_time_index - 3)
     end_index = min(len(available_times), selected_time_index + 3)
     # remove the reservation time as this is already booked
@@ -240,7 +240,6 @@ def edit_reservation(request, reservation_id):
             new_datetime = create_datetime_object(new_date, new_time)
             end_time = create_end_time(new_datetime)
 
-            
             assigned_seat = None
             # generates all the available times for the day
             all_times = generate_all_times(new_datetime)

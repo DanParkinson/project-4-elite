@@ -74,7 +74,7 @@ Add Eco Dynos.
 <details>
 <summary>Click me</summary>
 
-Create and env.py file in the top directory and use this code. The postgreSQL code was generated from Code Institute. It has been redacted from the image.
+Create an env.py file in the top directory and use this code. The postgreSQL code was generated from Code Institute. It has been redacted from the image.
 
 ![env.py](docs/heroku_deployment/09-env.png)
 

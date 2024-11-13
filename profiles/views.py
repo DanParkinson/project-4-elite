@@ -5,7 +5,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 
 
-@login_required # Users must be logged on to access this view
+@login_required
 def my_account(request):
     user = request.user
     context = {

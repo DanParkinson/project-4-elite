@@ -177,7 +177,7 @@ select:focus {
     box-shadow: none;
 }
 
-/* input field fills fall bars in form */
+/* input field fills full bars in form */
 form input[type="text"],
 form input[type="tel"],
 form input[type="number"],
@@ -240,7 +240,7 @@ form input[type="date"] {
     list-style-type: none
 }
 
-/* ------------------ view_reservations_by_date.html */
+/* ------------------ admin reservation overview.html */
 .reservation-overview {
     justify-content: center;
 }

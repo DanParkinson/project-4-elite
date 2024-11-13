@@ -25,11 +25,11 @@ def index(request):
         # reservations have been filtered out
         next_reservation = future_reservations.order_by('reservation_date', 'reservation_time').first()
 
-    return render(request, 'index.html', {'next_reservation' : next_reservation}) # loads index.html on request
+    return render(request, 'index.html', {'next_reservation' : next_reservation})
 
 
 def about_us(request):
-    return render(request, 'about_us.html') # loads about_us.html on request
+    return render(request, 'about_us.html')
 
 def menu(request):
-    return render(request, 'menu.html') # loads about_us.html on request
+    return render(request, 'menu.html')

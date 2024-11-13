@@ -49,7 +49,7 @@ Restaurants are busy places. With staff preparing food, waiting tables and provi
 
 It can help the business if customers use an online booking system instead. This dosen't take up valuable staffs time. Bookings could also be made out of working hours, increasing the accessability to the restaraunt, potentially increasing foot traffic and profits. 
 
-A lot of people also refer a passsive booking system where no human interaction is needed. Meaning a larger clientel.
+A lot of people also prefer a passsive booking system where no human interaction is needed. Meaning a larger clientel.
 
 A business with a well developed website tends to do better than its peers. Customers can gain a better insight of its ethos, facilities and services on offer. In theory this fosters confidence and leads to greater engagement.
 
