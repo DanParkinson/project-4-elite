@@ -119,6 +119,16 @@ Potentially:
 
 - **As an** admin, **I can** approve reviews **so that** reviews are relevant.
 
+#### User stories completed
+
+- There are still some user stories that need to be implemented into the project in the future. This is just to time constraints on the project. These include:
+
+- Adding email verifcation for changing passwords
+- adding a user review function so that they can post reviews
+- Allowing staff admin to approve the reviews
+
+[Final User Stories](docs/readme/colour-schema.png)
+
 ## Design Thinking
 
 [Agile](AGILE.md) use has been documented in a separate file.
@@ -356,7 +366,7 @@ Clear buttons for user decision
 
 Users must login for making reservations or accessing their own reservations
 
-Standard users can 
+Standard users can: 
 
 - access home page
 - make reservations
