@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from home import views as index_views
-from django.conf.urls import handler404
+from .views import handler404, handler500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,9 +27,5 @@ urlpatterns = [
     path('reservations/', include('reservations.urls')),
 ]
 
-def custom_404(request, exception):
-    return render(request, '404.html', status=404)
-
-
-
-handler404 = custom_404
+handler404 = "elite.views.handler404"
+handler500 = "elite.views.handler500"
