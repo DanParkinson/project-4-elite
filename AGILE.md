@@ -137,9 +137,5 @@ User reviews will be completed at a later stage.
 Users will be able to request an email to change their password
 
 
-# fixes
-- password request change
-
-
 
 
