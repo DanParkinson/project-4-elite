@@ -158,9 +158,15 @@ Entity Relationship Diagrams help to visualise database architecture before crea
 <details>
 <summary>Entity Relationship Diagram</summary>
 
+- The inital plan for the database was to create a seperate calender model for storing the information on reservations for organisation purposes. I also did not have time for the review model so it will be added in a later update of the project.
+
 ![Database Plan](docs/readme/basesql-database.png)
 
-- After working on the website i thought it wasnt needed to have the calender model. The reservations could just be sorted in their own views. The review model will be implemented in a future update of the website. 
+- After working on the website I thought it wasnt needed to have the calender model. The reservations could just be sorted in their own views. The review model will be implemented in a future update of the website. 
+
+![Database Plan](docs/readme/basesql-database3.png)
+
+- For when the review model is implemented the database will look like this. 
 
 ![Database Plan](docs/readme/basesql-database2.png)
 
