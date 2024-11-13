@@ -379,9 +379,9 @@ Super Users can all of the above and
 
 ## Issues and Bugs
 
-- edit reservation view not pre populating time but is populating all other information.
+- edit reservation view not pre populating time but is populating all other information. A few attempts to fix this were attempted but ultimatlet i could not find a solution. The reason I think it is not working is how the data is passed from the database to the form. I attempted to convert it to a tring for the choice field and find the slected information in the time drop down menu to be able to populate it.
 
-- Change password page was flagged as dangerous by Chrome when validating html. 
+- Change password page was flagged as dangerous by Chrome when validating html. Asking student support they chekced the issue and did not recieve the same issue. My mentor also did not expect the issue. Using google I found that when Heroku was a free service, some sites used it for malicious practices. The issue only came up for me when I was validating my password change screen html which may have made Google Chrome overreact. Issue not experienced on other browsers. 
 
 ## Technologies Used
 ### Main Languages Used
